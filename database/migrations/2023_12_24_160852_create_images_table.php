@@ -11,25 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('championships', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('champName');
-            $table->integer('numOfParticipants')->default(16);
-            $table->double('prize1');
-            $table->double('prize2');
-            $table->double('entryPrice');
-            $table->date('starteDate');
-            $table->date('endDate');
-            $table->timestamps();
-
-
-
+        Schema::create('images', function (Blueprint $table) {
             
-
-
-
-
+            $table->increments('id');
+            $table->string('title')->default('User Profile Pic');
+            $table->string('path');
+            $table->integer('user_id');
+            $table->timestamps();
         });
+        
     }
 
     /**
@@ -37,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('championships');
+        Schema::dropIfExists('images');
     }
 };

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('team_id')->nullable();
             $table->integer('role_id')->default(0);
             $table->integer('elo');
+            $table->timestamps();
         });
     }
 
