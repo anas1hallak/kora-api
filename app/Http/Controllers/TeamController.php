@@ -66,11 +66,11 @@ class TeamController extends Controller
 
 
 
-    public function getTeam(Request $request)
+    public function getTeam(string $id)
     {
 
 
-        $team=Team::findOrFail($request->input('teamId'));
+        $team=Team::findOrFail($id);
         $team->players;
 
         return response()->json([
