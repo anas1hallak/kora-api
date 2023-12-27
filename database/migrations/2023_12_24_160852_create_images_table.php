@@ -11,26 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('teams', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
+            
             $table->increments('id');
-            $table->string('teamName');
-            $table-> integer('points');
-            $table-> integer('wins');
-            $table->string('termsAndConditions');
-            $table->string('coachName');
-            $table-> integer('user_id');
+            $table->string('title')->default('User Profile Pic');
+            $table->string('path');
+            $table->integer('user_id');
             $table->timestamps();
-
-
-
-
         });
+        
     }
 
-   
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('teams');
-        
+        Schema::dropIfExists('images');
     }
 };

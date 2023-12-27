@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('ibans', function (Blueprint $table) {
             $table->increments('id');
             $table->string('ibanNumber');
+            $table->timestamps();
 
         });
     }

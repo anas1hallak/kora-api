@@ -7,11 +7,22 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable;
+    use  Notifiable;
 
-    protected $fillable = ['fullName', 'phoneNumber', 'password'];
+    protected $fillable = [
+        'fullName',
+        'phoneNumber',
+        'password',
+        'email',
+        'playerNumber',
+        'placeOfPlayer',
+        'selected',
+        'elo',
+        
+        
+        ];
 
-    protected $hidden = ['password', 'remember_token'];
+    protected $hidden = ['password','created_at','updated_at'];
 
     public function fcmTokens()
     {

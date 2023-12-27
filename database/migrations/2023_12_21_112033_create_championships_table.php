@@ -20,6 +20,7 @@ return new class extends Migration
             $table->double('entryPrice');
             $table->date('starteDate');
             $table->date('endDate');
+            $table->timestamps();
 
 
 

@@ -8,7 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class FcmToken extends Model
 {
     use HasFactory;
-    protected $fillable = ['token'];
+
+    protected $fillable = [
+
+        'user_id',
+        'fcmToken'
+    
+    ];
+
+    protected $hidden = ['created_at','updated_at'];
 
     public function user()
     {
