@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function register(Request $request)
+    public function signup(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'fullName' => 'required',
@@ -25,6 +25,7 @@ class UserController extends Controller
             return response()->json(['error' => $validator->errors()], 401);
         }
 
+
         $user = User::create([
             'fullName' => $request->input('fullName'),
             'phoneNumber' => $request->input('phoneNumber'),
@@ -36,6 +37,7 @@ class UserController extends Controller
 
         return response()->json(['message' => 'User registered successfully']);
     }
+    
 
 
 
@@ -48,11 +50,11 @@ class UserController extends Controller
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            $token = $user->createToken('MyApp')->accessToken;
+          //  $token = $user->createToken('MyApp')->accessToken;
 
-            return response()->json(['token' => $token]);
+         //=   return response()->json(['token' => $token]);
         } else {
-            return response()->json(['error' => 'Invalid credentials'], 401);
+            return response()->json(['error' => 'Invalid credentials'], 400);
         }
     }
 
