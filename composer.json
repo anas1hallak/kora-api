@@ -11,10 +11,7 @@
         
         "php": "^8.1",
         "edujugon/push-notification": "^5.3",
-<<<<<<< HEAD
         "guzzlehttp/guzzle": "^7.2",
-=======
->>>>>>> 76bbd4a765d3a181c551f9330166de157737eb51
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8"

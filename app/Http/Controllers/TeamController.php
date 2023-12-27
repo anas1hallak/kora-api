@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 
+use App\Models\ChampionshipRequests;
+
+use App\Models\Teamimage;
+
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -39,6 +44,20 @@ class TeamController extends Controller
 
 
         ]);
+
+        
+        if ($request->hasFile('image')) {
+
+            $file = $request->file('image');
+            $fileName = $file->getClientOriginalName();
+            $fileName = date('His') . $fileName;
+            $path = $request->file('image')->storeAs('images', $fileName, 'public');
+            $imageModel = new Teamimage;
+            $imageModel->path = $path; 
+            $team->teamImage()->save($imageModel);
+        }
+    
+        $team->load('image');
 
         $user->selected="selected";
         $user->team_id=$team->id;
@@ -101,6 +120,56 @@ class TeamController extends Controller
 
 
 
+    }
+
+
+
+    public function addUserToTeam(Request $request){
+
+        $user=User::findOrFail($request->input('user_id'));
+    
+        $user->selected='selected';
+        $user->team_id=$request->input('team_id');
+
+        $user->update();
+
+
+        return response()->json([
+
+            'code'=>200,
+            'message' => 'Team aded to championship successfully',
+        
+        ]);
+
+
+
+    }
+
+
+
+
+    public function requestToJoinChampionship(Request $request){
+
+        $team=Team::findOrFail($request->input('team_id'));
+
+        $ChampionshipRequests = ChampionshipRequests::create([
+
+
+            'team_id' => $request->input('team_id'),
+            'message' =>$team->name. ' Team wants to join this championship',
+            'championship_id' =>$request->input('championship_id'),
+            
+        ]);
+
+        return response()->json([
+
+            'code'=>200,
+            'message' => 'Request sent successfully',
+        
+        ]);
+
+
+        
     }
 
 

@@ -17,6 +17,13 @@ return new class extends Migration
             $table->time('time');
             $table->string('location');
             $table->string('stad');
+
+            $table->integer('round_id');
+            $table->integer('team1_id');
+            $table->integer('team2_id');
+            $table->integer('winner')->nullable();
+
+
             $table->timestamps();
 
 

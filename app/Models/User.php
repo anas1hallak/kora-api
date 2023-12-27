@@ -28,5 +28,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(FcmToken::class);
     }
+
+
+
+    public function image(){
+
+        return $this->hasOne(Image::class);
+    }
+
+    
 }
 
