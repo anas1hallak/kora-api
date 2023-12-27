@@ -29,4 +29,15 @@ class Team extends Model
     {
         return $this->hasMany(User::class);
     }
+
+
+    public function teamImage(){
+
+        return $this->hasOne(Teamimage::class);
+    }
+
+    public function requests()
+    {
+        return $this->hasMany(TeamRequests::class);
+    }
 }
