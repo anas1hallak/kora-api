@@ -14,10 +14,13 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+<<<<<<< HEAD
+=======
 
 
 
     
+>>>>>>> 76bbd4a765d3a181c551f9330166de157737eb51
     public function signup(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -34,6 +37,7 @@ class UserController extends Controller
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 401);
         }
+
 
         $user = User::create([
 
@@ -62,6 +66,7 @@ class UserController extends Controller
         
         ]);
     }
+    
 
 
 
@@ -73,6 +78,15 @@ class UserController extends Controller
         // Validate the request
         $validator = Validator::make($request->all(), [
 
+<<<<<<< HEAD
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+          //  $token = $user->createToken('MyApp')->accessToken;
+
+         //=   return response()->json(['token' => $token]);
+        } else {
+            return response()->json(['error' => 'Invalid credentials'], 400);
+=======
             'phoneNumber' => 'required',
             'password' => 'required',
             'fcmToken' => 'required', // Assuming you send FCM token in the request
@@ -80,6 +94,7 @@ class UserController extends Controller
     
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 400);
+>>>>>>> 76bbd4a765d3a181c551f9330166de157737eb51
         }
     
         $credentials = $request->only('phoneNumber', 'password');
