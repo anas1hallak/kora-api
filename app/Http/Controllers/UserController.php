@@ -191,6 +191,8 @@ class UserController extends Controller
 
 
         $users=User::all();
+        $users->team;
+
 
         return response()->json([
 
@@ -225,7 +227,15 @@ class UserController extends Controller
 
             $user = Auth::user();
             $user->fcmTokens;
-            
+            $user->image;
+            $user->team;
+
+        // Append the image URL to the user data
+            $user->image_url = $user->image ? asset('/storage/'. $user->image->path) : null;
+
+        // Remove the 'image' relationship from the response
+             unset($user['image']);
+             
             
             return response()->json([
 
@@ -247,6 +257,34 @@ class UserController extends Controller
         }
 
     }
+
+
+
+
+
+
+
+    public function deleteUser(string $id){
+        
+        $user = User::findOrFail($id);
+    
+        if ($user->image) {
+            Storage::disk('public')->delete($user->image->path);
+            $user->image->delete();
+        }
+    
+        $user->delete();
+    
+        return response()->json([
+            'code' => 200,
+            'message' => 'User deleted successfully',
+        ]);
+
+    }
+
+
+
+
 
 
 

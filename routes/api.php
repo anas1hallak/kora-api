@@ -10,6 +10,7 @@ Route::post('/signup', [UserController::class, 'signup']);
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout']);
 Route::get('/getAllUsers', [UserController::class, 'getAllUsers']);
+Route::delete('/deleteUser/{id}', [UserController::class, 'deleteUser']);
 Route::post('/requestToJoinTeam', [UserController::class, 'requestToJoinTeam']);
 
 
