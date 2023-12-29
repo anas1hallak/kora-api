@@ -31,7 +31,7 @@ class TeamController extends Controller
             return response()->json(['error' => $validator->errors()], 401);
         }
 
-        $user=User::findOrFail($request->input('userId'));
+        $user=User::findOrFail($request->input('user_id'));
 
         $team = Team::create([
 
@@ -54,7 +54,7 @@ class TeamController extends Controller
             $path = $request->file('image')->storeAs('images', $fileName, 'public');
             $imageModel = new Teamimage;
             $imageModel->path = $path; 
-            $team->teamImage()->save($imageModel);
+            $team->image()->save($imageModel);
         }
     
         $team->load('image');

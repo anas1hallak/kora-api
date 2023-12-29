@@ -31,7 +31,7 @@ class Team extends Model
     }
 
 
-    public function teamImage(){
+    public function image(){
 
         return $this->hasOne(Teamimage::class);
     }

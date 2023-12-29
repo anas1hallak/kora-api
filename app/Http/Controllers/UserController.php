@@ -114,12 +114,27 @@ class UserController extends Controller
 
 
 
+    public function getAllUsers(){
+
+
+        $users=User::all();
+
+        return response()->json([
+
+            'code'=>200,
+            'users'=>$users,
+        
+        ]);
+
+
+    }
+    
 
 
 
     public function login(Request $request)
     {
-        // Validate the request
+        
         $validator = Validator::make($request->all(), [
 
             'phoneNumber' => 'required',

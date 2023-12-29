@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Championship;
-
 use App\Models\Championshipimage;
+
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
@@ -57,7 +57,7 @@ class ChampionshipController extends Controller
             $path = $request->file('image')->storeAs('images', $fileName, 'public');
             $imageModel = new Championshipimage;
             $imageModel->path = $path; 
-            $championship->championshipImage()->save($imageModel);
+            $championship->image()->save($imageModel);
         }
     
         $championship->load('image');
