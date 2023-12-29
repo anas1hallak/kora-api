@@ -16,7 +16,6 @@ return new class extends Migration
             $table->integer('team_id'); 
             $table-> string('message');
             $table->integer('user_id');
-            $table->timestamps();
         });
     }
 

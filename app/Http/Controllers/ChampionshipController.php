@@ -48,6 +48,15 @@ class ChampionshipController extends Controller
         ]);
 
 
+
+          
+        return response()->json([
+
+            'code'=>200,
+            'message' => 'Championship created successfully',
+        
+        ]);
+
         
         if ($request->hasFile('image')) {
 

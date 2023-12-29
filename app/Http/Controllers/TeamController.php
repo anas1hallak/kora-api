@@ -28,7 +28,7 @@ class TeamController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 401);
+            return response()->json(['error' => $validator->errors()], 422);
         }
 
         $user=User::findOrFail($request->input('userId'));
@@ -46,6 +46,15 @@ class TeamController extends Controller
         ]);
 
         
+        
+        return response()->json([
+
+            'code'=>200,
+            'message' => 'Team created successfully',
+            'team'=>$team,
+        
+        ]);
+
         if ($request->hasFile('image')) {
 
             $file = $request->file('image');
@@ -137,7 +146,7 @@ class TeamController extends Controller
         return response()->json([
 
             'code'=>200,
-            'message' => 'Team aded to championship successfully',
+            'message' => 'user aded to team successfully',
         
         ]);
 

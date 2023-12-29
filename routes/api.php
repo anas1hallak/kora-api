@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 
 
-Route::post('/signup', [UserController::class, 'signup']);
-Route::post('/login', [UserController::class, 'login']);
+Route::post('/signup', [UserController::class, 'signup']);//done
+Route::post('/login', [UserController::class, 'login']);//done
 Route::post('/logout', [UserController::class, 'logout']);
 Route::post('/requestToJoinTeam', [UserController::class, 'requestToJoinTeam']);
 
@@ -15,10 +15,10 @@ Route::post('/requestToJoinTeam', [UserController::class, 'requestToJoinTeam']);
 
 
 
-Route::post('/createTeam', [TeamController::class, 'createTeam']);
-Route::get('/getTeam/{id}', [TeamController::class, 'getTeam']);
-Route::get('/getAllTeams', [TeamController::class, 'getAllTeams']);
-Route::post('/addUserToTeam', [TeamController::class, 'addUserToTeam']);
+Route::post('/createTeam', [TeamController::class, 'createTeam']); //done
+Route::get('/getTeam/{id}', [TeamController::class, 'getTeam']);//done
+Route::get('/getAllTeams', [TeamController::class, 'getAllTeams']);//done
+Route::post('/addUserToTeam', [TeamController::class, 'addUserToTeam']);//done
 Route::post('/requestToJoinChampionship', [TeamController::class, 'requestToJoinChampionship']);
 
 Route::get('/getAllTeamRequests/{id}', [TeamRequestsController::class, 'getAllTeamRequests']);
@@ -28,10 +28,10 @@ Route::get('/getAllTeamRequests/{id}', [TeamRequestsController::class, 'getAllTe
 
 
 
-Route::post('/createChampionship', [ChampionshipController::class, 'createChampionship']);
-Route::post('/addTeamsToChampionship', [ChampionshipController::class, 'addTeamsToChampionship']);
-Route::get('/getChampionship/{id}', [ChampionshipController::class, 'getChampionship']);
-Route::get('/getAllChampionships', [ChampionshipController::class, 'getAllChampionships']);
+Route::post('/createChampionship', [ChampionshipController::class, 'createChampionship']);//done
+Route::post('/addTeamsToChampionship', [ChampionshipController::class, 'addTeamsToChampionship']);//done
+Route::get('/getChampionship/{id}', [ChampionshipController::class, 'getChampionship']);//done
+Route::get('/getAllChampionships', [ChampionshipController::class, 'getAllChampionships']);//done
 
 
 Route::get('/getAllChampionshipRequests/{id}', [ChampionshipRequestsController::class, 'getAllChampionshipRequests']);

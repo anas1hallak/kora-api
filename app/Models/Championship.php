@@ -10,7 +10,15 @@ class Championship extends Model
     use HasFactory;
 
 
-
+protected $fillable = [
+        'championshipName',
+        'numOfParticipants',
+        'prize1',
+        'prize2',
+        'entryPrice',
+        'starteDate',
+        'endDate',
+    ];
 
     public function teams(){
 
