@@ -107,7 +107,23 @@ class TeamController extends Controller
 
     }
 
-    
+    public function getTeamPlayers(string $id)
+    {
+
+
+        $team=Team::findOrFail($id);
+        $players=$team->players;
+
+        return response()->json([
+
+            'code'=>200,
+            'players'=>$players,
+        
+        ]);
+
+
+
+    }
 
 
     public function getAllTeams()
