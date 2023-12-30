@@ -14,6 +14,8 @@ use App\Models\FcmToken;
 
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Storage;
+
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -25,6 +27,7 @@ class UserController extends Controller
     public function signup(Request $request)
     {
         $validator = Validator::make($request->all(), [
+
             'fullName' => 'required',
             'phoneNumber' => 'required',
             'password' => 'required|min:8',
@@ -87,6 +90,76 @@ class UserController extends Controller
 
 
 
+    public function updateUser(Request $request, $id){
+
+    $validator = Validator::make($request->all(), [
+
+            'fullName' => 'required',
+            'phoneNumber' => 'required',
+            'password' => 'required|min:8',
+            'email' => 'required|email|unique:users',
+            'playerNumber' => 'nullable',
+            'placeOfPlayer' => 'nullable',
+            
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json(['error' => $validator->errors()], 401);
+    }
+
+    $user = User::find($id);
+
+    if (!$user) {
+        return response()->json(['error' => 'User not found'], 404);
+    }
+
+    
+    $user->update([
+        'fullName' => $request->input('fullName'),
+        'phoneNumber' => $request->input('phoneNumber'),
+        'password' => $request->has('password') ? bcrypt($request->input('password')) : $user->password,
+        'email' => $request->input('email'),
+        'playerNumber' => $request->input('playerNumber'),
+        'placeOfPlayer' => $request->input('placeOfPlayer'),
+    ]);
+
+
+    
+
+    // Handle image upload/update
+    if ($request->hasFile('image')) {
+        $file = $request->file('image');
+        $fileName = date('His') . $file->getClientOriginalName();
+        $path = $file->storeAs('images', $fileName, 'public');
+        
+        // Delete previous image, if any
+        if ($user->image) {
+            Storage::disk('public')->delete($user->image->path);
+            $user->image->delete();
+        }
+
+        // Create a new image model
+        $imageModel = new Image;
+        $imageModel->path = $path;
+        $user->image()->save($imageModel);
+    }
+
+    $user->load('image');
+
+    return response()->json([
+        'code' => 200,
+        'message' => 'User updated successfully',
+        'user' => $user,
+    ]);
+}
+
+
+
+
+
+
+
+
     public function requestToJoinTeam(Request $request){
 
         $user=User::findOrFail($request->input('user_id'));
@@ -114,12 +187,29 @@ class UserController extends Controller
 
 
 
+    public function getAllUsers(){
+
+
+        $users=User::all();
+        $users->team;
+
+
+        return response()->json([
+
+            'code'=>200,
+            'users'=>$users,
+        
+        ]);
+
+
+    }
+
 
 
 
     public function login(Request $request)
     {
-        // Validate the request
+        
         $validator = Validator::make($request->all(), [
 
             'phoneNumber' => 'required',
@@ -137,7 +227,15 @@ class UserController extends Controller
 
             $user = Auth::user();
             $user->fcmTokens;
-            
+            $user->image;
+            $user->team;
+
+        // Append the image URL to the user data
+            $user->image_url = $user->image ? asset('/storage/'. $user->image->path) : null;
+
+        // Remove the 'image' relationship from the response
+             unset($user['image']);
+             
             
             return response()->json([
 
@@ -159,6 +257,34 @@ class UserController extends Controller
         }
 
     }
+
+
+
+
+
+
+
+    public function deleteUser(string $id){
+        
+        $user = User::findOrFail($id);
+    
+        if ($user->image) {
+            Storage::disk('public')->delete($user->image->path);
+            $user->image->delete();
+        }
+    
+        $user->delete();
+    
+        return response()->json([
+            'code' => 200,
+            'message' => 'User deleted successfully',
+        ]);
+
+    }
+
+
+
+
 
 
 

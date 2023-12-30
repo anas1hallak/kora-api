@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 
 Route::post('/signup', [UserController::class, 'signup']);//done
 Route::post('/login', [UserController::class, 'login']);//done
 Route::post('/logout', [UserController::class, 'logout']);
+Route::get('/getAllUsers', [UserController::class, 'getAllUsers']);
+Route::delete('/deleteUser/{id}', [UserController::class, 'deleteUser']);
 Route::post('/requestToJoinTeam', [UserController::class, 'requestToJoinTeam']);
 
 

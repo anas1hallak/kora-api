@@ -25,7 +25,7 @@ protected $fillable = [
         return $this->belongsToMany(Team::class);
     }
 
-    public function championshipImage(){
+    public function image(){
 
         return $this->hasOne(Championshipimage::class);
     }
