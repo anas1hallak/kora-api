@@ -17,6 +17,7 @@ class Team extends Model
         'wins',
         'termsAndConditions',
         'coachName',
+        'coachPhoneNumber',
         'user_id',
         
         ];

@@ -40,6 +40,7 @@ class TeamController extends Controller
             'wins' =>0,
             'termsAndConditions'=>"No terms and conditions",
             'coachName'=>$user->fullName,
+            'coachPhoneNumber'=>$user->phoneNumber,
             'user_id'=>$user->id
 
 
@@ -47,13 +48,6 @@ class TeamController extends Controller
 
         
         
-        return response()->json([
-
-            'code'=>200,
-            'message' => 'Team created successfully',
-            'team'=>$team,
-        
-        ]);
 
         if ($request->hasFile('image')) {
 
@@ -69,7 +63,7 @@ class TeamController extends Controller
         $team->load('image');
 
         $user->selected="selected";
-        $user->team_id=$team->id;
+        //$user->team_id=$team->id;
         $user->role_id=1;
 
         $user->update();

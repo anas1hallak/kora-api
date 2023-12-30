@@ -18,6 +18,7 @@ return new class extends Migration
             $table-> integer('wins');
             $table->string('termsAndConditions');
             $table->string('coachName');
+            $table->string('coachPhoneNumber');
             $table-> integer('user_id');
             $table->timestamps();
 
