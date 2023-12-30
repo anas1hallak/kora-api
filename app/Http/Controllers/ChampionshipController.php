@@ -48,8 +48,6 @@ class ChampionshipController extends Controller
         ]);
 
 
-
-          
         return response()->json([
 
             'code'=>200,
