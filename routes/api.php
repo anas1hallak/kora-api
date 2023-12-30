@@ -22,6 +22,7 @@ Route::post('/createTeam', [TeamController::class, 'createTeam']); //done
 Route::get('/getTeam/{id}', [TeamController::class, 'getTeam']);//done
 Route::get('/getAllTeams', [TeamController::class, 'getAllTeams']);//done
 Route::post('/addUserToTeam', [TeamController::class, 'addUserToTeam']);//done
+Route::delete('/deleteTeam/{id}', [TeamController::class, 'deleteTeam']);
 Route::post('/requestToJoinChampionship', [TeamController::class, 'requestToJoinChampionship']);
 
 Route::get('/getAllTeamRequests/{id}', [TeamRequestsController::class, 'getAllTeamRequests']);

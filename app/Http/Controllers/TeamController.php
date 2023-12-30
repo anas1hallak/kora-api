@@ -41,6 +41,7 @@ class TeamController extends Controller
             'termsAndConditions'=>"No terms and conditions",
             'coachName'=>$user->fullName,
             'coachPhoneNumber'=>$user->phoneNumber,
+            'coachEmail'=>$user->email,
             'user_id'=>$user->id
 
 
@@ -63,7 +64,7 @@ class TeamController extends Controller
         $team->load('image');
 
         $user->selected="selected";
-        //$user->team_id=$team->id;
+        $user->team_id=$team->id;
         $user->role_id=1;
 
         $user->update();
@@ -106,6 +107,7 @@ class TeamController extends Controller
 
     }
 
+    
 
 
     public function getAllTeams()
@@ -173,6 +175,37 @@ class TeamController extends Controller
 
 
         
+    }
+
+
+
+    public function deleteTeam(string $id){
+
+
+        $team = Team::findOrFail($id);
+        $users = User::where('team_id', $team->id)->get();
+
+        foreach ($users as $user) {
+
+            $user->team_id = null;
+            $user->selected = "not selected";
+            $user->role_id=0;
+            $user->update();
+        }
+
+
+        $team->delete();
+
+        return response()->json([
+
+            'code'=>200,
+            'message' => 'Team deleted successfully'
+
+        ]);
+
+
+
+
     }
 
 

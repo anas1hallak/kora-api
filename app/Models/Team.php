@@ -18,6 +18,7 @@ class Team extends Model
         'termsAndConditions',
         'coachName',
         'coachPhoneNumber',
+        'coachEmail',
         'user_id',
         
         ];
