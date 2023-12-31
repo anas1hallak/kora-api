@@ -20,7 +20,7 @@ return new class extends Migration
             $table->double('prize1');
             $table->double('prize2');
             $table->double('entryPrice');
-            $table->date('starteDate');
+            $table->date('startDate');
             $table->date('endDate');
             $table->timestamps();
 

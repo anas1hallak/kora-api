@@ -16,13 +16,18 @@ protected $fillable = [
         'prize1',
         'prize2',
         'entryPrice',
-        'starteDate',
+        'startDate',
         'endDate',
     ];
 
     public function teams(){
 
         return $this->belongsToMany(Team::class);
+    }
+
+    public function rounds(){
+
+        return $this->hasMany(Round::class);
     }
 
     public function image(){

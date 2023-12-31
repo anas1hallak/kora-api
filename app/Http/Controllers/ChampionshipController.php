@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Championship;
 use App\Models\Championshipimage;
+use App\Models\Round;
+use App\Models\Maatch;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\Console\Input\Input;
@@ -23,7 +26,7 @@ class ChampionshipController extends Controller
             'prize1' => 'required',
             'prize2' => 'required',
             'entryPrice' => 'required',
-            'starteDate' => 'required',
+            'startDate' => 'required',
             'endDate'=>'required',
             
               
@@ -41,7 +44,7 @@ class ChampionshipController extends Controller
             'prize1' =>$request->input('prize1'),
             'prize2'=>$request->input('prize2'),
             'entryPrice'=>$request->input('entryPrice'),
-            'starteDate'=>$request->input('starteDate'),
+            'startDate'=>$request->input('startDate'),
             'endDate'=>$request->input('endDate'),
 
 
@@ -88,6 +91,7 @@ class ChampionshipController extends Controller
 
 
         $championship=Championship::findOrFail($id);
+        $championship->teams;
 
         return response()->json([
 
@@ -138,6 +142,118 @@ class ChampionshipController extends Controller
         ]);
 
         
+
+
+
+    }
+
+
+
+    public function createTree(string $id){
+
+        $championship=Championship::findOrFail($id);
+
+
+        for ($i=1; $i<=4; $i++){
+
+            $round = new Round([
+                'round' => $i,
+            ]);
+    
+            $championship->rounds()->save($round);
+           
+        
+        if ($i === 1) {
+
+            $teams = $championship->teams()->pluck('teams.id')->toArray();
+
+            $matchesCount = count($teams) / 2;
+
+            for ($j = 0; $j < $matchesCount; $j++) {
+                $team1 = $teams[$j * 2];
+                $team2 = $teams[$j * 2 + 1];
+
+                $match = new Maatch([
+
+                    'date' => null,
+                    'time' => null,
+                    'location' => null,
+                    'stad' => null,
+
+                    'team1_id' => $team1,
+                    'team2_id' => $team2,
+                ]);
+
+                $round->matches()->save($match);
+            }
+        }
+
+
+        if ($i === 2) {
+
+            for ($j = 0; $j < 4; $j++) {
+               
+
+                $match = new Maatch([
+
+                    'date' => null,
+                    'time' => null,
+                    'location' => null,
+                    'stad' => null,
+
+                    'team1_id' => null,
+                    'team2_id' => null,
+                ]);
+
+                $round->matches()->save($match);
+            }
+        }
+    
+        if ($i === 3) {
+
+            for ($j = 0; $j < 2; $j++) {
+               
+
+                $match = new Maatch([
+
+                    'date' => null,
+                    'time' => null,
+                    'location' => null,
+                    'stad' => null,
+
+                    'team1_id' => null,
+                    'team2_id' => null,
+                ]);
+
+                $round->matches()->save($match);
+            }
+        }
+
+        if ($i === 4) {
+
+                $match = new Maatch([
+
+                    'date' => null,
+                    'time' => null,
+                    'location' => null,
+                    'stad' => null,
+
+                    'team1_id' => null,
+                    'team2_id' => null,
+                ]);
+
+                $round->matches()->save($match);
+            
+        }
+        }
+
+
+        return response()->json([
+
+            'code'=>200,
+            'message' => 'championship tree created successfully',
+        
+        ]);
 
 
 

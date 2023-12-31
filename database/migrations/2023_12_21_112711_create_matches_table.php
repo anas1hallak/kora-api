@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('matches', function (Blueprint $table) { 
+        Schema::create('maatches', function (Blueprint $table) { 
             $table->increments('id');
-            $table->date('date');
-            $table->time('time');
-            $table->string('location');
-            $table->string('stad');
+            $table->date('date')->nullable();
+            $table->date('time')->nullable();
+            $table->string('location')->nullable();
+            $table->string('stad')->nullable();
 
             $table->integer('round_id');
-            $table->integer('team1_id');
-            $table->integer('team2_id');
+            $table->integer('team1_id')->nullable();
+            $table->integer('team2_id')->nullable();
             $table->integer('winner')->nullable();
 
 

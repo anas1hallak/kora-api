@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Round extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+
+        'round',
+    
+    ];
+
+
+    public function matches(){
+
+        return $this->hasMany(Maatch::class);
+    }
+    
 }

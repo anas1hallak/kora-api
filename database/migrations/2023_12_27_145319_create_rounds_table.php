@@ -15,7 +15,7 @@ return new class extends Migration
 
             $table->increments('id');
             $table->integer('round');
-            $table->integer('match_id');
+            $table->integer('championship_id');
             $table->timestamps();
             
         });
