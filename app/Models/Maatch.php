@@ -20,6 +20,9 @@ class Maatch extends Model
         'team2_id',
     ];
 
+    protected $hidden = ['created_at','updated_at'];
+    
+
     public function round(){
 
         return $this->belongsTo(Round::class);

@@ -9,4 +9,7 @@ class PasswordReset extends Model
 {
     use HasFactory;
     protected $fillable=['phoneNumber','token'];
+
+
+    protected $hidden = ['created_at','updated_at'];
 }
