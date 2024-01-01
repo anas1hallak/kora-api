@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Validator;
+use PhpParser\Node\Expr\Cast\String_;
 use Symfony\Component\Console\Input\Input;
 
 class ChampionshipController extends Controller
@@ -147,6 +148,28 @@ class ChampionshipController extends Controller
 
     }
 
+    public function getTree(string $id){
+
+        $championship=Championship::findOrFail($id);
+
+        foreach ($championship->rounds as $round) {
+            foreach ($round->matches as $match) {
+                $teams = $match->teams();
+                
+            }
+        }       
+
+        return response()->json([
+
+            'code'=>200,
+            'message' => 'championship tree returned successfully',
+            'championship' =>$championship ,
+        ]);
+
+
+
+    }
+
 
 
     public function createTree(string $id){
@@ -247,12 +270,12 @@ class ChampionshipController extends Controller
         }
         }
 
-
+         
         return response()->json([
 
             'code'=>200,
             'message' => 'championship tree created successfully',
-        
+           
         ]);
 
 

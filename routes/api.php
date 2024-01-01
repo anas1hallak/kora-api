@@ -39,6 +39,9 @@ Route::get('/getChampionship/{id}', [ChampionshipController::class, 'getChampion
 Route::get('/getAllChampionships', [ChampionshipController::class, 'getAllChampionships']);//done
 
 Route::post('/createTree/{id}', [ChampionshipController::class, 'createTree']);
+Route::get('/getTree/{id}', [ChampionshipController::class, 'getTree']);
+
+
 
 
 
