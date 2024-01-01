@@ -6,6 +6,7 @@ use App\Models\Championship;
 use App\Models\Championshipimage;
 use App\Models\Round;
 use App\Models\Maatch;
+use App\Models\ChampionshipRequests;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Http\Request;
@@ -129,11 +130,13 @@ class ChampionshipController extends Controller
 
     
 
-    public function addTeamsToChampionship(Request $request){
+    public function addTeamsToChampionship(string $id){
 
 
-        $championship=Championship::findOrFail($request->Input('championship_id'));
-        $championship->teams()->attach($request->input('team_id'));
+        $championshipRequest=ChampionshipRequests::findOrFail($id);
+
+        $championship=Championship::findOrFail($championshipRequest->championship_id);
+        $championship->teams()->attach($championshipRequest->team_id);
 
         return response()->json([
 

@@ -22,7 +22,7 @@ Route::post('/createTeam', [TeamController::class, 'createTeam']); //done
 Route::get('/getTeam/{id}', [TeamController::class, 'getTeam']);//done
 Route::get('/getTeamPlayers/{id}', [TeamController::class, 'getTeamPlayers']);//done
 Route::get('/getAllTeams', [TeamController::class, 'getAllTeams']);//done
-Route::post('/addUserToTeam', [TeamController::class, 'addUserToTeam']);//done
+Route::post('/addUserToTeam/{id}', [TeamController::class, 'addUserToTeam']);//done
 Route::delete('/deleteTeam/{id}', [TeamController::class, 'deleteTeam']);//done
 Route::post('/requestToJoinChampionship', [TeamController::class, 'requestToJoinChampionship']);
 
@@ -34,7 +34,7 @@ Route::get('/getAllTeamRequests/{id}', [TeamRequestsController::class, 'getAllTe
 
 
 Route::post('/createChampionship', [ChampionshipController::class, 'createChampionship']);//done
-Route::post('/addTeamsToChampionship', [ChampionshipController::class, 'addTeamsToChampionship']);//done
+Route::post('/addTeamsToChampionship/{id}', [ChampionshipController::class, 'addTeamsToChampionship']);//done
 Route::get('/getChampionship/{id}', [ChampionshipController::class, 'getChampionship']);//done
 Route::get('/getAllChampionships', [ChampionshipController::class, 'getAllChampionships']);//done
 
