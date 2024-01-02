@@ -179,8 +179,9 @@ class ChampionshipController extends Controller
 
         $championship=Championship::findOrFail($id);
 
+        $teams = $championship->teams()->pluck('teams.id')->toArray();
 
-        for ($i=1; $i<=4; $i++){
+        for ($i=1; $i<=7; $i++){
 
             $round = new Round([
                 'round' => $i,
@@ -191,11 +192,34 @@ class ChampionshipController extends Controller
         
         if ($i === 1) {
 
-            $teams = $championship->teams()->pluck('teams.id')->toArray();
+            
 
-            $matchesCount = count($teams) / 2;
+            for ($j = 0; $j < 4; $j++) {
 
-            for ($j = 0; $j < $matchesCount; $j++) {
+                $team1 = $teams[$j * 2];
+                $team2 = $teams[$j * 2 + 1];
+
+                $match = new Maatch([
+
+                    'date' => null,
+                    'time' => null,
+                    'location' => null,
+                    'stad' => null,
+
+                    'team1_id' => $team1,
+                    'team2_id' => $team2,
+                ]);
+
+                $round->matches()->save($match);
+            }
+        }
+
+        if ($i === 7) {
+
+            
+
+            for ($j = 4; $j < 8; $j++) {
+                
                 $team1 = $teams[$j * 2];
                 $team2 = $teams[$j * 2 + 1];
 
@@ -215,9 +239,9 @@ class ChampionshipController extends Controller
         }
 
 
-        if ($i === 2) {
+        if ($i === 2 || $i === 6 ) {
 
-            for ($j = 0; $j < 4; $j++) {
+            for ($j = 0; $j < 2; $j++) {
                
 
                 $match = new Maatch([
@@ -235,9 +259,9 @@ class ChampionshipController extends Controller
             }
         }
     
-        if ($i === 3) {
+        if ($i === 3 || $i === 5) {
 
-            for ($j = 0; $j < 2; $j++) {
+            for ($j = 0; $j < 1; $j++) {
                
 
                 $match = new Maatch([
@@ -283,6 +307,40 @@ class ChampionshipController extends Controller
 
 
 
+    }
+
+
+
+
+    public function updateRound1MatchesInfo(string $id)
+    {
+        $championship = Championship::findOrFail($id);
+
+        $matches = $championship->rounds()->where('round', 1)->first()->matches;
+
+        $teams = $championship->teams()->pluck('teams.id')->toArray();
+
+        $j=0;
+
+        foreach ($matches as $match) {
+
+            $team1 = $teams[$j * 2];
+            $team2 = $teams[$j * 2 + 1];
+
+            $match->update([
+
+                'team1_id' => $team1,
+                'team2_id' => $team2,
+
+            ]);
+
+            $j++;
+        }
+
+        return response()->json([
+            'code' => 200,
+            'message' => 'Round 1 matches information updated successfully',
+        ]);
     }
 
 

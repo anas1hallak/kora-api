@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 
@@ -38,10 +37,10 @@ Route::post('/addTeamsToChampionship/{id}', [ChampionshipController::class, 'add
 Route::get('/getChampionship/{id}', [ChampionshipController::class, 'getChampionship']);//done
 Route::get('/getAllChampionships', [ChampionshipController::class, 'getAllChampionships']);//done
 
+
+
 Route::post('/createTree/{id}', [ChampionshipController::class, 'createTree']);
 Route::get('/getTree/{id}', [ChampionshipController::class, 'getTree']);
-
-
 
 
 
