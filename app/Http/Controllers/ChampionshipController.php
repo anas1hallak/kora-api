@@ -106,21 +106,46 @@ class ChampionshipController extends Controller
 
 
 
-    public function getAllChampionships()
-    {
+    // public function getAllChampionships()
+    // {
 
-        $championships=Championship::all();
+    //     $championships=Championship::all();
 
-        return response()->json([
+    //     return response()->json([
 
-            'code'=>200,
-            'championships'=>$championships,
+    //         'code'=>200,
+    //         'championships'=>$championships,
         
-        ]);
+    //     ]);
 
 
 
-    }
+    // }
+
+
+
+    public function getAllChampionships()
+{
+    $perPage = request()->input('per_page', 10);
+
+    $championships = Championship::paginate($perPage);
+
+    return response()->json([
+        'code' => 200,
+        'data' => [
+            'championships' => $championships->items(),
+            'pagination' => [
+                'total' => $championships->total(),
+                'per_page' => $championships->perPage(),
+                'current_page' => $championships->currentPage(),
+                'last_page' => $championships->lastPage(),
+                'from' => $championships->firstItem(),
+                'to' => $championships->lastItem(),
+            ],
+        ],
+    ]);
+}
+
 
 
 
@@ -153,8 +178,8 @@ class ChampionshipController extends Controller
 
         $championship=Championship::findOrFail($id);
 
-
-        for ($i=1; $i<=4; $i++){
+        
+        for ($i=1; $i<=7; $i++){
 
             $round = new Round([
                 'round' => $i,
@@ -162,7 +187,7 @@ class ChampionshipController extends Controller
     
             $championship->rounds()->save($round);
            
-        
+
         if ($i === 1) {
 
             $teams = $championship->teams()->pluck('teams.id')->toArray();
@@ -189,9 +214,35 @@ class ChampionshipController extends Controller
         }
 
 
-        if ($i === 2) {
+        
+        if ($i === 7) {
 
-            for ($j = 0; $j < 4; $j++) {
+            $teams = $championship->teams()->pluck('teams.id')->toArray();
+
+            $matchesCount = count($teams) / 2;
+
+            for ($j = 0; $j < $matchesCount; $j++) {
+                $team1 = $teams[$j * 2];
+                $team2 = $teams[$j * 2 + 1];
+
+                $match = new Maatch([
+
+                    'date' => null,
+                    'time' => null,
+                    'location' => null,
+                    'stad' => null,
+
+                    'team1_id' => $team1,
+                    'team2_id' => $team2,
+                ]);
+
+                $round->matches()->save($match);
+            }
+        }
+
+        if ($i === 2|| $i== 6) {
+
+            for ($j = 0; $j < 2; $j++) {
                
 
                 $match = new Maatch([
@@ -209,7 +260,7 @@ class ChampionshipController extends Controller
             }
         }
     
-        if ($i === 3) {
+        if ($i === 3|| $i==5) {
 
             for ($j = 0; $j < 2; $j++) {
                
