@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Team;
-
 use Illuminate\Http\Request;
 
+use App\Models\Team;
 use App\Models\User;
-
 use App\Models\ChampionshipRequests;
-
 use App\Models\Teamimage;
+use App\Models\TeamRequests;
 
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Validator;
@@ -173,12 +171,15 @@ class TeamController extends Controller
 
 
 
-    public function addUserToTeam(Request $request){
+    public function addUserToTeam(string $id){
 
-        $user=User::findOrFail($request->input('user_id'));
-    
+        $teamRequest=TeamRequests::findOrFail($id);
+
+        $user=User::findOrFail($teamRequest->user_id);
+
+
         $user->selected='selected';
-        $user->team_id=$request->input('team_id');
+        $user->team_id=$teamRequest->team_id;
 
         $user->update();
 

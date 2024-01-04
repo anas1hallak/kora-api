@@ -20,10 +20,31 @@ class Maatch extends Model
         'team2_id',
     ];
 
+    protected $hidden = ['created_at','updated_at'];
+    
+
     public function round(){
 
         return $this->belongsTo(Round::class);
 
+    }
+
+    public function team1()
+    {
+        return $this->belongsTo(Team::class, 'team1_id');
+    }
+
+    public function team2()
+    {
+        return $this->belongsTo(Team::class, 'team2_id');
+    }
+
+    public function teams()
+    {
+        return [
+            'team1' => $this->team1,
+            'team2' => $this->team2,
+        ];
     }
     
 

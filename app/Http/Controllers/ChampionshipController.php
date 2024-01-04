@@ -6,12 +6,14 @@ use App\Models\Championship;
 use App\Models\Championshipimage;
 use App\Models\Round;
 use App\Models\Maatch;
+use App\Models\ChampionshipRequests;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Validator;
+use PhpParser\Node\Expr\Cast\String_;
 use Symfony\Component\Console\Input\Input;
 
 class ChampionshipController extends Controller
@@ -153,11 +155,13 @@ class ChampionshipController extends Controller
 
     
 
-    public function addTeamsToChampionship(Request $request){
+    public function addTeamsToChampionship(string $id){
 
 
-        $championship=Championship::findOrFail($request->Input('championship_id'));
-        $championship->teams()->attach($request->input('team_id'));
+        $championshipRequest=ChampionshipRequests::findOrFail($id);
+
+        $championship=Championship::findOrFail($championshipRequest->championship_id);
+        $championship->teams()->attach($championshipRequest->team_id);
 
         return response()->json([
 
@@ -172,13 +176,36 @@ class ChampionshipController extends Controller
 
     }
 
+    public function getTree(string $id){
+
+        $championship=Championship::findOrFail($id);
+
+        foreach ($championship->rounds as $round) {
+            foreach ($round->matches as $match) {
+                $teams = $match->teams();
+                
+            }
+        }       
+
+        return response()->json([
+
+            'code'=>200,
+            'message' => 'championship tree returned successfully',
+            'championship' =>$championship ,
+        ]);
+
+
+
+    }
+
 
 
     public function createTree(string $id){
 
         $championship=Championship::findOrFail($id);
 
-        
+        $teams = $championship->teams()->pluck('teams.id')->toArray();
+
         for ($i=1; $i<=7; $i++){
 
             $round = new Round([
@@ -190,11 +217,10 @@ class ChampionshipController extends Controller
 
         if ($i === 1) {
 
-            $teams = $championship->teams()->pluck('teams.id')->toArray();
+            
 
-            $matchesCount = count($teams) / 2;
+            for ($j = 0; $j < 4; $j++) {
 
-            for ($j = 0; $j < $matchesCount; $j++) {
                 $team1 = $teams[$j * 2];
                 $team2 = $teams[$j * 2 + 1];
 
@@ -213,15 +239,12 @@ class ChampionshipController extends Controller
             }
         }
 
-
-        
         if ($i === 7) {
 
-            $teams = $championship->teams()->pluck('teams.id')->toArray();
+            
 
-            $matchesCount = count($teams) / 2;
-
-            for ($j = 0; $j < $matchesCount; $j++) {
+            for ($j = 4; $j < 8; $j++) {
+                
                 $team1 = $teams[$j * 2];
                 $team2 = $teams[$j * 2 + 1];
 
@@ -240,7 +263,8 @@ class ChampionshipController extends Controller
             }
         }
 
-        if ($i === 2|| $i== 6) {
+
+        if ($i === 2 || $i === 6 ) {
 
             for ($j = 0; $j < 2; $j++) {
                
@@ -260,9 +284,9 @@ class ChampionshipController extends Controller
             }
         }
     
-        if ($i === 3|| $i==5) {
+        if ($i === 3 || $i === 5) {
 
-            for ($j = 0; $j < 2; $j++) {
+            for ($j = 0; $j < 1; $j++) {
                
 
                 $match = new Maatch([
@@ -298,16 +322,50 @@ class ChampionshipController extends Controller
         }
         }
 
-
+         
         return response()->json([
 
             'code'=>200,
             'message' => 'championship tree created successfully',
-        
+           
         ]);
 
 
 
+    }
+
+
+
+
+    public function updateRound1MatchesInfo(string $id)
+    {
+        $championship = Championship::findOrFail($id);
+
+        $matches = $championship->rounds()->where('round', 1)->first()->matches;
+
+        $teams = $championship->teams()->pluck('teams.id')->toArray();
+
+        $j=0;
+
+        foreach ($matches as $match) {
+
+            $team1 = $teams[$j * 2];
+            $team2 = $teams[$j * 2 + 1];
+
+            $match->update([
+
+                'team1_id' => $team1,
+                'team2_id' => $team2,
+
+            ]);
+
+            $j++;
+        }
+
+        return response()->json([
+            'code' => 200,
+            'message' => 'Round 1 matches information updated successfully',
+        ]);
     }
 
 
