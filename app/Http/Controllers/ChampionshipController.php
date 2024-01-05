@@ -158,10 +158,16 @@ class ChampionshipController extends Controller
         foreach ($championship->rounds as $round) {
             foreach ($round->matches as $match) {
                 $teams = $match->teams();
-                
-            }
-        }       
+        
+                foreach ($teams as $team) {
+                    if($team!=null){
 
+                        $team=$team->image;
+
+                    }
+                }
+            }
+        }
         return response()->json([
 
             'code'=>200,
