@@ -124,22 +124,50 @@ class TeamController extends Controller
     }
 
 
+    // public function getAllTeams()
+    // {
+
+
+    //     $teams = Team::with('players')->get();
+
+    //     return response()->json([
+
+    //         'code'=>200,
+    //         'teams'=>$teams,
+        
+    //     ]);
+
+
+
+    // }
+
+
+
+
+
     public function getAllTeams()
     {
-
-
-        $teams = Team::with('players')->get();
-
+        $perPage = request()->input('per_page', 10);
+    
+        $teams = Team::with('players')->paginate($perPage);
+    
         return response()->json([
-
-            'code'=>200,
-            'teams'=>$teams,
-        
+            'code' => 200,
+            'data' => [
+                'teams' => $teams->items(),
+                'pagination' => [
+                    'total' => $teams->total(),
+                    'per_page' => $teams->perPage(),
+                    'current_page' => $teams->currentPage(),
+                    'last_page' => $teams->lastPage(),
+                    'from' => $teams->firstItem(),
+                    'to' => $teams->lastItem(),
+                ],
+            ],
         ]);
-
-
-
     }
+    
+
 
 
 

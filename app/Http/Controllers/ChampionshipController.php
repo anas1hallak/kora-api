@@ -108,21 +108,46 @@ class ChampionshipController extends Controller
 
 
 
-    public function getAllChampionships()
-    {
+    // public function getAllChampionships()
+    // {
 
-        $championships=Championship::all();
+    //     $championships=Championship::all();
 
-        return response()->json([
+    //     return response()->json([
 
-            'code'=>200,
-            'championships'=>$championships,
+    //         'code'=>200,
+    //         'championships'=>$championships,
         
-        ]);
+    //     ]);
 
 
 
-    }
+    // }
+
+
+
+    public function getAllChampionships()
+{
+    $perPage = request()->input('per_page', 10);
+
+    $championships = Championship::paginate($perPage);
+
+    return response()->json([
+        'code' => 200,
+        'data' => [
+            'championships' => $championships->items(),
+            'pagination' => [
+                'total' => $championships->total(),
+                'per_page' => $championships->perPage(),
+                'current_page' => $championships->currentPage(),
+                'last_page' => $championships->lastPage(),
+                'from' => $championships->firstItem(),
+                'to' => $championships->lastItem(),
+            ],
+        ],
+    ]);
+}
+
 
 
 
@@ -195,7 +220,7 @@ class ChampionshipController extends Controller
     
             $championship->rounds()->save($round);
            
-        
+
         if ($i === 1) {
 
             
