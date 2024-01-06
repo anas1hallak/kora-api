@@ -53,12 +53,6 @@ class ChampionshipController extends Controller
         ]);
 
 
-        return response()->json([
-
-            'code'=>200,
-            'message' => 'Championship created successfully',
-        
-        ]);
 
         
         if ($request->hasFile('image')) {
@@ -74,6 +68,8 @@ class ChampionshipController extends Controller
     
         $championship->load('image');
 
+
+        $this->createTree($championship->id);
         
 
         return response()->json([
@@ -127,26 +123,26 @@ class ChampionshipController extends Controller
 
 
     public function getAllChampionships()
-{
-    $perPage = request()->input('per_page', 10);
+    {
+        $perPage = request()->input('per_page', 10);
 
-    $championships = Championship::paginate($perPage);
+        $championships = Championship::paginate($perPage);
 
-    return response()->json([
-        'code' => 200,
-        'data' => [
-            'championships' => $championships->items(),
-            'pagination' => [
-                'total' => $championships->total(),
-                'per_page' => $championships->perPage(),
-                'current_page' => $championships->currentPage(),
-                'last_page' => $championships->lastPage(),
-                'from' => $championships->firstItem(),
-                'to' => $championships->lastItem(),
+        return response()->json([
+            'code' => 200,
+            'data' => [
+                'championships' => $championships->items(),
+                'pagination' => [
+                    'total' => $championships->total(),
+                    'per_page' => $championships->perPage(),
+                    'current_page' => $championships->currentPage(),
+                    'last_page' => $championships->lastPage(),
+                    'from' => $championships->firstItem(),
+                    'to' => $championships->lastItem(),
+                ],
             ],
-        ],
-    ]);
-}
+        ]);
+    }
 
 
 
@@ -162,6 +158,8 @@ class ChampionshipController extends Controller
 
         $championship=Championship::findOrFail($championshipRequest->championship_id);
         $championship->teams()->attach($championshipRequest->team_id);
+
+        $this->insertTeamIntoTree($championship->id);
 
         return response()->json([
 
@@ -210,7 +208,7 @@ class ChampionshipController extends Controller
 
         $championship=Championship::findOrFail($id);
 
-        $teams = $championship->teams()->pluck('teams.id')->toArray();
+       // $teams = $championship->teams()->pluck('teams.id')->toArray();
 
         for ($i=1; $i<=7; $i++){
 
@@ -227,8 +225,8 @@ class ChampionshipController extends Controller
 
             for ($j = 0; $j < 4; $j++) {
 
-                $team1 = $teams[$j * 2];
-                $team2 = $teams[$j * 2 + 1];
+               // $team1 = $teams[$j * 2];
+                //$team2 = $teams[$j * 2 + 1];
 
                 $match = new Maatch([
 
@@ -237,8 +235,8 @@ class ChampionshipController extends Controller
                     'location' => null,
                     'stad' => null,
 
-                    'team1_id' => $team1,
-                    'team2_id' => $team2,
+                    'team1_id' => null,
+                    'team2_id' => null,
                 ]);
 
                 $round->matches()->save($match);
@@ -251,8 +249,8 @@ class ChampionshipController extends Controller
 
             for ($j = 4; $j < 8; $j++) {
                 
-                $team1 = $teams[$j * 2];
-                $team2 = $teams[$j * 2 + 1];
+                //$team1 = $teams[$j * 2];
+                //$team2 = $teams[$j * 2 + 1];
 
                 $match = new Maatch([
 
@@ -261,8 +259,8 @@ class ChampionshipController extends Controller
                     'location' => null,
                     'stad' => null,
 
-                    'team1_id' => $team1,
-                    'team2_id' => $team2,
+                    'team1_id' => null,
+                    'team2_id' => null,
                 ]);
 
                 $round->matches()->save($match);
@@ -329,12 +327,7 @@ class ChampionshipController extends Controller
         }
 
          
-        return response()->json([
-
-            'code'=>200,
-            'message' => 'championship tree created successfully',
-           
-        ]);
+        return ;
 
 
 
@@ -343,35 +336,66 @@ class ChampionshipController extends Controller
 
 
 
-    public function updateRound1MatchesInfo(string $id)
+    public function insertTeamIntoTree(string $id)
     {
         $championship = Championship::findOrFail($id);
 
-        $matches = $championship->rounds()->where('round', 1)->first()->matches;
+        $R1matches = $championship->rounds()->where('round', 1)->first()->matches;
+        $R7matches = $championship->rounds()->where('round', 7)->first()->matches;
 
         $teams = $championship->teams()->pluck('teams.id')->toArray();
 
         $j=0;
 
-        foreach ($matches as $match) {
+        foreach ($R1matches as $match) {
 
-            $team1 = $teams[$j * 2];
-            $team2 = $teams[$j * 2 + 1];
+                if (isset($teams[$j * 2])) {
 
-            $match->update([
+                    $team1 = $teams[$j * 2];
 
-                'team1_id' => $team1,
-                'team2_id' => $team2,
+                    $match->update([
 
-            ]);
+                        'team1_id' => $team1,
+                    ]);
+                }
+                if (isset($teams[$j * 2 + 1])) {
+
+                    $team2 = $teams[$j * 2 + 1];
+
+                    $match->update([
+
+                        'team2_id' => $team2,
+                    ]);
+                }
 
             $j++;
         }
 
-        return response()->json([
-            'code' => 200,
-            'message' => 'Round 1 matches information updated successfully',
-        ]);
+        foreach ($R7matches as $match) {
+
+                if (isset($teams[$j * 2])) {
+
+                    $team1 = $teams[$j * 2];
+
+                    $match->update([
+
+                        'team1_id' => $team1,
+                    ]);
+                }
+                if (isset($teams[$j * 2 + 1])) {
+
+                    $team2 = $teams[$j * 2 + 1];
+
+                    $match->update([
+
+                        'team2_id' => $team2,
+                    ]);
+                }
+
+            $j++;
+        }
+
+        return ;
     }
 
 

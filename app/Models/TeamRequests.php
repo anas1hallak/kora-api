@@ -9,5 +9,15 @@ class TeamRequests extends Model
 {
     use HasFactory;
 
+
+    protected $fillable = [
+
+        'team_id',
+        'message',
+        'user_id'
+        
+    ];
+
+
     protected $hidden = ['created_at','updated_at'];
 }

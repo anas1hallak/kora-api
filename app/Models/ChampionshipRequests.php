@@ -9,5 +9,14 @@ class ChampionshipRequests extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+
+        'team_id',
+        'message',
+        'championship_id'
+        
+    ];
+
+
     protected $hidden = ['created_at','updated_at'];
 }

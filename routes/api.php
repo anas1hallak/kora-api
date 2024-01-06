@@ -5,42 +5,42 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 
 
-Route::post('/signup', [UserController::class, 'signup']);//done
-Route::post('/login', [UserController::class, 'login']);//done
+Route::post('/signup', [UserController::class, 'signup']);//tested
+Route::post('/login', [UserController::class, 'login']);//tested
 Route::post('/logout', [UserController::class, 'logout']);
-Route::get('/getAllUsers', [UserController::class, 'getAllUsers']);
+Route::get('/getAllUsers', [UserController::class, 'getAllUsers']);//tested
 Route::delete('/deleteUser/{id}', [UserController::class, 'deleteUser']);
-Route::post('/requestToJoinTeam', [UserController::class, 'requestToJoinTeam']);
+Route::post('/requestToJoinTeam', [UserController::class, 'requestToJoinTeam']);//tested
 
 
 
 
 
 
-Route::post('/createTeam', [TeamController::class, 'createTeam']); //done
-Route::get('/getTeam/{id}', [TeamController::class, 'getTeam']);//done
-Route::get('/getTeamPlayers/{id}', [TeamController::class, 'getTeamPlayers']);//done
-Route::get('/getAllTeams', [TeamController::class, 'getAllTeams']);//done
-Route::post('/addUserToTeam/{id}', [TeamController::class, 'addUserToTeam']);//done
-Route::delete('/deleteTeam/{id}', [TeamController::class, 'deleteTeam']);//done
-Route::post('/requestToJoinChampionship', [TeamController::class, 'requestToJoinChampionship']);
+Route::post('/createTeam', [TeamController::class, 'createTeam']); //tested
+Route::get('/getTeam/{id}', [TeamController::class, 'getTeam']);//tested
+Route::get('/getTeamPlayers/{id}', [TeamController::class, 'getTeamPlayers']);//tested
+Route::get('/getAllTeams', [TeamController::class, 'getAllTeams']);//tested
+Route::post('/addUserToTeam/{id}', [TeamController::class, 'addUserToTeam']);//tested
+Route::delete('/deleteTeam/{id}', [TeamController::class, 'deleteTeam']);//tested
+Route::post('/requestToJoinChampionship', [TeamController::class, 'requestToJoinChampionship']);//tested
 
-Route::get('/getAllTeamRequests/{id}', [TeamRequestsController::class, 'getAllTeamRequests']);
-
-
+Route::get('/getAllTeamRequests/{id}', [TeamRequestsController::class, 'getAllTeamRequests']);//tested
 
 
 
 
-Route::post('/createChampionship', [ChampionshipController::class, 'createChampionship']);//done
-Route::post('/addTeamsToChampionship/{id}', [ChampionshipController::class, 'addTeamsToChampionship']);//done
-Route::get('/getChampionship/{id}', [ChampionshipController::class, 'getChampionship']);//done
-Route::get('/getAllChampionships', [ChampionshipController::class, 'getAllChampionships']);//done
+
+
+Route::post('/createChampionship', [ChampionshipController::class, 'createChampionship']);//tested
+Route::post('/addTeamsToChampionship/{id}', [ChampionshipController::class, 'addTeamsToChampionship']);//tested
+Route::get('/getChampionship/{id}', [ChampionshipController::class, 'getChampionship']);//tested
+Route::get('/getAllChampionships', [ChampionshipController::class, 'getAllChampionships']);//tested
 
 
 
-Route::post('/createTree/{id}', [ChampionshipController::class, 'createTree']);
-Route::get('/getTree/{id}', [ChampionshipController::class, 'getTree']);
+////Route::post('/createTree/{id}', [ChampionshipController::class, 'createTree']);
+Route::get('/getTree/{id}', [ChampionshipController::class, 'getTree']); //tested
 
 
 
@@ -53,8 +53,8 @@ Route::get('/getAllChampionshipRequests/{id}', [ChampionshipRequestsController::
 
 
 
-Route::post('/addIban', [IbanController::class, 'addIban']);
-Route::get('/getAllIbans', [IbanController::class, 'getAllIbans']);
+Route::post('/addIban', [IbanController::class, 'addIban']); //tested
+Route::get('/getAllIbans', [IbanController::class, 'getAllIbans']); //tested
 Route::get('/deleteIban/{id}', [IbanController::class, 'deleteIban']);
 
 

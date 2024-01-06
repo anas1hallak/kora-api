@@ -206,7 +206,7 @@ class TeamController extends Controller
 
 
             'team_id' => $request->input('team_id'),
-            'message' =>$team->name. ' Team wants to join this championship',
+            'message' =>$team->teamName. ' Team wants to join this championship',
             'championship_id' =>$request->input('championship_id'),
             
         ]);

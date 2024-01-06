@@ -9,5 +9,9 @@ class Iban extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'ibanNumber',
+    ];
+
     protected $hidden = ['created_at','updated_at'];
 }

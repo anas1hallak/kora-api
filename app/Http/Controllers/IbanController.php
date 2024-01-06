@@ -27,7 +27,7 @@ class IbanController extends Controller
 
         $iban = Iban::create([
 
-            'iban' => $request->input('iban'),
+            'ibanNumber' => $request->input('ibanNumber'),
         
 
         ]);

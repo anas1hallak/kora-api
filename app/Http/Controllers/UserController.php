@@ -208,26 +208,26 @@ class UserController extends Controller
 
 
     public function getAllUsers()
-{
-    $perPage = request()->input('per_page', 10);
+    {
+        $perPage = request()->input('per_page', 10);
 
-    $users = User::with('team')->paginate($perPage);
+        $users = User::with('team')->paginate($perPage);
 
-    return response()->json([
-        'code' => 200,
-        'data' => [
-            'users' => $users->items(),
-            'pagination' => [
-                'total' => $users->total(),
-                'per_page' => $users->perPage(),
-                'current_page' => $users->currentPage(),
-                'last_page' => $users->lastPage(),
-                'from' => $users->firstItem(),
-                'to' => $users->lastItem(),
+        return response()->json([
+            'code' => 200,
+            'data' => [
+                'users' => $users->items(),
+                'pagination' => [
+                    'total' => $users->total(),
+                    'per_page' => $users->perPage(),
+                    'current_page' => $users->currentPage(),
+                    'last_page' => $users->lastPage(),
+                    'from' => $users->firstItem(),
+                    'to' => $users->lastItem(),
+                ],
             ],
-        ],
-    ]);
-}
+        ]);
+    }
 
 
 

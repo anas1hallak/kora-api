@@ -12,10 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('team_requests', function (Blueprint $table) {
+            
             $table->increments('id');
             $table->integer('team_id'); 
             $table-> string('message');
             $table->integer('user_id');
+            $table->timestamps();
+
         });
     }
 
