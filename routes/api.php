@@ -40,7 +40,7 @@ Route::get('/getAllChampionships', [ChampionshipController::class, 'getAllChampi
 
 
 ////Route::post('/createTree/{id}', [ChampionshipController::class, 'createTree']);
-Route::get('/getTree/{id}', [ChampionshipController::class, 'getTree']); //tested
+Route::get('/getTree/{id}', [RoundController::class, 'getTree']); //tested
 
 
 

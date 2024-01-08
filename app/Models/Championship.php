@@ -32,6 +32,11 @@ class Championship extends Model
         return $this->hasMany(Round::class);
     }
 
+    public function groups(){
+
+        return $this->hasMany(Group::class);
+    }
+
     public function image(){
 
         return $this->hasOne(Championshipimage::class);

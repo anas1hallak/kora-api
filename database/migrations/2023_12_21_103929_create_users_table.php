@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('phoneNumber')->unique();
             $table->string('password');
             $table->string('email')->unique();
+            $table->integer('age');
+            $table->string('nationality');
             $table->string('playerNumber')->nullable();
             $table->string('placeOfPlayer')->nullable();
             $table->string('selected')->nullable();
