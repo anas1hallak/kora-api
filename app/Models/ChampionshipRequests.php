@@ -10,10 +10,14 @@ class ChampionshipRequests extends Model
     use HasFactory;
 
     protected $fillable = [
-
+        
         'team_id',
-        'message',
-        'championship_id'
+        'championship_id',
+        'teamName',
+        'coachName',
+        'ibanNumber',
+        'coachPhoneNumber',
+        'teamImage',
         
     ];
 

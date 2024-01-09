@@ -200,15 +200,22 @@ class TeamController extends Controller
 
     public function requestToJoinChampionship(Request $request){
 
-        $team=Team::findOrFail($request->input('team_id'));
+       $team = Team::with('image')->findOrFail($request->input('team_id'));
+
+       
+       $teamImage=asset($team->image->path);
+
 
         $ChampionshipRequests = ChampionshipRequests::create([
 
 
             'team_id' => $request->input('team_id'),
-            'message' =>$team->teamName. ' Team wants to join this championship',
             'championship_id' =>$request->input('championship_id'),
-            
+            'teamName' =>$team->teamName,
+            'coachName' =>$team->coachName,
+            'ibanNumber' =>$request->input('ibanNumber'),
+            'coachPhoneNumber' =>$team->coachPhoneNumber,
+            'teamImage'=>$teamImage
         ]);
 
         return response()->json([

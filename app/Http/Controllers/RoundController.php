@@ -18,7 +18,7 @@ class RoundController extends Controller
 
        // $teams = $championship->teams()->pluck('teams.id')->toArray();
 
-        for ($i=1; $i<=3; $i++){
+        for ($i=1; $i<=5; $i++){
 
             $round = new Round([
                 'round' => $i,
@@ -27,11 +27,11 @@ class RoundController extends Controller
             $championship->rounds()->save($round);
            
 
-        if ($i === 1) {
+        if ($i === 1||$i===5) {
 
             
 
-            for ($j = 0; $j < 4; $j++) {
+            for ($j = 0; $j < 2; $j++) {
 
                // $team1 = $teams[$j * 2];
                 //$team2 = $teams[$j * 2 + 1];
@@ -51,28 +51,7 @@ class RoundController extends Controller
             }
         }
 
-
-        if ($i === 2) {
-
-            for ($j = 0; $j < 2; $j++) {
-               
-
-                $match = new Maatch([
-
-                    'date' => null,
-                    'time' => null,
-                    'location' => null,
-                    'stad' => null,
-
-                    'team1_id' => null,
-                    'team2_id' => null,
-                ]);
-
-                $round->matches()->save($match);
-            }
-        }
-
-        if ($i === 3) {
+        if ($i === 2||$i === 3||$i === 4) {
 
                 $match = new Maatch([
 
@@ -105,6 +84,7 @@ class RoundController extends Controller
         $championship = Championship::findOrFail($id);
 
         $R1matches = $championship->rounds()->where('round', 1)->first()->matches;
+        
 
         $teams = $championship->teams()->pluck('teams.id')->toArray();
 

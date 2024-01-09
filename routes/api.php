@@ -41,6 +41,11 @@ Route::get('/getAllChampionships', [ChampionshipController::class, 'getAllChampi
 
 ////Route::post('/createTree/{id}', [ChampionshipController::class, 'createTree']);
 Route::get('/getTree/{id}', [RoundController::class, 'getTree']); //tested
+Route::get('/getGroups/{id}', [GroupController::class, 'getGroups']); //tested
+Route::get('/getGroupMatches/{id}', [GroupController::class, 'getGroupMatches']); //tested
+
+
+
 
 
 

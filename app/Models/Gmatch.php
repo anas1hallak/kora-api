@@ -9,6 +9,17 @@ class Gmatch extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+
+        'date',
+        'time',
+        'location',
+        'stad',
+        'group_id',
+        'team1_id',
+        'team2_id',
+    ];
+    
 
     protected $hidden = ['created_at','updated_at'];
 

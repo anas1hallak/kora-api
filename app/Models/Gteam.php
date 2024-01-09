@@ -9,6 +9,10 @@ class Gteam extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'teamName',
+    ];
+
 
     protected $hidden = ['created_at','updated_at'];
 

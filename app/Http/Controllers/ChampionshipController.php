@@ -68,6 +68,8 @@ class ChampionshipController extends Controller
 
 
         (new GroupController)->createGroup($championship->id);
+        (new RoundController)->createTree($championship->id);
+
         
 
         return response()->json([

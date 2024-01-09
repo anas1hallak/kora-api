@@ -14,9 +14,13 @@ return new class extends Migration
         Schema::create('championship_requests', function (Blueprint $table) {
 
             $table->increments('id');
-            $table->integer('championship_id'); 
-            $table-> string('message');
             $table->integer('team_id');
+            $table->integer('championship_id');
+            $table->string('teamImage');
+            $table->string('teamName');
+            $table->string('coachName');
+            $table->string('ibanNumber');
+            $table->string('coachPhoneNumber');
             $table->timestamps();
             
         });
