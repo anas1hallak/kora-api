@@ -10,6 +10,8 @@ class Gteam extends Model
     use HasFactory;
 
     protected $fillable = [
+        
+        'team_id',
         'teamName',
     ];
 

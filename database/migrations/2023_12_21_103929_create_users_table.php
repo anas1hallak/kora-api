@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->integer('age');
             $table->string('nationality');
-            $table->string('playerNumber')->nullable();
+            $table->integer('playerNumber')->nullable();
             $table->string('placeOfPlayer')->nullable();
             $table->string('selected')->nullable();
             $table->integer('team_id')->nullable();

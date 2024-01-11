@@ -201,11 +201,15 @@ class TeamController extends Controller
     public function requestToJoinChampionship(Request $request){
 
        $team = Team::with('image')->findOrFail($request->input('team_id'));
-
        
-       $teamImage=asset($team->image->path);
 
+       $teamImage = null;
 
+        if ($team != null) {
+            if ($team->image != null) {
+                $teamImage = asset($team->image->path);
+            }
+        }
         $ChampionshipRequests = ChampionshipRequests::create([
 
 

@@ -22,7 +22,6 @@ class UserController extends Controller
 {
 
 
-
     
     public function signup(Request $request)
     {
@@ -32,8 +31,8 @@ class UserController extends Controller
             'phoneNumber' => 'required',
             'password' => 'required|min:8',
             'email' => 'required|email|unique:users',
-            'playerNumber' => 'nullable',
-            'placeOfPlayer' => 'nullable',
+            'age'=>'required',
+            'nationality'=>'required',
             'fcmToken'=>'required',
           
         ]);
@@ -49,8 +48,8 @@ class UserController extends Controller
             'phoneNumber' => $request->input('phoneNumber'),
             'password' => bcrypt($request->input('password')),
             'email'=>$request->input('email'),
-            'playerNumber'=>$request->input('palyerNumber'),
-            'placeOfPlayer'=>$request->input('placeOfPlayer'),
+            'age' =>$request->input('age'),
+            'nationality'=>$request->input('nationality'),
             'selected'=>'not selected',
             'elo'=>"000",
 
@@ -59,19 +58,7 @@ class UserController extends Controller
 
 
         
-        if ($request->hasFile('image')) {
-
-            $file = $request->file('image');
-            $fileName = $file->getClientOriginalName();
-            $fileName = date('His') . $fileName;
-            $path = $request->file('image')->storeAs('images', $fileName, 'public');
-            $imageModel = new Image;
-            $imageModel->path = $path; 
-            $user->image()->save($imageModel);
-        }
-    
-        $user->load('image');
-
+        
         FcmToken::create([
             'user_id' => $user->id,
             'fcmToken' => $request->input('fcmToken'),
@@ -88,6 +75,62 @@ class UserController extends Controller
     
 
 
+    public function profile (string $id){
+
+        $user=User::findOrFail($id);
+        $user->image;
+        $user->team;
+
+        return response()->json([
+            'code' => 200,
+            'message' => 'User retreved successfully',
+            'user' => $user,
+        ]);
+        
+
+    }
+
+
+    public function completeSignup(Request $request){
+
+        $user=User::findOrFail($request->input('user_id'));
+
+        $user->update([
+
+            'playerNumber'=>$request->input('playerNumber'),
+            'placeOfPlayer'=>$request->input('placeOfPlayer'),
+
+        ]);
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $fileName = date('His') . $file->getClientOriginalName();
+            $path = $file->storeAs('images', $fileName, 'public');
+            
+            // Delete previous image, if any
+            if ($user->image) {
+                Storage::disk('public')->delete($user->image->path);
+                $user->image->delete();
+            }
+    
+            // Create a new image model
+            $imageModel = new Image;
+            $imageModel->path = $path;
+            $user->image()->save($imageModel);
+        }
+    
+        $user->load('image');
+    
+        return response()->json([
+            'code' => 200,
+            'message' => 'User updated successfully',
+            'user' => $user,
+        ]);
+
+
+
+
+    }
 
 
     public function updateUser(Request $request, $id){
@@ -98,8 +141,11 @@ class UserController extends Controller
             'phoneNumber' => 'required',
             'password' => 'required|min:8',
             'email' => 'required|email|unique:users',
+            'age'=>'required',
+            'nationality'=>'required',
             'playerNumber' => 'nullable',
             'placeOfPlayer' => 'nullable',
+            
             
     ]);
 
@@ -115,12 +161,16 @@ class UserController extends Controller
 
     
     $user->update([
+
         'fullName' => $request->input('fullName'),
         'phoneNumber' => $request->input('phoneNumber'),
         'password' => $request->has('password') ? bcrypt($request->input('password')) : $user->password,
         'email' => $request->input('email'),
+        'age' =>$request->input('age'),
+        'nationality'=>$request->input('nationality'),
         'playerNumber' => $request->input('playerNumber'),
         'placeOfPlayer' => $request->input('placeOfPlayer'),
+        
     ]);
 
 
@@ -188,24 +238,6 @@ class UserController extends Controller
 
 
 
-    // public function getAllUsers(){
-
-
-    //     $users=User::all();
-    //     $users->team;
-
-
-    //     return response()->json([
-
-    //         'code'=>200,
-    //         'users'=>$users,
-        
-    //     ]);
-
-
-    // }
-
-
 
     public function getAllUsers()
     {
@@ -249,10 +281,16 @@ class UserController extends Controller
     
         if (Auth::attempt($credentials)) {
 
+            /** @var \App\Models\User $user **/
+
             $user = Auth::user();
             $user->fcmTokens;
             $user->image;
             $user->team;
+
+            $token = $user->createToken('AuthToken')->plainTextToken;
+
+
 
         // Append the image URL to the user data
             $user->image_url = $user->image ? asset('/storage/'. $user->image->path) : null;
@@ -266,6 +304,8 @@ class UserController extends Controller
                 'code'=>200,
                 'message' => 'User loged in succesfully',
                 'user' => $user,
+                'token' => $token,
+
                
               
             ]);

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('gteams', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('group_id');
+            $table->integer('team_id')->nullable();
             $table->string('teamName')->nullable();
             $table->integer('points')->default(0);
             $table->integer('goals')->default(0);

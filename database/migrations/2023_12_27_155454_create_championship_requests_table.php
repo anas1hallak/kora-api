@@ -16,7 +16,7 @@ return new class extends Migration
             $table->increments('id');
             $table->integer('team_id');
             $table->integer('championship_id');
-            $table->string('teamImage');
+            $table->string('teamImage')->nullable();
             $table->string('teamName');
             $table->string('coachName');
             $table->string('ibanNumber');
