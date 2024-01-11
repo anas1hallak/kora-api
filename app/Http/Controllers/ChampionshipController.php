@@ -104,22 +104,6 @@ class ChampionshipController extends Controller
 
 
 
-    // public function getAllChampionships()
-    // {
-
-    //     $championships=Championship::all();
-
-    //     return response()->json([
-
-    //         'code'=>200,
-    //         'championships'=>$championships,
-        
-    //     ]);
-
-
-
-    // }
-
 
 
     public function getAllChampionships()
@@ -170,6 +154,24 @@ class ChampionshipController extends Controller
 
         
 
+
+
+    }
+
+
+    public function rejectChampionshipRequest(string $id){
+
+
+        $championshipRequest=ChampionshipRequests::findOrFail($id);
+
+        $championshipRequest->delete();
+
+        return response()->json([
+
+            'code'=>200,
+            'message' => 'Request deleted successfully',
+        
+        ]);
 
 
     }

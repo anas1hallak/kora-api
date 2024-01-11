@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Team;
 use App\Models\User;
 use App\Models\ChampionshipRequests;
+use App\Models\Formation;
 use App\Models\Teamimage;
 use App\Models\TeamRequests;
 
@@ -89,21 +90,26 @@ class TeamController extends Controller
 
     public function getTeam(string $id)
     {
+        $team = Team::findOrFail($id);
+        $team->load('players', 'image');
 
+        $teamCount = $team->players()->count();
+        $imagePath = $team->image ? asset('/storage/'. $team->image->path) : null;
 
-        $team=Team::findOrFail($id);
-        $team->players;
+        // Add additional properties to the $team object
+        $team->teamCount = $teamCount;
+        $team->imagePath = $imagePath;
+
+        // Remove the 'players' and 'image' relationships from the response
+    
 
         return response()->json([
-
-            'code'=>200,
-            'team'=>$team,
-        
+            'code' => 200,
+            'team' => $team,
         ]);
-
-
-
     }
+
+
 
     public function getTeamPlayers(string $id)
     {
@@ -111,6 +117,7 @@ class TeamController extends Controller
 
         $team=Team::findOrFail($id);
         $players=$team->players;
+
 
         return response()->json([
 
@@ -124,37 +131,44 @@ class TeamController extends Controller
     }
 
 
-    // public function getAllTeams()
-    // {
-
-
-    //     $teams = Team::with('players')->get();
-
-    //     return response()->json([
-
-    //         'code'=>200,
-    //         'teams'=>$teams,
-        
-    //     ]);
-
-
-
-    // }
-
-
-
 
 
     public function getAllTeams()
     {
         $perPage = request()->input('per_page', 10);
-    
-        $teams = Team::with('players')->paginate($perPage);
-    
+        
+        $teams = Team::with('image')->paginate($perPage);
+
+        $teamdata = [];
+
+            foreach ($teams as $team) {
+
+            
+                $imagePath = $team->image ? asset('/storage/'. $team->image->path) : null;
+                $teamCount = $team->players()->count();
+
+                
+            
+
+            $teamdata[] = [
+
+                'id' => $team->id,
+                'teamName' => $team->teamName,
+                'points' => $team->points,
+                'rate' => $team->rate,
+                'wins' => $team->wins,
+                'coachName' => $team->coachName,
+                'teamCount'=>$teamCount,
+                'imagePath' => $imagePath,
+
+            ];
+        }
+        
+
         return response()->json([
             'code' => 200,
             'data' => [
-                'teams' => $teams->items(),
+                'teams' =>$teamdata,
                 'pagination' => [
                     'total' => $teams->total(),
                     'per_page' => $teams->perPage(),
@@ -166,6 +180,7 @@ class TeamController extends Controller
             ],
         ]);
     }
+
     
 
 
@@ -182,6 +197,18 @@ class TeamController extends Controller
         $user->team_id=$teamRequest->team_id;
 
         $user->update();
+
+
+        $formation = Formation::create([
+
+            'team_id'=>$teamRequest->team_id,
+            'user_id'=>$user->id,
+            'position'=>'none',
+            'fullName'=>$user->fullName,
+            'imagePath' => $user->image ? asset('/storage/'. $user->image->path) : null,
+
+
+        ]);
 
 
         return response()->json([

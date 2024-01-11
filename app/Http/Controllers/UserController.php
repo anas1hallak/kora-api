@@ -75,19 +75,27 @@ class UserController extends Controller
     
 
 
-    public function profile (string $id){
-
-        $user=User::findOrFail($id);
-        $user->image;
-        $user->team;
-
+    public function profile()
+    {
+        // Get the authenticated user based on the provided token
+        $user = Auth::user();
+    
+        if (!$user) {
+            return response()->json([
+                'code' => 401,
+                'message' => 'Unauthorized',
+            ], 401);
+        }
+        
+        
+        // Load additional relationships if needed (e.g., image, team)
+        
+    
         return response()->json([
             'code' => 200,
-            'message' => 'User retreved successfully',
+            'message' => 'User retrieved successfully',
             'user' => $user,
         ]);
-        
-
     }
 
 
@@ -219,7 +227,9 @@ class UserController extends Controller
 
 
             'team_id' => $request->input('team_id'),
-            'message' =>$user->fullName. ' wants to join this team',
+            'fullName' =>$user->fullName,
+            'nationality' =>$user->nationality,
+            'placeOfPlayer' =>$user->placeOfPlayer,
             'user_id' =>$request->input('user_id'),
             
         ]);

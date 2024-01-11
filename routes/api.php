@@ -36,6 +36,7 @@ Route::get('/getAllTeamRequests/{id}', [TeamRequestsController::class, 'getAllTe
 
 Route::post('/createChampionship', [ChampionshipController::class, 'createChampionship']);//tested
 Route::post('/addTeamsToChampionship/{id}', [ChampionshipController::class, 'addTeamsToChampionship']);//tested
+Route::post('/rejectChampionshipRequest/{id}', [ChampionshipController::class, 'rejectChampionshipRequest']);//tested
 Route::get('/getChampionship/{id}', [ChampionshipController::class, 'getChampionship']);//tested
 Route::get('/getAllChampionships', [ChampionshipController::class, 'getAllChampionships']);//tested
 

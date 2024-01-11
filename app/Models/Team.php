@@ -32,6 +32,11 @@ class Team extends Model
         return $this->hasMany(User::class);
     }
 
+    public function formation()
+    {
+        return $this->hasMany(Formation::class);
+    }
+
 
     public function image(){
 
