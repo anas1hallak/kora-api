@@ -8,10 +8,12 @@ use App\Models\Team;
 use App\Models\User;
 use App\Models\ChampionshipRequests;
 use App\Models\Formation;
+use App\Models\Gteam;
 use App\Models\Teamimage;
 use App\Models\TeamRequests;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -101,11 +103,120 @@ class TeamController extends Controller
         $team->imagePath = $imagePath;
 
         // Remove the 'players' and 'image' relationships from the response
-    
+        unset($team['image']);
+
 
         return response()->json([
             'code' => 200,
             'team' => $team,
+        ]);
+    }
+
+
+
+    public function teamProfile()
+    {
+        
+        $user = Auth::user();
+    
+        if (!$user) {
+            return response()->json([
+                'code' => 401,
+                'message' => 'Unauthorized',
+            ], 401);
+        }
+    
+        $team = $user->team;
+    
+        $team->load('players', 'image');
+
+        $teamCount = $team->players()->count();
+        $imagePath = $team->image ? asset('/storage/'. $team->image->path) : null;
+
+        $team->teamCount = $teamCount;
+        $team->imagePath = $imagePath;
+
+        unset($team['image']);
+
+    
+        return response()->json([
+            'code' => 200,
+            'message' => 'team profile retrieved successfully',
+            'team' => $team,
+
+        ]);
+    }
+
+
+
+
+
+
+
+
+    public function editTeamProfile(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+
+            'teamName' => 'required',
+            'termsAndConditions'=>'required',
+
+            
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 401);
+        }
+        
+        $user = Auth::user();
+    
+        if (!$user) {
+            return response()->json([
+                'code' => 401,
+                'message' => 'Unauthorized',
+            ], 401);
+        }
+    
+        $team = $user->team;
+
+        $team->update([
+
+            'teamName' => $request->input('teamName'),
+            'termsAndConditions'=>$request->input('termsAndConditions'),
+            
+        ]);
+
+
+        Gteam::where('team_id', $team->id)->update([
+            'teamName' => $team->teamName,
+        ]);
+
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $fileName = date('His') . $file->getClientOriginalName();
+            $path = $file->storeAs('images', $fileName, 'public');
+            
+            // Delete previous image, if any
+            if ($user->image) {
+                Storage::disk('public')->delete($user->image->path);
+                $user->image->delete();
+            }
+
+            // Create a new image model
+            $imageModel = new Teamimage;
+            $imageModel->path = $path;
+            $team->image()->save($imageModel);
+        }
+
+        $team->load('image');
+
+    
+        return response()->json([
+            'code' => 200,
+            'message' => 'team profile updated successfully',
+            'team' => $team,
+
         ]);
     }
 

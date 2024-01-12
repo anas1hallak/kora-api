@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Route;
 Route::post('/signup', [UserController::class, 'signup']);//tested
 Route::post('/login', [UserController::class, 'login']);//tested
 Route::post('/logout', [UserController::class, 'logout']);
-Route::post('/completeSignup', [UserController::class, 'completeSignup']);//tested
-Route::get('/profile/{id}', [UserController::class, 'profile']);
 Route::get('/getAllUsers', [UserController::class, 'getAllUsers']);//tested
 Route::delete('/deleteUser/{id}', [UserController::class, 'deleteUser']);
 Route::post('/requestToJoinTeam', [UserController::class, 'requestToJoinTeam']);//tested
@@ -29,6 +27,9 @@ Route::post('/requestToJoinChampionship', [TeamController::class, 'requestToJoin
 
 Route::get('/getAllTeamRequests/{id}', [TeamRequestsController::class, 'getAllTeamRequests']);//tested
 
+
+Route::get('/getFormation/{id}', [FormationController::class, 'getFormation']);//tested
+Route::post('/editFormation', [FormationController::class, 'editFormation']);//tested
 
 
 
@@ -69,8 +70,15 @@ Route::get('/deleteIban/{id}', [IbanController::class, 'deleteIban']);
 
 
 
-Route::middleware('auth:api')->group(function () {
+Route::middleware(['auth:sanctum'])->group(function () {
 
-    Route::get('protected-route', [UserController::class, 'protectedRoute']);
+    Route::get('/profile', [UserController::class, 'profile']);
+    Route::post('/editProfile', [UserController::class, 'editProfile']);
+    Route::post('/completeSignup', [UserController::class, 'completeSignup']);//tested
+
+    Route::get('/teamProfile', [TeamController::class, 'teamProfile']);
+    Route::post('/editTeamProfile', [TeamController::class, 'editTeamProfile']);
+
+
 });
 

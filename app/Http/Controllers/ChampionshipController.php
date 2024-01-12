@@ -91,6 +91,15 @@ class ChampionshipController extends Controller
         $championship=Championship::findOrFail($id);
         $championship->teams;
 
+        $championship->load('image');
+
+        $imagePath = $championship->image ? asset('/storage/'. $championship->image->path) : null;
+
+        $championship->imagePath = $imagePath;
+
+        unset($championship['image']);
+
+
         return response()->json([
 
             'code'=>200,
@@ -110,12 +119,33 @@ class ChampionshipController extends Controller
     {
         $perPage = request()->input('per_page', 10);
 
-        $championships = Championship::paginate($perPage);
+        $championships = Championship::with('image')->paginate($perPage);
+
+        $championshipData = [];
+
+        foreach ($championships as $championship) {
+
+        
+        $imagePath = $championship->image ? asset('/storage/'. $championship->image->path) : null;
+            
+        $championshipData[] = [
+
+            'id' => $championship->id,
+            'championshipName' => $championship->teamName,
+            'numOfParticipants' => $championship->points,
+            'prize1' => $championship->prize1,
+            'prize2' => $championship->prize2,
+            'entryPrice' => $championship->entryPrice,
+            'startDate'=>$championship->startDate,
+            'endDate'=>$championship->endDate,
+            'imagePath' => $imagePath,
+        ];
+    }
 
         return response()->json([
             'code' => 200,
             'data' => [
-                'championships' => $championships->items(),
+                'championships' => $championshipData,
                 'pagination' => [
                     'total' => $championships->total(),
                     'per_page' => $championships->perPage(),

@@ -75,33 +75,12 @@ class UserController extends Controller
     
 
 
-    public function profile()
-    {
-        // Get the authenticated user based on the provided token
-        $user = Auth::user();
-    
-        if (!$user) {
-            return response()->json([
-                'code' => 401,
-                'message' => 'Unauthorized',
-            ], 401);
-        }
-        
-        
-        // Load additional relationships if needed (e.g., image, team)
-        
-    
-        return response()->json([
-            'code' => 200,
-            'message' => 'User retrieved successfully',
-            'user' => $user,
-        ]);
-    }
+
 
 
     public function completeSignup(Request $request){
 
-        $user=User::findOrFail($request->input('user_id'));
+        $user = User::find(Auth::id());
 
         $user->update([
 
@@ -141,74 +120,119 @@ class UserController extends Controller
     }
 
 
-    public function updateUser(Request $request, $id){
 
-    $validator = Validator::make($request->all(), [
+    public function profile()
+    {
+        $user = Auth::user();
+    
+        if (!$user) {
+            return response()->json([
+                'code' => 401,
+                'message' => 'Unauthorized',
+            ], 401);
+        }
+        
+        $imagePath = $user->image ? asset('/storage/' . $user->image->path) : null;
+        $user->imagePath = $imagePath;
 
-            'fullName' => 'required',
-            'phoneNumber' => 'required',
-            'password' => 'required|min:8',
-            'email' => 'required|email|unique:users',
-            'age'=>'required',
-            'nationality'=>'required',
-            'playerNumber' => 'nullable',
-            'placeOfPlayer' => 'nullable',
-            
-            
-    ]);
+        unset($user['image']);
 
-    if ($validator->fails()) {
-        return response()->json(['error' => $validator->errors()], 401);
+        return response()->json([
+            'code' => 200,
+            'message' => 'User retrieved successfully',
+            'user' => $user,
+        ]);
     }
 
-    $user = User::find($id);
-
-    if (!$user) {
-        return response()->json(['error' => 'User not found'], 404);
-    }
-
-    
-    $user->update([
-
-        'fullName' => $request->input('fullName'),
-        'phoneNumber' => $request->input('phoneNumber'),
-        'password' => $request->has('password') ? bcrypt($request->input('password')) : $user->password,
-        'email' => $request->input('email'),
-        'age' =>$request->input('age'),
-        'nationality'=>$request->input('nationality'),
-        'playerNumber' => $request->input('playerNumber'),
-        'placeOfPlayer' => $request->input('placeOfPlayer'),
-        
-    ]);
 
 
-    
+    public function editProfile(Request $request){
 
-    // Handle image upload/update
-    if ($request->hasFile('image')) {
-        $file = $request->file('image');
-        $fileName = date('His') . $file->getClientOriginalName();
-        $path = $file->storeAs('images', $fileName, 'public');
-        
-        // Delete previous image, if any
-        if ($user->image) {
-            Storage::disk('public')->delete($user->image->path);
-            $user->image->delete();
+        $validator = Validator::make($request->all(), [
+
+                'fullName' => 'required',
+                'phoneNumber' => 'required',
+                'password' => 'min:8',
+                'email' => 'required|email|unique:users,email,' . Auth::id(), 
+                'age'=>'required',
+                'nationality'=>'required',
+                'playerNumber' => 'nullable',
+                'placeOfPlayer' => 'nullable',
+                
+                
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 401);
         }
 
-        // Create a new image model
-        $imageModel = new Image;
-        $imageModel->path = $path;
-        $user->image()->save($imageModel);
-    }
+        $user = User::find(Auth::id());
+        
+            if (!$user) {
+                return response()->json([
+                    'code' => 401,
+                    'message' => 'Unauthorized',
+                ], 401);
+            }
 
-    $user->load('image');
+        
+        $user->update([
 
-    return response()->json([
-        'code' => 200,
-        'message' => 'User updated successfully',
-        'user' => $user,
-    ]);
+            'fullName' => $request->input('fullName'),
+            'phoneNumber' => $request->input('phoneNumber'),
+            'password' => $request->has('password') ? bcrypt($request->input('password')) : $user->password,
+            'email' => $request->input('email'),
+            'age' =>$request->input('age'),
+            'nationality'=>$request->input('nationality'),
+            'playerNumber' => $request->input('playerNumber'),
+            'placeOfPlayer' => $request->input('placeOfPlayer'),
+            
+        ]);
+
+
+        if($user->role_id===1){
+
+            $team=$user->team;
+
+            $team->update([
+
+                'coachName'=>$user->fullName,
+                'coachPhoneNumber'=>$user->phoneNumber,
+                'coachEmail'=>$user->email,
+                
+            ]);
+
+
+        }
+
+
+        
+
+        // Handle image upload/update
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $fileName = date('His') . $file->getClientOriginalName();
+            $path = $file->storeAs('images', $fileName, 'public');
+            
+            // Delete previous image, if any
+            if ($user->image) {
+                Storage::disk('public')->delete($user->image->path);
+                $user->image->delete();
+            }
+
+            // Create a new image model
+            $imageModel = new Image;
+            $imageModel->path = $path;
+            $user->image()->save($imageModel);
+        }
+
+        $user->load('image');
+
+        return response()->json([
+            'code' => 200,
+            'message' => 'User updated successfully',
+            'user' => $user,
+        ]);
     
     }
 
