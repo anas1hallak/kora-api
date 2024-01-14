@@ -18,6 +18,12 @@ class Gteam extends Model
     ];
 
 
+
     protected $hidden = ['created_at','updated_at'];
 
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class, 'team_id');
+    }
 }

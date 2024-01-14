@@ -133,19 +133,26 @@ class GroupController extends Controller
         $championship=Championship::findOrFail($id);
 
         foreach ($championship->groups as $group) {
+            foreach ($group->teams as $gteam) {
+               
+                $team = $gteam->team;
+    
+                if ($team) {
 
-            foreach ($group->teams as $team) {
-                $team = $group->teams();
+                    $image = $team->image;
+    
+                    $imagePath = $image ? asset('/storage/' . $image->path) : null;
+                    $gteam->imagePath = $imagePath;
 
-                $imagePath = $team->image ? asset('/storage/'. $team->image->path) : null;
-                $team->imagePath = $imagePath;
-                unset($team['image']);
-        
+                }
+                unset($gteam['team']);
+
             }
-        
-            
-
         }
+
+
+
+        
             return response()->json([
 
                 'code'=>200,
