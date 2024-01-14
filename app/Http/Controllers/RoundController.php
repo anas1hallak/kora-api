@@ -148,6 +148,36 @@ class RoundController extends Controller
 
     }
 
+
+
+    public function editRoundMatches(Request $request, string $id){
+
+
+        $match=Maatch::findOrFail($id);
+
+        $match->update([
+
+            'date' => $request->input('date'),
+            'time' => $request->input('time'),
+            'location' => $request->input('location'),
+            'stad' =>$request->input('stad'),
+            'winner'=>$request->input('winner'),
+            
+        ]);
+
+
+        return response()->json([
+    
+            'code'=>200,
+            'message' => 'round match updated successfully',
+        ]);
+
+
+
+
+
+
+    }
     
 
 

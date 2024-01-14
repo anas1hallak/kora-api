@@ -89,66 +89,70 @@ class GroupController extends Controller
 
 
 
-public function createGroupMatches(string $groupId)
-{
-    $group = Group::findOrFail($groupId);
+    public function createGroupMatches(string $groupId)
+    {
+        $group = Group::findOrFail($groupId);
 
-    // Get all teams in the group
+        // Get all teams in the group
 
 
-    $teams = $group->teams->pluck('team_id')->toArray();
-    $count = $group->teams()->whereNotNull('teamName')->count();
-    // Ensure there are at least 2 teams to create matches
-    if ($count < 4) {
-        return;
-    }
-
-    // Create matches for each pair of teams
-    for ($i = 0; $i < count($teams); $i++) {
-        for ($j = $i + 1; $j < count($teams); $j++) {
-            $match = new Gmatch([
-                'team1_id' => $teams[$i],
-                'team2_id' => $teams[$j],
-                'date' => null,
-                'time' => null,
-                'location' => null,
-                'stad' => null,
-            ]);
-
-            $group->matches()->save($match);
+        $teams = $group->teams->pluck('team_id')->toArray();
+        $count = $group->teams()->whereNotNull('teamName')->count();
+        // Ensure there are at least 2 teams to create matches
+        if ($count < 4) {
+            return;
         }
-    }
 
-    return response()->json([
-        'code' => 200,
-        'message' => 'Matches created successfully.',
-    ]);
-}
+        // Create matches for each pair of teams
+        for ($i = 0; $i < count($teams); $i++) {
+            for ($j = $i + 1; $j < count($teams); $j++) {
+                $match = new Gmatch([
+                    'team1_id' => $teams[$i],
+                    'team2_id' => $teams[$j],
+                    'date' => null,
+                    'time' => null,
+                    'location' => null,
+                    'stad' => null,
+                ]);
 
-
-
-
-public function getGroups(string $id){
-
-    $championship=Championship::findOrFail($id);
-
-    foreach ($championship->groups as $group) {
-
-        foreach ($group->teams as $team) {
-            $team = $group->teams();
-    
+                $group->matches()->save($match);
+            }
         }
-    
-        
 
-    }
         return response()->json([
-
-            'code'=>200,
-            'message' => 'championship groups returned successfully',
-            'championship' =>$championship ,
+            'code' => 200,
+            'message' => 'Matches created successfully.',
         ]);
     }
+
+
+
+
+    public function getGroups(string $id){
+
+        $championship=Championship::findOrFail($id);
+
+        foreach ($championship->groups as $group) {
+
+            foreach ($group->teams as $team) {
+                $team = $group->teams();
+
+                $imagePath = $team->image ? asset('/storage/'. $team->image->path) : null;
+                $team->imagePath = $imagePath;
+                unset($team['image']);
+        
+            }
+        
+            
+
+        }
+            return response()->json([
+
+                'code'=>200,
+                'message' => 'championship groups returned successfully',
+                'championship' =>$championship ,
+            ]);
+        }
 
 
     public function getGroupMatches(string $id){
@@ -173,7 +177,48 @@ public function getGroups(string $id){
                 'group' =>$group ,
             ]);
         }
+
+
+
     
+    public function editGroupMatches(Request $request, string $id){
+
+
+        $match=Gmatch::findOrFail($id);
+
+        $match->update([
+
+            'date' => $request->input('date'),
+            'time' => $request->input('time'),
+            'location' => $request->input('location'),
+            'stad' =>$request->input('stad'),
+            'winner'=>$request->input('winner'),
+            
+        ]);
+
+        $team = Gteam::where('team_id', $request->input('winner'))->first();
+
+        if ($team) {
+            $team->update([
+                'points' => $team->points + 3
+            ]);
+        }
+
+
+
+
+        return response()->json([
+    
+            'code'=>200,
+            'message' => 'group match updated successfully',
+        ]);
+
+
+
+
+
+
+    }
    
 
 

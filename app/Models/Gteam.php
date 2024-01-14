@@ -13,6 +13,8 @@ class Gteam extends Model
         
         'team_id',
         'teamName',
+        'points',
+        'goals'
     ];
 
 
