@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('maatches', function (Blueprint $table) { 
             $table->increments('id');
             $table->date('date')->nullable();
-            $table->date('time')->nullable();
+            $table->time('time')->nullable();
             $table->string('location')->nullable();
             $table->string('stad')->nullable();
 

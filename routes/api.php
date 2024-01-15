@@ -49,8 +49,8 @@ Route::get('/getGroups/{id}', [GroupController::class, 'getGroups']); //tested
 Route::get('/getGroupMatches/{id}', [GroupController::class, 'getGroupMatches']); //tested
 
 
-Route::get('/editRoundMatches/{id}', [RoundController::class, 'editRoundMatches']); //tested
-Route::get('/editGroupMatches/{id}', [GroupController::class, 'editGroupMatches']); //tested
+Route::post('/editRoundMatches/{id}', [RoundController::class, 'editRoundMatches']); //tested
+Route::post('/editGroupMatches/{id}', [GroupController::class, 'editGroupMatches']); //tested
 
 
 

@@ -117,6 +117,8 @@ class ChampionshipController extends Controller
 
     public function getAllChampionships()
     {
+
+        
         $perPage = request()->input('per_page', 10);
 
         $championships = Championship::with('image')->paginate($perPage);
@@ -175,14 +177,14 @@ class ChampionshipController extends Controller
 
         (new GroupController)->insertTeamIntoGroup($championship->id,$championshipRequest->team_id);
 
+        $championshipRequest->delete();
+
         return response()->json([
 
             'code'=>200,
             'message' => 'Team aded to championship successfully',
         
         ]);
-
-        
 
 
 

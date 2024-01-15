@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('group_id');
             
             $table->date('date')->nullable();
-            $table->date('time')->nullable();
+            $table->time('time')->nullable();
             $table->string('location')->nullable();
             $table->string('stad')->nullable();
 

@@ -192,14 +192,17 @@ class GroupController extends Controller
 
 
         $match=Gmatch::findOrFail($id);
+        $w=$request->input('winner');
 
+       //dd($w);
+       
         $match->update([
 
             'date' => $request->input('date'),
             'time' => $request->input('time'),
             'location' => $request->input('location'),
             'stad' =>$request->input('stad'),
-            'winner'=>$request->input('winner'),
+            'winner'=>$w,
             
         ]);
 
@@ -222,14 +225,7 @@ class GroupController extends Controller
 
 
 
-
-
-
     }
-   
-
-
-
    
 
 }

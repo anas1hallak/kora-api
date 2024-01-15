@@ -18,6 +18,7 @@ class Gmatch extends Model
         'group_id',
         'team1_id',
         'team2_id',
+        'winner'
     ];
     
 
