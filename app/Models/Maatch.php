@@ -18,6 +18,7 @@ class Maatch extends Model
         'round_id',
         'team1_id',
         'team2_id',
+        'winner'
     ];
 
     protected $hidden = ['created_at','updated_at'];
