@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/signup', [UserController::class, 'signup']);//tested
 Route::post('/login', [UserController::class, 'login']);//tested
-Route::post('/logout', [UserController::class, 'logout']);
+Route::get('/getUser/{id}', [UserController::class, 'getUser']);//tested
 Route::get('/getAllUsers', [UserController::class, 'getAllUsers']);//tested
 Route::delete('/deleteUser/{id}', [UserController::class, 'deleteUser']);
 Route::post('/requestToJoinTeam', [UserController::class, 'requestToJoinTeam']);//tested
@@ -43,22 +43,23 @@ Route::get('/getAllChampionships', [ChampionshipController::class, 'getAllChampi
 
 
 
-////Route::post('/createTree/{id}', [ChampionshipController::class, 'createTree']);
 Route::get('/getTree/{id}', [RoundController::class, 'getTree']); //tested
 Route::get('/getGroups/{id}', [GroupController::class, 'getGroups']); //tested
 Route::get('/getGroupMatches/{id}', [GroupController::class, 'getGroupMatches']); //tested
 
 
-Route::post('/editRoundMatches/{id}', [RoundController::class, 'editRoundMatches']); //tested
-Route::post('/editGroupMatches/{id}', [GroupController::class, 'editGroupMatches']); //tested
-
-
+Route::put('/editRoundMatches/{id}', [RoundController::class, 'editRoundMatches']); //tested
+Route::put('/editGroupMatches/{id}', [GroupController::class, 'editGroupMatches']); //tested
 
 
 
 Route::get('/getAllChampionshipRequests/{id}', [ChampionshipRequestsController::class, 'getAllChampionshipRequests']);
 
 
+
+Route::post('/searchTeam', [SearchController::class, 'searchTeam']); //tested
+Route::post('/searchUser', [SearchController::class, 'searchUser']); //tested
+Route::post('/searchChampionship', [SearchController::class, 'searchChampionship']); //tested
 
 
 
@@ -81,6 +82,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('/teamProfile', [TeamController::class, 'teamProfile']);
     Route::post('/editTeamProfile', [TeamController::class, 'editTeamProfile']);
+
+
+    Route::get('/championshipProfile', [ChampionshipController::class, 'championshipProfile']);
+
+    
+    Route::post('/logout', [UserController::class, 'logout']);
 
 
 });

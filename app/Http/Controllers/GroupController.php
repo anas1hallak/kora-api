@@ -73,10 +73,7 @@ class GroupController extends Controller
                 $this->createGroupMatches($group->id);
 
 
-                return response()->json([
-                    'code' => 200,
-                    'message' => 'Team inserted into the group successfully.',
-                ]);
+                return ;
             }
         }
     
@@ -192,9 +189,6 @@ class GroupController extends Controller
 
 
         $match=Gmatch::findOrFail($id);
-        $w=$request->input('winner');
-
-       //dd($w);
        
         $match->update([
 
@@ -202,7 +196,7 @@ class GroupController extends Controller
             'time' => $request->input('time'),
             'location' => $request->input('location'),
             'stad' =>$request->input('stad'),
-            'winner'=>$w,
+            'winner'=>$request->input('winner'),
             
         ]);
 
@@ -215,6 +209,16 @@ class GroupController extends Controller
         }
 
 
+        //to check if the group stage has ended and move to the elimination stage
+        $championshipId = $match->group->championship->id;
+
+        $allMatchesFinished = $this->areGroupMatchesFinished($championshipId);
+
+        if ($allMatchesFinished) {
+
+            (new RoundController)->insertTeamIntoTree($championshipId);
+        }
+
 
 
         return response()->json([
@@ -225,6 +229,24 @@ class GroupController extends Controller
 
 
 
+    }
+
+
+
+    public function areGroupMatchesFinished($championshipId)
+    {
+        $championship = Championship::findOrFail($championshipId);
+
+        //checks if there is a match with no winner
+        foreach ($championship->groups as $group) {
+            foreach ($group->matches as $match) {
+                if (!$match->winner) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
    
 

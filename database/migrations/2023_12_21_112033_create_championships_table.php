@@ -22,6 +22,7 @@ return new class extends Migration
             $table->double('entryPrice');
             $table->date('startDate');
             $table->date('endDate');
+            $table->string('status')->default('open');
             $table->timestamps();
 
 

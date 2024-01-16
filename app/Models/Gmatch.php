@@ -42,5 +42,9 @@ class Gmatch extends Model
             'team2' => $this->team2,
         ];
     }
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
+    }
 
 }

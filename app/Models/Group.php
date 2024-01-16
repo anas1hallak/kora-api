@@ -29,4 +29,9 @@ class Group extends Model
 
         return $this->hasMany(Gmatch::class);
     }
+
+    public function championship()
+    {
+        return $this->belongsTo(Championship::class);
+    }
 }

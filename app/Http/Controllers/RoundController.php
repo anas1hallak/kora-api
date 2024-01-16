@@ -16,9 +16,8 @@ class RoundController extends Controller
 
         $championship=Championship::findOrFail($id);
 
-       // $teams = $championship->teams()->pluck('teams.id')->toArray();
-
-        for ($i=1; $i<=5; $i++){
+      
+        for ($i=1; $i<=3; $i++){
 
             $round = new Round([
                 'round' => $i,
@@ -27,15 +26,11 @@ class RoundController extends Controller
             $championship->rounds()->save($round);
            
 
-        if ($i === 1||$i===5) {
+        if ($i === 1) {
+
+            for ($j = 0; $j < 4; $j++) {
 
             
-
-            for ($j = 0; $j < 2; $j++) {
-
-               // $team1 = $teams[$j * 2];
-                //$team2 = $teams[$j * 2 + 1];
-
                 $match = new Maatch([
 
                     'date' => null,
@@ -51,7 +46,27 @@ class RoundController extends Controller
             }
         }
 
-        if ($i === 2||$i === 3||$i === 4) {
+        if ($i === 2) {
+
+            for ($j = 0; $j < 2; $j++) {
+
+            
+                $match = new Maatch([
+
+                    'date' => null,
+                    'time' => null,
+                    'location' => null,
+                    'stad' => null,
+
+                    'team1_id' => null,
+                    'team2_id' => null,
+                ]);
+
+                $round->matches()->save($match);
+            }
+        }
+
+        if ($i === 3) {
 
                 $match = new Maatch([
 
@@ -83,36 +98,43 @@ class RoundController extends Controller
     {
         $championship = Championship::findOrFail($id);
 
-        $R1matches = $championship->rounds()->where('round', 1)->first()->matches;
-        
+        $topTeamsArray = [];
 
-        $teams = $championship->teams()->pluck('teams.id')->toArray();
+        foreach ($championship->groups as $group) {
+            
+            $topTeams = $group->teams()->orderByDesc('points')->orderByDesc('goals')->pluck('team_id')->toArray();
+
+            $topTeamsArray = array_merge($topTeamsArray, $topTeams);
+        }
+
+        shuffle($topTeamsArray);
+
+
+
+        $R1matches = $championship->rounds()->where('round', 1)->first()->matches;
 
         $j=0;
 
         foreach ($R1matches as $match) {
 
-                if (isset($teams[$j * 2])) {
-
-                    $team1 = $teams[$j * 2];
-
-                    $match->update([
-
-                        'team1_id' => $team1,
-                    ]);
-                }
-                if (isset($teams[$j * 2 + 1])) {
-
-                    $team2 = $teams[$j * 2 + 1];
-
-                    $match->update([
-
-                        'team2_id' => $team2,
-                    ]);
-                }
-
+            $team1 = $topTeamsArray[$j * 2];
+            $team2 = $topTeamsArray[$j * 2 + 1];
+        
+            $match->update([
+                
+                'team1_id' => $team1,
+                'team2_id' => $team2,
+            ]);
+        
             $j++;
         }
+
+
+        $championship->update([
+
+            'status' =>'Elimination Stage'
+            
+        ]);
 
 
         return ;

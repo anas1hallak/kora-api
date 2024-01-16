@@ -25,6 +25,7 @@ class Championship extends Model
     public function teams(){
 
         return $this->belongsToMany(Team::class);
+
     }
 
     public function rounds(){

@@ -11,6 +11,7 @@ use App\Http\Controllers\GroupController;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -81,6 +82,30 @@ class ChampionshipController extends Controller
     }
 
 
+    public function championshipProfile()
+    {
+        // Get the authenticated user
+        $user = Auth::user();
+
+        if (!$user) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
+        $championship=$user->team->championship;
+        
+
+        if (!$championship) {
+            return response()->json(['error' => 'User is not associated with any championship'], 404);
+        }
+
+        return response()->json([
+            'code' => 200,
+            'message' => 'Championship retrieved successfully',
+            'championship' => $championship,
+        ]);
+    }
+
+
     
 
 
@@ -133,13 +158,14 @@ class ChampionshipController extends Controller
         $championshipData[] = [
 
             'id' => $championship->id,
-            'championshipName' => $championship->teamName,
-            'numOfParticipants' => $championship->points,
+            'championshipName' => $championship->championshipName,
+            'numOfParticipants' => $championship->numOfParticipants,
             'prize1' => $championship->prize1,
             'prize2' => $championship->prize2,
             'entryPrice' => $championship->entryPrice,
             'startDate'=>$championship->startDate,
             'endDate'=>$championship->endDate,
+            'status'=>$championship->status,
             'imagePath' => $imagePath,
         ];
     }
@@ -171,13 +197,41 @@ class ChampionshipController extends Controller
 
 
         $championshipRequest=ChampionshipRequests::findOrFail($id);
-
         $championship=Championship::findOrFail($championshipRequest->championship_id);
+        $teamsCount = $championship->teams->count();
+
+        if($teamsCount >= 16){
+
+
+            return response()->json([
+                'code' => 400,
+                'message' => 'Championship is already full. Cannot accept more teams.',
+            ]);
+
+        }
+
+
         $championship->teams()->attach($championshipRequest->team_id);
 
         (new GroupController)->insertTeamIntoGroup($championship->id,$championshipRequest->team_id);
 
         $championshipRequest->delete();
+
+
+        
+
+        $teamsCount = $championship->teams()->count();
+
+        if($teamsCount >= 16){
+
+
+            $championship->update([
+
+                'status' =>'Group Stage'
+                
+            ]);
+
+        }
 
         return response()->json([
 

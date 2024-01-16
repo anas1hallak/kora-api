@@ -11,12 +11,16 @@ use App\Models\Image;
 use App\Models\TeamRequests;
 
 use App\Models\FcmToken;
-
+use App\Models\PersonalAccessToken;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Support\Facades\Validator;
+
+use Laravel\Sanctum\RevokesTokens;
+use Laravel\Sanctum\HasApiTokens;
+
 
 class UserController extends Controller
 {
@@ -51,11 +55,15 @@ class UserController extends Controller
             'age' =>$request->input('age'),
             'nationality'=>$request->input('nationality'),
             'selected'=>'not selected',
+            'role_id'=>0,
             'elo'=>"000",
 
 
         ]);
 
+
+    
+        $token = $user->createToken('AuthToken')->plainTextToken;
 
         
         
@@ -69,6 +77,7 @@ class UserController extends Controller
             'code'=>200,
             'message' => 'User registered successfully',
             'user'=>$user,
+            'token'=>$token
         
         ]);
     }
@@ -119,6 +128,21 @@ class UserController extends Controller
 
     }
 
+
+    public function getUser(string $id)
+    {
+        $user = User::findOrFail($id);
+        $user = User::with('team')->findOrFail($id);
+        $imagePath = $user->image ? asset('/storage/' . $user->image->path) : null;
+        $user->imagePath = $imagePath;
+
+        unset($user['image']);
+
+        return response()->json([
+            'code' => 200,
+            'user' => $user,
+        ]);
+    }
 
 
     public function profile()
@@ -276,9 +300,16 @@ class UserController extends Controller
     public function getAllUsers()
     {
         $perPage = request()->input('per_page', 10);
+    
+        $users = User::with(['team', 'image'])->paginate($perPage);
+    
+        foreach($users as $user) {
 
-        $users = User::with('team')->paginate($perPage);
-
+            $imagePath = $user->image ? asset('/storage/' . $user->image->path) : null;
+            $user->imagePath = $imagePath;
+            unset($user['image']);
+        };
+    
         return response()->json([
             'code' => 200,
             'data' => [
@@ -388,10 +419,17 @@ class UserController extends Controller
 
     public function logout()
     {
-        Auth::logout();
+
+        /** @var \App\Models\User $user **/
+
+        $user = Auth::user();
+        $user->tokens()->delete();
+        $user->fcmTokens()->delete();
+
         return response()->json([
-            'status' => 'success',
+            'code' => 200,
             'message' => 'Successfully logged out',
+            
         ]);
     }
 

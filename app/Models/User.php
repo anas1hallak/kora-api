@@ -20,6 +20,7 @@ class User extends Authenticatable
         'playerNumber',
         'placeOfPlayer',
         'selected',
+        'role_id',
         'elo',
         
         
@@ -42,8 +43,7 @@ class User extends Authenticatable
     public function image(){
 
         return $this->hasOne(Image::class);
-    }
-
+    }    
     
 }
 

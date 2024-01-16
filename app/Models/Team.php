@@ -47,4 +47,11 @@ class Team extends Model
     {
         return $this->hasMany(TeamRequests::class);
     }
+
+    public function championship()
+    {
+        
+       return $this->belongsToMany(Championship::class);
+
+    }
 }

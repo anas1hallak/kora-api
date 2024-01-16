@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Championship;
 use Illuminate\Http\Request;
 
 use App\Models\Team;
@@ -98,11 +99,17 @@ class TeamController extends Controller
         $teamCount = $team->players()->count();
         $imagePath = $team->image ? asset('/storage/'. $team->image->path) : null;
 
-        // Add additional properties to the $team object
         $team->teamCount = $teamCount;
         $team->imagePath = $imagePath;
 
-        // Remove the 'players' and 'image' relationships from the response
+
+        foreach ($team->players as $player) {
+
+            $player->imagePath = $player->image ? asset('/storage/'. $player->image->path) : null;
+            unset($player['image']);
+            
+        }
+
         unset($team['image']);
 
 
@@ -338,6 +345,21 @@ class TeamController extends Controller
 
     public function requestToJoinChampionship(Request $request){
 
+        $championship = Championship::findOrFail($request->input('championship_id'));
+
+        $teamsCount = $championship->teams()->count();
+
+        if($teamsCount >= 16){
+
+
+            return response()->json([
+                'code' => 400,
+                'message' => 'Championship is already full. Cannot accept more teams.',
+            ]);
+
+        }
+
+
        $team = Team::with('image')->findOrFail($request->input('team_id'));
        
 
@@ -348,6 +370,7 @@ class TeamController extends Controller
                 $teamImage = asset($team->image->path);
             }
         }
+        
         $ChampionshipRequests = ChampionshipRequests::create([
 
 
@@ -370,6 +393,9 @@ class TeamController extends Controller
 
         
     }
+
+
+
 
 
 
