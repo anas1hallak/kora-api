@@ -3,25 +3,20 @@
 
 namespace App\Traits;
 
-use Illuminate\Support\Facades\Http;
 
 trait Firebase
 {
 
-    public function firebaseNotification($fcmNotification){
-
-        $fcmUrl =config('firebase.fcm_url');
-
-        $apiKey=config('firebase.fcm_api_key');
-
-        $http=Http::withHeaders([
-            'Authorization' => 'Bearer ' . $apiKey,
-            'Content-Type'=>'application/json'
-        ])  ->post($fcmUrl,$fcmNotification);
-
-        return  $http->json();
+    private function getGoogleAccessToken(){
+        $credentialsFilePath = base_path('kora-project-63c71-firebase-adminsdk-z4qo5-5db5cf1627.json');
+        $client = new \Google_Client();
+        $client->setAuthConfig($credentialsFilePath);
+        $client->addScope('https://www.googleapis.com/auth/firebase.messaging');
+        $client->refreshTokenWithAssertion();
+        $token = $client->getAccessToken();
+        return $token['access_token'];
+   }
 
 
-        
-    }
+
 }

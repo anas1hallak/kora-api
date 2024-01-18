@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\Traits\Firebase;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 
 class PushNotificationController extends Controller
@@ -15,25 +14,43 @@ class PushNotificationController extends Controller
    use Firebase;
 
     
-    public function sendNotification(Request $request){
-        $token=$request->input('fcmToken');
-        $notification = [
-            'title' =>'title',
-            'body' => 'body of message.',
-            'icon' =>'myIcon',
-            'sound' => 'mySound'
-        ];
-        $extraNotificationData = ["message" => $notification,"moredata" =>'dd'];
+    public function sendNotification($tokens,$body,$title){
 
-        $fcmNotification = [
-            //'registration_ids' => $tokenList, //multple token array
-            'to'        => $token, //single token
-            'notification' => $notification,
-            'data' => $extraNotificationData
-        ];
-        
-        return $this->firebaseNotification($fcmNotification); 
 
+        $fcmUrl=env('FCM_URL');
+        $AuthToken=$this->getGoogleAccessToken();
+
+
+
+        if (!is_array($tokens) || empty($tokens)) {
+            return response()->json([
+                'error' => 'Invalid or empty FCM tokens array.',
+            ], 400);
+        }
+
+
+
+        foreach ($tokens as $token) {
+
+            $fcmNotification = [
+                'message' => [
+                    'token' => $token,
+                    'notification' => [
+                        'body' => $body,
+                        'title' => $title,
+                    ],
+                ],
+            ];
+
+            $response = Http::withHeaders([
+                'Content-Type' => 'application/json',
+                'Authorization' => 'Bearer ' . $AuthToken,
+            ])->post($fcmUrl, $fcmNotification);
+
+           
+           
+        }
+
+        return;
     }
-
 }

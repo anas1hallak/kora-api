@@ -8,8 +8,9 @@ use App\Models\ChampionshipRequests;
 
 use App\Http\Controllers\RoundController;
 use App\Http\Controllers\GroupController;
-
-
+use App\Models\FcmToken;
+use App\Models\Team;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -20,6 +21,7 @@ class ChampionshipController extends Controller
    
     public function createChampionship(Request $request)
     {
+
         $validator = Validator::make($request->all(), [
 
             'championshipName' => 'required',
@@ -46,6 +48,8 @@ class ChampionshipController extends Controller
             'entryPrice'=>$request->input('entryPrice'),
             'startDate'=>$request->input('startDate'),
             'endDate'=>$request->input('endDate'),
+            //'termsAndConditions'=>$request->input('termsAndConditions'),
+
 
 
         ]);
@@ -70,7 +74,11 @@ class ChampionshipController extends Controller
         (new GroupController)->createGroup($championship->id);
         (new RoundController)->createTree($championship->id);
 
-        
+        $tokens = FcmToken::whereIn('user_id', User::where('role_id', 1)->pluck('id'))->pluck('fcmToken')->toArray();
+        $title='New Championship!, Join Now.';
+        $body = 'A new championship ' . $request->input('championshipName') . ' has been created! Don\'t miss the chance to join and compete for exciting prizes. Gather your team, register, and showcase your skills on the field.';
+        (new PushNotificationController)->sendNotification($tokens,$body,$title);
+
 
         return response()->json([
 
@@ -241,6 +249,12 @@ class ChampionshipController extends Controller
 
         }
 
+        $team = Team::findOrFail($championshipRequest->team_id);
+        $tokens = User::findOrFail($team->user_id)->fcmTokens()->pluck('fcmToken')->toArray();
+        $title='Your Team Has Been Accepted !';
+        $body = 'Congratulations! Your team has been accepted to participate in the '. $championship->championshipName . ' Championship. Get ready for the action and make your mark on the field. Good luck, coach!';
+        (new PushNotificationController)->sendNotification($tokens,$body,$title);
+
         return response()->json([
 
             'code'=>200,
@@ -259,6 +273,16 @@ class ChampionshipController extends Controller
         $championshipRequest=ChampionshipRequests::findOrFail($id);
 
         $championshipRequest->delete();
+
+        $championship=Championship::findOrFail($championshipRequest->championship_id);
+
+
+        $team = Team::findOrFail($championshipRequest->team_id);
+        $tokens = User::findOrFail($team->user_id)->fcmTokens()->pluck('fcmToken')->toArray();
+        $title='Championship Registration Rejected';
+        $body = 'We regret to inform you that your team registration for '.$championship->championshipName.' championship has been rejected. We appreciate your interest and hope to see you in future events. If you have any questions, please contact the organizers.';
+        (new PushNotificationController)->sendNotification($tokens,$body,$title);
+
 
         return response()->json([
 

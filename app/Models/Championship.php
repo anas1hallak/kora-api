@@ -18,6 +18,7 @@ class Championship extends Model
             'entryPrice',
             'startDate',
             'endDate',
+            'termsAndConditions'
         ];
 
     protected $hidden = ['created_at','updated_at'];

@@ -11,7 +11,10 @@ use App\Models\Image;
 use App\Models\TeamRequests;
 
 use App\Models\FcmToken;
+use App\Models\Formation;
 use App\Models\PersonalAccessToken;
+use App\Models\Team;
+use App\Models\UserRequests;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Storage;
@@ -259,48 +262,6 @@ class UserController extends Controller
         ]);
     
     }
-
-
-
-
-
-
-
-
-    public function requestToJoinTeam(Request $request){
-
-        $user = Auth::user();
-    
-        if (!$user) {
-            return response()->json([
-                'code' => 401,
-                'message' => 'Unauthorized',
-            ], 401);
-        }
-
-
-        $TeamRequests = TeamRequests::create([
-
-
-            'team_id' => $request->input('team_id'),
-            'fullName' =>$user->fullName,
-            'nationality' =>$user->nationality,
-            'placeOfPlayer' =>$user->placeOfPlayer,
-            'user_id' =>$user->id,
-            
-        ]);
-
-        return response()->json([
-
-            'code'=>200,
-            'message' => 'Request sent successfully',
-        
-        ]);
-
-
-        
-    }
-
 
 
 

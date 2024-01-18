@@ -29,6 +29,11 @@ class Maatch extends Model
         return $this->belongsTo(Round::class);
 
     }
+    
+    public function nextRoundMatch()
+    {
+        return $this->hasOne(Maatch::class, 'previous_match_id');
+    }
 
     public function team1()
     {

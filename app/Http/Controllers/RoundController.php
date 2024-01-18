@@ -12,85 +12,55 @@ class RoundController extends Controller
 {
     
 
-    public function createTree(string $id){
+    public function createTree(string $id)
+{
+    $championship = Championship::findOrFail($id);
 
-        $championship=Championship::findOrFail($id);
+    for ($i = 1; $i <= 3; $i++) {
 
-      
-        for ($i=1; $i<=3; $i++){
+        $round = new Round([
+            'round' => $i,
+        ]);
 
-            $round = new Round([
-                'round' => $i,
+        $championship->rounds()->save($round);
+
+        // Create matches for the current round
+        for ($j = 0; $j < 2 ** (3 - $i); $j++) {
+
+            $match = new Maatch([
+                'date' => null,
+                'time' => null,
+                'location' => null,
+                'stad' => null,
+                'team1_id' => null,
+                'team2_id' => null,
             ]);
-    
-            $championship->rounds()->save($round);
-           
 
-        if ($i === 1) {
+            $round->matches()->save($match);
 
-            for ($j = 0; $j < 4; $j++) {
+            // Set previous_match_id for the next round matches
+            if ($i < 3) {
+                $nextRound = $championship->rounds()->where('round', $i + 1)->first();
 
-            
-                $match = new Maatch([
+                // Check if there is a next round
+                if ($nextRound) {
+                    // Calculate the position of the corresponding match in the next round
+                    $nextRoundMatchPosition = ceil(($j + 1) / 2);
 
-                    'date' => null,
-                    'time' => null,
-                    'location' => null,
-                    'stad' => null,
+                    // Find the corresponding match in the next round
+                    $nextRoundMatch = $nextRound->matches()->where('position', $nextRoundMatchPosition)->first();
 
-                    'team1_id' => null,
-                    'team2_id' => null,
-                ]);
-
-                $round->matches()->save($match);
+                    if ($nextRoundMatch) {
+                        $nextRoundMatch->update(['previous_match_id' => $match->id]);
+                    }
+                }
             }
         }
-
-        if ($i === 2) {
-
-            for ($j = 0; $j < 2; $j++) {
-
-            
-                $match = new Maatch([
-
-                    'date' => null,
-                    'time' => null,
-                    'location' => null,
-                    'stad' => null,
-
-                    'team1_id' => null,
-                    'team2_id' => null,
-                ]);
-
-                $round->matches()->save($match);
-            }
-        }
-
-        if ($i === 3) {
-
-                $match = new Maatch([
-
-                    'date' => null,
-                    'time' => null,
-                    'location' => null,
-                    'stad' => null,
-
-                    'team1_id' => null,
-                    'team2_id' => null,
-                ]);
-
-                $round->matches()->save($match);
-            
-        }
-        }
-
-         
-        return ;
-
-
-
     }
 
+    return;
+}
+    
 
 
 
@@ -172,6 +142,10 @@ class RoundController extends Controller
 
 
 
+
+
+
+
     public function editRoundMatches(Request $request, string $id){
 
 
@@ -187,24 +161,49 @@ class RoundController extends Controller
             
         ]);
 
-        $team = Team::FindOrFail($request->input('winner'));
+        $winningTeam = Team::findOrFail($request->input('winner'));
 
-        if ($team) {
-            $team->update([
-                'wins' => $team->wins + 1
-            ]);
-        }
+        $nextRoundNumber = $match->round->round + 1;
 
-        return response()->json([
-    
-            'code'=>200,
-            'message' => 'round match updated successfully',
-        ]);
+    // Retrieve or create the next round
+    $nextRound = Round::where('championship_id', $match->round->championship_id)
+        ->where('round', $nextRoundNumber)
+        ->first();
 
-
-
-
+    if (!$nextRound) {
+        // Create a new round if it doesn't exist
+        $nextRound = new Round(['round' => $nextRoundNumber]);
+        $match->round->championship->rounds()->save($nextRound);
     }
+
+    // Identify the match in the next round
+    $nextRoundMatch = $nextRound->matches()
+        ->where(function ($query) use ($match) {
+            $query->where('team1_id', null)->orWhere('team2_id', null);
+        })
+        ->first();
+
+    if ($nextRoundMatch) {
+        // Update the next round match with the winning team
+        if ($nextRoundMatch->team1_id === null) {
+            $nextRoundMatch->update(['team1_id' => $winningTeam->id]);
+        } else {
+            $nextRoundMatch->update(['team2_id' => $winningTeam->id]);
+        }
+    }
+
+    return response()->json([
+        'code' => 200,
+        'message' => 'round match updated successfully',
+    ]);
+    }
+
+
+
+
+
+
+
 
 
     public function getRoundMatchDetails(string $id){

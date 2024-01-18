@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Formation;
 use App\Models\Team;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FormationController extends Controller
 {
-    public function getFormation(string $id){
 
-        $team=Team::findOrFail($id);
+    
+    public function getFormation(){
+
+        $user = User::find(Auth::id());
+        $team = $user->team;
         $formation=$team->formation;
 
         return response()->json([

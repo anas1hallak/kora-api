@@ -183,7 +183,26 @@ class GroupController extends Controller
         }
 
 
+        public function getGroupMatchDetails(string $id){
 
+            $match=Gmatch::findOrFail($id);
+            $teams = $match->teams();
+            
+            foreach ($teams as $team) {
+                if($team!=null){
+    
+                    $team=$team->image;
+    
+                }
+            }
+    
+            return response()->json([
+            
+                'code'=>200,
+                'match' => $match,
+            ]);   
+    
+        }
     
     public function editGroupMatches(Request $request, string $id){
 
@@ -200,12 +219,18 @@ class GroupController extends Controller
             
         ]);
 
-        $gteam = Gteam::where('team_id', $request->input('winner'))->first();
+        $group = $match->group;
 
-        if ($gteam) {
-            $gteam->update([
-                'points' => $gteam->points + 3
-            ]);
+        if ($group) {
+            // Retrieve the team in the group with the specified team_id
+            $gteam = $group->teams()->where('team_id', $request->input('winner'))->first();
+
+            if ($gteam) {
+                // Update the points for the team in the group
+                $gteam->update([
+                    'points' => $gteam->points + 3
+                ]);
+            }
         }
 
         $team = Team::findOrFail($request->input('winner'));

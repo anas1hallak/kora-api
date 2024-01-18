@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Championship;
-use Illuminate\Http\Request;
-
 use App\Models\Team;
 use App\Models\User;
 use App\Models\ChampionshipRequests;
@@ -12,6 +10,8 @@ use App\Models\Formation;
 use App\Models\Gteam;
 use App\Models\Teamimage;
 use App\Models\TeamRequests;
+
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Storage;
@@ -86,6 +86,17 @@ class TeamController extends Controller
         $user->update();
 
 
+        
+        $formation = Formation::create([
+
+            'team_id'=>$team->id,
+            'user_id'=>$user->id,
+            'position'=>'none',
+            'fullName'=>$user->fullName,
+            'imagePath' => $user->image ? asset('/storage/'. $user->image->path) : null,
+
+
+        ]);
         
         return response()->json([
 
@@ -326,48 +337,20 @@ class TeamController extends Controller
 
 
 
-    public function addUserToTeam(string $id){
-
-        $teamRequest=TeamRequests::findOrFail($id);
-
-        $user=User::findOrFail($teamRequest->user_id);
-
-
-        $user->selected='selected';
-        $user->team_id=$teamRequest->team_id;
-
-        $user->update();
-
-
-        $formation = Formation::create([
-
-            'team_id'=>$teamRequest->team_id,
-            'user_id'=>$user->id,
-            'position'=>'none',
-            'fullName'=>$user->fullName,
-            'imagePath' => $user->image ? asset('/storage/'. $user->image->path) : null,
-
-
-        ]);
-
-        $teamRequest->delete();
-
-
-        return response()->json([
-
-            'code'=>200,
-            'message' => 'user aded to team successfully',
-        
-        ]);
-
-
-
-    }
-
-
-
+   
 
     public function requestToJoinChampionship(Request $request){
+
+        $user = Auth::user();
+    
+        if (!$user) {
+            return response()->json([
+                'code' => 401,
+                'message' => 'Unauthorized',
+            ], 401);
+        }
+    
+        $team = $user->team;
 
         $championship = Championship::findOrFail($request->input('championship_id'));
 
@@ -384,7 +367,7 @@ class TeamController extends Controller
         }
 
 
-       $team = Team::with('image')->findOrFail($request->input('team_id'));
+       $team = Team::with('image')->findOrFail($team->id);
        
 
        $teamImage = null;
@@ -398,7 +381,7 @@ class TeamController extends Controller
         $ChampionshipRequests = ChampionshipRequests::create([
 
 
-            'team_id' => $request->input('team_id'),
+            'team_id' => $team->id,
             'championship_id' =>$request->input('championship_id'),
             'teamName' =>$team->teamName,
             'coachName' =>$team->coachName,
