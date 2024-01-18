@@ -34,9 +34,8 @@ class ChampionshipController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 401);
+            return response()->json(['message'=>$validator->errors()->first()],400);
         }
-
 
         $championship = Championship::create([
 
@@ -140,13 +139,22 @@ class ChampionshipController extends Controller
 
 
 
-    public function getAllChampionships()
+    public function getAllChampionships(Request $request)
     {
 
         
         $perPage = request()->input('per_page', 10);
 
-        $championships = Championship::with('image')->paginate($perPage);
+        $query = $request->query('search');
+    
+        $championshipsQuery = Championship::with('image');
+    
+        if ($query) {
+            $championshipsQuery->where('championshipName', 'LIKE', "%$query%");
+        }
+    
+        $championships = $championshipsQuery->paginate($perPage);
+    
 
         $championshipData = [];
 

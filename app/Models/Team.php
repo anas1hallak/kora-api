@@ -15,6 +15,7 @@ class Team extends Model
         'teamName',
         'points',
         'wins',
+        'rate',
         'termsAndConditions',
         'coachName',
         'coachPhoneNumber',

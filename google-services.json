@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "27913986647",
+    "project_id": "kora-project-63c71",
+    "storage_bucket": "kora-project-63c71.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:27913986647:android:b23df67019d0279dfe3912",
+        "android_client_info": {
+          "package_name": "com.kora.koraapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpZ-Gcpm2eXdYlWpcwN0JQ_gZGbKJA4Yk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

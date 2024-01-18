@@ -10,20 +10,22 @@ Route::post('/login', [UserController::class, 'login']);//tested
 Route::get('/getUser/{id}', [UserController::class, 'getUser']);//tested
 Route::get('/getAllUsers', [UserController::class, 'getAllUsers']);//tested
 Route::delete('/deleteUser/{id}', [UserController::class, 'deleteUser']);
-Route::post('/requestToJoinTeam', [UserController::class, 'requestToJoinTeam']);//tested
+Route::put('/editUserSkills/{id}', [UserController::class, 'editUserSkills']);//testeda
 
 
 
 
 
 
-Route::post('/createTeam', [TeamController::class, 'createTeam']); //tested
+
 Route::get('/getTeam/{id}', [TeamController::class, 'getTeam']);//tested
 Route::get('/getTeamPlayers/{id}', [TeamController::class, 'getTeamPlayers']);//tested
 Route::get('/getAllTeams', [TeamController::class, 'getAllTeams']);//tested
 Route::post('/addUserToTeam/{id}', [TeamController::class, 'addUserToTeam']);//tested
 Route::delete('/deleteTeam/{id}', [TeamController::class, 'deleteTeam']);//tested
 Route::post('/requestToJoinChampionship', [TeamController::class, 'requestToJoinChampionship']);//tested
+Route::put('/editTeamPoints/{id}', [TeamController::class, 'editTeamPoints']);//tested
+
 
 Route::get('/getAllTeamRequests/{id}', [TeamRequestsController::class, 'getAllTeamRequests']);//tested
 
@@ -44,6 +46,9 @@ Route::get('/getAllChampionships', [ChampionshipController::class, 'getAllChampi
 
 
 Route::get('/getTree/{id}', [RoundController::class, 'getTree']); //tested
+Route::get('/getRoundMatchDetails/{id}', [RoundController::class, 'getRoundMatchDetails']); //tested
+
+
 Route::get('/getGroups/{id}', [GroupController::class, 'getGroups']); //tested
 Route::get('/getGroupMatches/{id}', [GroupController::class, 'getGroupMatches']); //tested
 
@@ -57,12 +62,9 @@ Route::get('/getAllChampionshipRequests/{id}', [ChampionshipRequestsController::
 
 
 
-Route::post('/searchTeam', [SearchController::class, 'searchTeam']); //tested
-Route::post('/searchUser', [SearchController::class, 'searchUser']); //tested
-Route::post('/searchChampionship', [SearchController::class, 'searchChampionship']); //tested
-
-
-
+// Route::post('/searchTeam', [SearchController::class, 'searchTeam']); //tested
+// Route::post('/searchUser', [SearchController::class, 'searchUser']); //tested
+// Route::post('/searchChampionship', [SearchController::class, 'searchChampionship']); //tested
 
 
 
@@ -79,7 +81,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/profile', [UserController::class, 'profile']);
     Route::post('/editProfile', [UserController::class, 'editProfile']);
     Route::post('/completeSignup', [UserController::class, 'completeSignup']);//tested
+    Route::post('/requestToJoinTeam', [UserController::class, 'requestToJoinTeam']);//tested
 
+
+    
+    Route::post('/createTeam', [TeamController::class, 'createTeam']); //tested
     Route::get('/teamProfile', [TeamController::class, 'teamProfile']);
     Route::post('/editTeamProfile', [TeamController::class, 'editTeamProfile']);
 
@@ -92,3 +98,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 });
 
+
+
+
+Route::post('/sendNotification', [PushNotificationController::class, 'sendNotification']); //tested

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('points');
             $table->integer('wins');
             $table->double('rate')->default(0.0);
-            $table->string('termsAndConditions');
+            $table->string('termsAndConditions')->default('No Terms And Conditions');
             $table->string('coachName');
             $table->string('coachPhoneNumber');
             $table->string('coachEmail');

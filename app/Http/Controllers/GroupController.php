@@ -200,11 +200,19 @@ class GroupController extends Controller
             
         ]);
 
-        $team = Gteam::where('team_id', $request->input('winner'))->first();
+        $gteam = Gteam::where('team_id', $request->input('winner'))->first();
+
+        if ($gteam) {
+            $gteam->update([
+                'points' => $gteam->points + 3
+            ]);
+        }
+
+        $team = Team::findOrFail($request->input('winner'));
 
         if ($team) {
             $team->update([
-                'points' => $team->points + 3
+                'wins' => $team->wins + 1
             ]);
         }
 

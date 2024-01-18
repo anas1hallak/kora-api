@@ -32,7 +32,7 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
 
             'fullName' => 'required',
-            'phoneNumber' => 'required',
+            'phoneNumber' => 'required|unique:users',
             'password' => 'required|min:8',
             'email' => 'required|email|unique:users',
             'age'=>'required',
@@ -42,7 +42,7 @@ class UserController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 401);
+            return response()->json(['message'=>$validator->errors()->first()],400);
         }
 
 
@@ -187,7 +187,7 @@ class UserController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 401);
+            return response()->json(['message'=>$validator->errors()->first()],400);
         }
 
         $user = User::find(Auth::id());
@@ -269,7 +269,15 @@ class UserController extends Controller
 
     public function requestToJoinTeam(Request $request){
 
-        $user=User::findOrFail($request->input('user_id'));
+        $user = Auth::user();
+    
+        if (!$user) {
+            return response()->json([
+                'code' => 401,
+                'message' => 'Unauthorized',
+            ], 401);
+        }
+
 
         $TeamRequests = TeamRequests::create([
 
@@ -278,7 +286,7 @@ class UserController extends Controller
             'fullName' =>$user->fullName,
             'nationality' =>$user->nationality,
             'placeOfPlayer' =>$user->placeOfPlayer,
-            'user_id' =>$request->input('user_id'),
+            'user_id' =>$user->id,
             
         ]);
 
@@ -297,19 +305,32 @@ class UserController extends Controller
 
 
 
-    public function getAllUsers()
+    public function getAllUsers(Request $request)
     {
         $perPage = request()->input('per_page', 10);
-    
-        $users = User::with(['team', 'image'])->paginate($perPage);
-    
-        foreach($users as $user) {
+        $query = $request->query('search');
 
-            $imagePath = $user->image ? asset('/storage/' . $user->image->path) : null;
-            $user->imagePath = $imagePath;
-            unset($user['image']);
-        };
+        $usersQuery = User::with(['team', 'image']);
+
+        if($query){
+
+            $usersQuery->where('fullName', 'LIKE', "%$query%");
     
+        }
+
+        
+
+            $users = $usersQuery->paginate($perPage);
+        
+
+
+            foreach($users as $user) {
+
+                $imagePath = $user->image ? asset('/storage/' . $user->image->path) : null;
+                $user->imagePath = $imagePath;
+                unset($user['image']);
+            };
+        
         return response()->json([
             'code' => 200,
             'data' => [
@@ -339,7 +360,7 @@ class UserController extends Controller
         ]);
     
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 400);
+            return response()->json(['message'=>$validator->errors()->first()],400);
         }
     
         $credentials = $request->only('phoneNumber', 'password');
@@ -349,7 +370,12 @@ class UserController extends Controller
             /** @var \App\Models\User $user **/
 
             $user = Auth::user();
-            $user->fcmTokens;
+
+            FcmToken::updateOrCreate(
+                ['user_id' => $user->id],
+                ['fcmToken' => $request->input('fcmToken')]
+            );
+
             $user->image;
             $user->team;
 
@@ -431,6 +457,27 @@ class UserController extends Controller
             'message' => 'Successfully logged out',
             
         ]);
+    }
+
+
+    public function editUserSkills(Request $request,string $id){
+
+        $user=User::findOrFail($id);
+        $user->update([
+
+            'elo' => $request->input('skills'),
+        
+            
+        ]);
+
+        return response()->json([
+
+            'code'=>200,
+            'message' => 'User Skills updated successfully'
+
+        ]);
+
+
     }
 
 

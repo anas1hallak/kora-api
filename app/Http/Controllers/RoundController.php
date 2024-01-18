@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Championship;
 use App\Models\Maatch;
 use App\Models\Round;
-
+use App\Models\Team;
 use Illuminate\Http\Request;
 
 class RoundController extends Controller
@@ -187,6 +187,13 @@ class RoundController extends Controller
             
         ]);
 
+        $team = Team::FindOrFail($request->input('winner'));
+
+        if ($team) {
+            $team->update([
+                'wins' => $team->wins + 1
+            ]);
+        }
 
         return response()->json([
     
@@ -197,9 +204,30 @@ class RoundController extends Controller
 
 
 
+    }
 
+
+    public function getRoundMatchDetails(string $id){
+
+        $match=Maatch::findOrFail($id);
+        $teams = $match->teams();
+        
+        foreach ($teams as $team) {
+            if($team!=null){
+
+                $team=$team->image;
+
+            }
+        }
+
+        return response()->json([
+        
+            'code'=>200,
+            'match' => $match,
+        ]);   
 
     }
+
     
 
 

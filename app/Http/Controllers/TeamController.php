@@ -25,22 +25,36 @@ class TeamController extends Controller
 
     public function createTeam(Request $request)
     {
+
+
+        $user = User::find(Auth::id());
+    
+        if (!$user) {
+            return response()->json([
+                'code' => 401,
+                'message' => 'Unauthorized',
+            ], 401);
+        }
+
+
         $validator = Validator::make($request->all(), [
+
             'teamName' => 'required|unique:teams',
+
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 422);
+            return response()->json(['message'=>$validator->errors()->first()],400);
         }
 
-        $user=User::findOrFail($request->input('user_id'));
-
+       
         $team = Team::create([
 
             'teamName' => $request->input('teamName'),
             'points' =>0,
             'wins' =>0,
-            'termsAndConditions'=>"No terms and conditions",
+            'rate'=>0.1,
+            'termsAndConditions'=>$request->input('termsAndConditions'),
             'coachName'=>$user->fullName,
             'coachPhoneNumber'=>$user->phoneNumber,
             'coachEmail'=>$user->email,
@@ -82,10 +96,6 @@ class TeamController extends Controller
         ]);
 
         
-
-
-
-
 
     }
 
@@ -172,7 +182,7 @@ class TeamController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 401);
+            return response()->json(['message'=>$validator->errors()->first()],400);
         }
         
         $user = Auth::user();
@@ -205,9 +215,9 @@ class TeamController extends Controller
             $path = $file->storeAs('images', $fileName, 'public');
             
             // Delete previous image, if any
-            if ($user->image) {
-                Storage::disk('public')->delete($user->image->path);
-                $user->image->delete();
+            if ($team->image) {
+                Storage::disk('public')->delete($team->image->path);
+                $team->image->delete();
             }
 
             // Create a new image model
@@ -251,11 +261,23 @@ class TeamController extends Controller
 
 
 
-    public function getAllTeams()
+    public function getAllTeams(Request $request)
     {
         $perPage = request()->input('per_page', 10);
-        
-        $teams = Team::with('image')->paginate($perPage);
+        $query = $request->query('search');
+
+        $teamsQuery = Team::with('image');
+
+
+        if($query){
+
+            $teamsQuery->where('teamName', 'LIKE', "%$query%");
+
+        }
+
+        $teams = $teamsQuery->paginate($perPage);
+
+
 
         $teamdata = [];
 
@@ -327,6 +349,8 @@ class TeamController extends Controller
 
 
         ]);
+
+        $teamRequest->delete();
 
 
         return response()->json([
@@ -423,6 +447,28 @@ class TeamController extends Controller
 
         ]);
 
+
+
+
+    }
+
+    public function editTeamPoints(Request $request , string $id){
+
+        $team=Team::findOrFail($id);
+
+        $team->update([
+
+            'points' => $request->input('points'),
+        
+            
+        ]);
+
+        return response()->json([
+
+            'code'=>200,
+            'message' => 'Team points updated successfully'
+
+        ]);
 
 
 
