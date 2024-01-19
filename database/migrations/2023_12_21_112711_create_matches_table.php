@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('location')->nullable();
             $table->string('stad')->nullable();
 
-            $table->integer('previous_match_id')->nullable();
+            $table->integer('position')->nullable();
             $table->integer('round_id');
             $table->integer('team1_id')->nullable();
             $table->integer('team2_id')->nullable();

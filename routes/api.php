@@ -14,6 +14,10 @@ Route::post('/rejectTeamRequest/{id}', [UserRequestsController::class, 'rejectTe
 Route::delete('/deleteUser/{id}', [UserController::class, 'deleteUser']);
 Route::put('/editUserSkills/{id}', [UserController::class, 'editUserSkills']);//testeda
 
+Route::put('/resetPassword', [ForgotPasswordController::class, 'resetPassword']);//testeda
+Route::post('/checkPhoneNumber', [ForgotPasswordController::class, 'checkPhoneNumber']);//testeda
+
+
 
 
 

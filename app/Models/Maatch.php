@@ -15,6 +15,7 @@ class Maatch extends Model
         'time',
         'location',
         'stad',
+        'position',
         'round_id',
         'team1_id',
         'team2_id',
