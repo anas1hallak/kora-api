@@ -13,6 +13,7 @@ use App\Models\Team;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -92,18 +93,35 @@ class ChampionshipController extends Controller
     public function championshipProfile()
     {
         // Get the authenticated user
-        $user = Auth::user();
+        $user = User::find(Auth::id());
 
         if (!$user) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        $championship=$user->team->championship;
+        
+        $team=$user->team;
+        
+        $championshipId = DB::table('championship_team')
+        ->where('team_id', $team->id)
+        ->value('championship_id');
+
+        $championship=Championship::findOrFail($championshipId);
+
+        $teamsCount = $championship->teams()->count();
+        $imagePath = $championship->image ? asset('/storage/'. $championship->image->path) : null;
+
+        $championship->teamsCount = $teamsCount;
+        $championship->imagePath = $imagePath;
+
+        unset($championship['image']);
         
 
         if (!$championship) {
             return response()->json(['error' => 'User is not associated with any championship'], 404);
         }
+
+    
 
         return response()->json([
             'code' => 200,
@@ -171,6 +189,7 @@ class ChampionshipController extends Controller
         
         $imagePath = $championship->image ? asset('/storage/'. $championship->image->path) : null;
             
+
         $championshipData[] = [
 
             'id' => $championship->id,
@@ -183,6 +202,8 @@ class ChampionshipController extends Controller
             'endDate'=>$championship->endDate,
             'status'=>$championship->status,
             'imagePath' => $imagePath,
+            'teamsCount' => $championship->teams()->count(),
+
         ];
     }
 

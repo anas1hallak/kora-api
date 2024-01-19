@@ -118,6 +118,8 @@ class RoundController extends Controller
                 foreach ($teams as $team) {
                     if($team!=null){
 
+                        $imagePath = $team->image ? asset('/storage/'. $team->image->path) : null;
+                        $team->imagePath = $imagePath;
                         $team=$team->image;
 
                     }

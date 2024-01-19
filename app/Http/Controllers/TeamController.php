@@ -13,6 +13,7 @@ use App\Models\TeamRequests;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -40,6 +41,7 @@ class TeamController extends Controller
         $validator = Validator::make($request->all(), [
 
             'teamName' => 'required|unique:teams',
+            'image'=>'required'
 
         ]);
 
@@ -352,7 +354,33 @@ class TeamController extends Controller
     
         $team = $user->team;
 
-        $championship = Championship::findOrFail($request->input('championship_id'));
+        $existingAssociation = DB::table('championship_team')
+        ->where('team_id', $team->id)
+        ->exists();
+
+
+        if ($existingAssociation) {
+            return response()->json([
+                'code' => 400,
+                'message' => 'Team is already associated with another championship.',
+            ],400);
+        }
+
+        $championshipId = $request->input('championship_id');
+
+        $existingRequest = ChampionshipRequests::where('team_id', $team->id)
+            ->where('championship_id', $championshipId)
+            ->first();
+    
+        if ($existingRequest) {
+            return response()->json([
+
+                'code' => 400,
+                'message' => 'Request already exists for this championship.',
+            ],400);
+        }
+    
+        $championship = Championship::findOrFail($championshipId);
 
         $teamsCount = $championship->teams()->count();
 
@@ -360,6 +388,7 @@ class TeamController extends Controller
 
 
             return response()->json([
+
                 'code' => 400,
                 'message' => 'Championship is already full. Cannot accept more teams.',
             ]);
