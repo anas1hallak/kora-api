@@ -109,7 +109,7 @@ class ChampionshipController extends Controller
 
 
         if (!$championshipId) {
-            return response()->json(['message' => 'User is not associated with any championship'], 404);
+            return response()->json(['message' => 'User is not associated with any championship'], 200);
         }
 
 
