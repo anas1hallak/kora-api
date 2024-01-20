@@ -311,6 +311,8 @@ class TeamController extends Controller
                 'rate' => $team->rate,
                 'wins' => $team->wins,
                 'coachName' => $team->coachName,
+                'coachPhoneNumber' => $team->coachPhoneNumber,
+                'coachEmail' => $team->coachEmail,
                 'teamCount'=>$teamCount,
                 'imagePath' => $imagePath,
 
