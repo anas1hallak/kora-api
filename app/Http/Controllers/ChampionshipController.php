@@ -106,8 +106,16 @@ class ChampionshipController extends Controller
         ->where('team_id', $team->id)
         ->value('championship_id');
 
+
+
+        if (!$championshipId) {
+            return response()->json(['message' => 'User is not associated with any championship'], 404);
+        }
+
+
         $championship=Championship::findOrFail($championshipId);
 
+        
         $teamsCount = $championship->teams()->count();
         $imagePath = $championship->image ? asset('/storage/'. $championship->image->path) : null;
 
@@ -117,9 +125,7 @@ class ChampionshipController extends Controller
         unset($championship['image']);
         
 
-        if (!$championship) {
-            return response()->json(['error' => 'User is not associated with any championship'], 404);
-        }
+        
 
     
 
