@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('teamName')->unique();
             $table->integer('points');
             $table->integer('wins');
-            $table->double('rate')->default(0.0);
+            $table->double('rate')->default(0.5);
             $table->string('termsAndConditions')->default('No Terms And Conditions');
             $table->string('coachName');
             $table->string('coachPhoneNumber');

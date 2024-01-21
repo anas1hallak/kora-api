@@ -59,21 +59,32 @@ class RoundController extends Controller
     
 
 
+
+
+
     public function insertTeamIntoTree(string $id)
     {
         $championship = Championship::findOrFail($id);
 
         $topTeamsArray = [];
+        $bottomTeamsArray = [];
 
         foreach ($championship->groups as $group) {
             
             $topTeams = $group->teams()->orderByDesc('points')->orderByDesc('goals')->take(2)->pluck('team_id')->toArray();
 
             $topTeamsArray = array_merge($topTeamsArray, $topTeams);
+
+
+
+            $bottomTeams = $group->teams()->orderBy('points')->orderBy('goals')->take(2)->pluck('team_id')->toArray();
+
+            $bottomTeamsArray = array_merge($bottomTeamsArray, $bottomTeams);
         }
 
         shuffle($topTeamsArray);
 
+        $championship->teams()->detach($bottomTeamsArray);
 
 
         $R1matches = $championship->rounds()->where('round', 1)->first()->matches;
@@ -104,6 +115,10 @@ class RoundController extends Controller
 
         return ;
     }
+
+
+
+
 
 
 
@@ -156,32 +171,64 @@ class RoundController extends Controller
         ]);
     
         $winningTeam = Team::findOrFail($request->input('winner'));
-    
+
+        $losingTeamId = ($match->team1_id === $winningTeam->id) ? $match->team2_id : $match->team1_id;
+
+
+
+        $championship=$match->round->championship;
+        
+        $championship->teams()->detach($losingTeamId);
+
+
+
+
+
         $nextRoundNumber = $match->round->round + 1;
     
-        // Retrieve or create the next round
-        $nextRound = Round::where('championship_id', $match->round->championship_id)
-            ->where('round', $nextRoundNumber)
-            ->first();
-    
-        
-        // Identify the match in the next round based on position
-        $nextRoundMatch = $nextRound->matches()->where('position', ceil($match->position / 2))->first();
-    
-        if ($nextRoundMatch) {
-            // Update the next round match with the winning team
-            if ($nextRoundMatch->team1_id === null) {
-                $nextRoundMatch->update(['team1_id' => $winningTeam->id]);
-            } else {
-                $nextRoundMatch->update(['team2_id' => $winningTeam->id]);
+        if ($nextRoundNumber <= 3) {
+            // Retrieve or create the next round
+            $nextRound = Round::where('championship_id', $match->round->championship_id)
+                ->where('round', $nextRoundNumber)
+                ->first();
+            
+            // Identify the match in the next round based on position
+            $nextRoundMatch = $nextRound->matches()->where('position', ceil($match->position / 2))->first();
+            
+            if ($nextRoundMatch) {
+                // Update the next round match with the winning team
+                if ($nextRoundMatch->team1_id === null) {
+                    $nextRoundMatch->update(['team1_id' => $winningTeam->id]);
+                } else {
+                    $nextRoundMatch->update(['team2_id' => $winningTeam->id]);
+                }
             }
         }
-    
+        else {
+            // It's the final round, detach the winner from the championship
+
+            $losingTeam = Team::findOrFail($losingTeamId);
+
+           
+
+            $championship->update([
+
+                'firstWinner' =>$winningTeam->teamName,
+                'secondWinner' =>$losingTeam->teamName
+
+                
+            ]);
+            
+
+            $championship->teams()->detach($winningTeam->id);
+
+
+        }
+        
         return response()->json([
             'code' => 200,
             'message' => 'round match updated successfully',
         ]);
-
 
     }
     

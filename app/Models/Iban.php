@@ -11,6 +11,7 @@ class Iban extends Model
 
     protected $fillable = [
         'ibanNumber',
+        'accountName'
     ];
 
     protected $hidden = ['created_at','updated_at'];

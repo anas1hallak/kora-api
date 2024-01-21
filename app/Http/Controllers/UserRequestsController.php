@@ -9,6 +9,8 @@ use App\Models\UserRequests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
+
+
 class UserRequestsController extends Controller
 {
     
@@ -16,11 +18,22 @@ class UserRequestsController extends Controller
 
         $user = User::find(Auth::id());
         
-        $userRequest = UserRequests::where('user_id', $user->id)->get();
+        $userRequests = UserRequests::where('user_id', $user->id)->get();
+    
+        foreach ($userRequests as $request) {
+
+            $team = $request->team;
+                        
+            $imagePath = $team ? asset('/storage/' . optional($team->image)->path) : null;
+
+            $request->imagePath=$imagePath;
+
+            unset($request->team);
+        }
     
         return response()->json([
             'status' => 200,
-            'UserRequests' => $userRequest,
+            'UserRequests' => $userRequests,
         ]);
     }
 
@@ -73,7 +86,6 @@ class UserRequestsController extends Controller
 
         $user->selected='selected';
         $user->team_id=$userRequest->team_id;
-
         $user->update();
 
 
@@ -88,8 +100,7 @@ class UserRequestsController extends Controller
 
         ]);
 
-        $userRequest->delete();
-
+        UserRequests::where('user_id', $user->id)->delete();
 
 
         $team = Team::findOrFail($user->team_id);

@@ -23,5 +23,10 @@ class Round extends Model
 
         return $this->hasMany(Maatch::class);
     }
+
+    public function championship(){
+
+        return $this->belongsTo(Championship::class);
+    }
     
 }

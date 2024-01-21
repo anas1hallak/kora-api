@@ -23,6 +23,19 @@ class TeamRequestsController extends Controller
 
         $TeamRequests = TeamRequests::where('team_id', $team->id)->get();
     
+
+        foreach ($TeamRequests as $request) {
+
+            $user = $request->user;
+                        
+            $imagePath = $user ? asset('/storage/' . optional($user->image)->path) : null;
+
+            $request->imagePath=$imagePath;
+
+            unset($request->user);
+        }
+
+
         return response()->json([
             'status' => 200,
             'TeamRequests' => $TeamRequests,

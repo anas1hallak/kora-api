@@ -24,6 +24,9 @@ return new class extends Migration
             $table->date('endDate');
             $table->string('termsAndConditions')->default('No Terms And Conditions');
             $table->string('status')->default('open');
+            $table->string('firstWinner')->default('TBD');
+            $table->string('secondWinner')->default('TBD');
+
             $table->timestamps();
 
 
