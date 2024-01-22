@@ -134,10 +134,19 @@ class UserController extends Controller
 
     public function getUser(string $id)
     {
-        $user = User::findOrFail($id);
         $user = User::with('team')->findOrFail($id);
         $imagePath = $user->image ? asset('/storage/' . $user->image->path) : null;
         $user->imagePath = $imagePath;
+
+        $team=$user->team;
+
+        if($team){
+
+        $imagePath = $team->image ? asset('/storage/'. $team->image->path) : null;
+        $team->imagePath = $imagePath;
+        unset($team['image']);
+
+        }
 
         unset($user['image']);
 
@@ -162,7 +171,18 @@ class UserController extends Controller
         $imagePath = $user->image ? asset('/storage/' . $user->image->path) : null;
         $user->imagePath = $imagePath;
 
+        $team=$user->team;
+        
+        if($team){
+
+            $imagePath = $team->image ? asset('/storage/'. $team->image->path) : null;
+            $team->imagePath = $imagePath;
+            unset($team['image']);
+    
+            }
+
         unset($user['image']);
+
 
         return response()->json([
             'code' => 200,

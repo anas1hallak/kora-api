@@ -157,14 +157,30 @@ class TeamController extends Controller
         }
     
         $team = $user->team;
+
+        if(!$team){
+
+            return response()->json([
+                'code' => 401,
+                'message' => 'No team for this player yet',
+            ], 401);
+
+
+        }
     
         $team->load('players', 'image');
 
         $teamCount = $team->players()->count();
         $imagePath = $team->image ? asset('/storage/'. $team->image->path) : null;
-
         $team->teamCount = $teamCount;
         $team->imagePath = $imagePath;
+
+        foreach ($team->players as $player) {
+
+            $player->imagePath = $player->image ? asset('/storage/'. $player->image->path) : null;
+            unset($player['image']);
+            
+        }
 
         unset($team['image']);
 

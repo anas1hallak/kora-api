@@ -214,9 +214,9 @@ class RoundController extends Controller
             $championship->update([
 
                 'firstWinner' =>$winningTeam->teamName,
-                'secondWinner' =>$losingTeam->teamName
+                'secondWinner' =>$losingTeam->teamName,
+                'status' =>'Ended'
 
-                
             ]);
             
 

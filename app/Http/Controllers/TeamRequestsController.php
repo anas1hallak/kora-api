@@ -55,6 +55,20 @@ class TeamRequestsController extends Controller
         }
 
 
+
+        $existingRequest = TeamRequests::where('team_id', $request->input('team_id'))
+        ->where('user_id', $user->id)
+        ->first();
+
+        if ($existingRequest) {
+            return response()->json([
+                'code' => 400,
+                'message' => 'Request already sent to the team',
+            ],200);
+        }
+
+        
+
         $TeamRequests = TeamRequests::create([
 
 
@@ -108,6 +122,9 @@ class TeamRequestsController extends Controller
 
 
         ]);
+
+
+        $teamRequest=TeamRequests::findOrFail($id);
 
         $teamRequest->delete();
 

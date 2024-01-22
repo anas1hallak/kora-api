@@ -101,6 +101,16 @@ class ChampionshipController extends Controller
 
         
         $team=$user->team;
+
+        if(!$team){
+
+            return response()->json([
+                'code' => 401,
+                'message' => 'No team for this player yet',
+            ],200);
+
+
+        }
         
         $championshipId = DB::table('championship_team')
         ->where('team_id', $team->id)

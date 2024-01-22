@@ -52,6 +52,19 @@ class UserRequestsController extends Controller
         }
 
         $team = $user->team;
+
+
+        $existingRequest = UserRequests::where('team_id', $team->id)
+        ->where('user_id', $request->input('user_id'))
+        ->first();
+
+        if ($existingRequest) {
+            return response()->json([
+                'code' => 400,
+                'message' => 'Request already sent to the user',
+            ],200);
+        }
+        
         $userRequest = UserRequests::create([
 
 
