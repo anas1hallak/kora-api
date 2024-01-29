@@ -463,4 +463,39 @@ class UserController extends Controller
 
 
 
+
+    public function leaveTeam(){
+
+        $user = User::find(Auth::id());
+        
+        if (!$user) {
+            return response()->json([
+                'code' => 401,
+                'message' => 'Unauthorized',
+            ], 401);
+        }
+
+        $formation=Formation::where('user_id', $user->id);
+        $formation->delete();
+
+    
+        $user->update([
+
+            'team_id'=>null,
+            'selected'=>"not selected",
+            
+        ]);
+
+
+        return response()->json([
+
+            'code'=>200,
+            'message' => 'User left team successfully'
+
+        ]);
+
+
+    }
+
+
 }

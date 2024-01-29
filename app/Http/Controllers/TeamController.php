@@ -505,5 +505,33 @@ class TeamController extends Controller
     }
 
 
+    public function kickPlayer(string $id){
+
+        $user=User::findOrFail($id);
+       
+        $formation=Formation::where('user_id', $user->id);
+        $formation->delete();
+
+    
+        $user->update([
+
+            'team_id'=>null,
+            'selected'=>"not selected",
+            
+        ]);
+
+
+        return response()->json([
+
+            'code'=>200,
+            'message' => 'User kicked out of team successfully'
+
+        ]);
+
+
+    }
+
+
+
 
 }

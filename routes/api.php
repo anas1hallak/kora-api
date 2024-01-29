@@ -31,6 +31,8 @@ Route::post('/addUserToTeam/{id}', [TeamRequestsController::class, 'addUserToTea
 Route::post('/rejectUserRequest/{id}', [TeamRequestsController::class, 'rejectUserRequest']);//tested
 Route::delete('/deleteTeam/{id}', [TeamController::class, 'deleteTeam']);//tested
 Route::put('/editTeamPoints/{id}', [TeamController::class, 'editTeamPoints']);//tested
+Route::post('/kickPlayer/{id}', [TeamController::class, 'kickPlayer']);//tested
+
 
 
 
@@ -82,6 +84,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/requestToJoinTeam', [TeamRequestsController::class, 'requestToJoinTeam']);//tested
     Route::post('/inviteToMyTeam', [UserRequestsController::class, 'inviteToMyTeam']);//tested
     Route::post('/logout', [UserController::class, 'logout']);
+    Route::post('/leaveTeam', [UserController::class, 'leaveTeam']);
+
 
 
     Route::get('/getAllUserRequests', [UserRequestsController::class, 'getAllUserRequests']);//tested
