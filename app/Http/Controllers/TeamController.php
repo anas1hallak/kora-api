@@ -468,6 +468,12 @@ class TeamController extends Controller
         }
 
 
+        $formations = $team->formation;
+
+        foreach ($formations as $formation) {
+            $formation->delete();
+        }
+    
         $team->delete();
 
         return response()->json([
@@ -508,6 +514,18 @@ class TeamController extends Controller
     public function kickPlayer(string $id){
 
         $user=User::findOrFail($id);
+
+        if($user->role_id===1){
+
+            return response()->json([
+
+                'code'=>200,
+                'message' => 'Team coach cannot be kicked from the team'
+    
+            ]);
+
+
+        }
        
         $formation=Formation::where('user_id', $user->id);
         $formation->delete();

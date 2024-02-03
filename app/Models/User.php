@@ -21,6 +21,7 @@ class User extends Authenticatable
         'placeOfPlayer',
         'selected',
         'role_id',
+        'team_id',
         'elo',
         
         
@@ -45,5 +46,9 @@ class User extends Authenticatable
         return $this->hasOne(Image::class);
     }    
     
+    public function formations()
+    {
+        return $this->hasMany(Formation::class, 'user_id');
+    }
 }
 

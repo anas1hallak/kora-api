@@ -403,7 +403,12 @@ class UserController extends Controller
     public function deleteUser(string $id){
         
         $user = User::findOrFail($id);
-    
+        $user->tokens()->delete();
+        $user->fcmTokens()->delete();
+        
+        $formation=Formation::where('user_id', $user->id);
+        $formation->delete();
+
         if ($user->image) {
             Storage::disk('public')->delete($user->image->path);
             $user->image->delete();

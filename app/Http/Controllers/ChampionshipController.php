@@ -14,6 +14,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -32,6 +33,7 @@ class ChampionshipController extends Controller
             'entryPrice' => 'required',
             'startDate' => 'required',
             'endDate'=>'required',
+            'termsAndConditions'=>'required',
             
               
         ]);
@@ -49,7 +51,7 @@ class ChampionshipController extends Controller
             'entryPrice'=>$request->input('entryPrice'),
             'startDate'=>$request->input('startDate'),
             'endDate'=>$request->input('endDate'),
-            //'termsAndConditions'=>$request->input('termsAndConditions'),
+            'termsAndConditions'=>$request->input('termsAndConditions'),
 
 
 
@@ -92,7 +94,7 @@ class ChampionshipController extends Controller
 
     public function championshipProfile()
     {
-        // Get the authenticated user
+
         $user = User::find(Auth::id());
 
         if (!$user) {
@@ -146,6 +148,67 @@ class ChampionshipController extends Controller
         ]);
     }
 
+
+    public function editChampionship(Request $request, string $id){
+
+        $validator = Validator::make($request->all(), [
+            'championshipName' => 'required',
+            'numOfParticipants' => 'required',
+            'prize1' => 'required',
+            'prize2' => 'required',
+            'entryPrice' => 'required',
+            'startDate' => 'required',
+            'endDate' => 'required',
+            'termsAndConditions'=>'required',
+
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json(['message' => $validator->errors()->first()], 400);
+        }
+    
+        $championship = Championship::findOrFail($id);
+    
+        $championship->update([
+
+            'championshipName' => $request->input('championshipName'),
+            'numOfParticipants' => $request->input('numOfParticipants'),
+            'prize1' => $request->input('prize1'),
+            'prize2' => $request->input('prize2'),
+            'entryPrice' => $request->input('entryPrice'),
+            'startDate' => $request->input('startDate'),
+            'endDate' => $request->input('endDate'),
+            'termsAndConditions'=>$request->input('termsAndConditions'),
+
+        ]);
+    
+        if ($request->hasFile('image')) {
+            
+            $file = $request->file('image');
+            $fileName = $file->getClientOriginalName();
+            $fileName = date('His') . $fileName;
+            $path = $request->file('image')->storeAs('images', $fileName, 'public');
+    
+            $imageModel = new Championshipimage;
+            $imageModel->path = $path;
+    
+            if ($championship->image) {
+                Storage::disk('public')->delete($championship->image->path);
+                $championship->image()->delete();
+            }
+    
+            $championship->image()->save($imageModel);
+        }
+    
+        $championship->load('image');
+    
+        return response()->json([
+            'code' => 200,
+            'message' => 'Championship updated successfully',
+            'championship' => $championship,
+        ]);
+
+    }
 
     
 
@@ -329,6 +392,57 @@ class ChampionshipController extends Controller
         ]);
 
 
+    }
+
+
+
+    public function deleteChampionship(string $id)
+    {
+        $championship = Championship::findOrFail($id);
+
+        try {
+
+            DB::beginTransaction();
+
+            if ($championship->image) {
+                Storage::disk('public')->delete($championship->image->path);
+                $championship->image()->delete();
+            }
+
+            $championship->groups()->each(function ($group) {
+
+                $group->teams()->delete();
+                $group->matches()->delete();
+                $group->delete();
+
+            });
+
+            
+            $championship->rounds()->each(function ($round) {
+                $round->matches()->delete();
+                $round->delete();
+            });
+
+            $championship->teams()->detach();
+
+            $championship->delete();
+
+            DB::commit();
+
+            return response()->json([
+                'code' => 200,
+                'message' => 'Championship deleted successfully',
+            ]);
+
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            return response()->json([
+                'code' => 500,
+                'message' => 'Error deleting championship: ' . $e->getMessage(),
+            ], 500);
+        }
     }
 
    

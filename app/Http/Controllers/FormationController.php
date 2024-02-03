@@ -16,12 +16,20 @@ class FormationController extends Controller
 
         $user = User::find(Auth::id());
         $team = $user->team;
-        $formation=$team->formation;
+        $formations = $team->formation()->with('user')->get();
+
+        foreach ($formations as $formation) {
+
+            $formation->imagePath = $formation->user->image ? asset('/storage/' . $formation->user->image->path): null;
+            unset($formation->user->image); 
+            unset($formation['user']);
+           
+        }
 
         return response()->json([
 
             'code'=>200,
-            'formation'=>$formation,
+            'formation'=>$formations,
         
         ]);
 

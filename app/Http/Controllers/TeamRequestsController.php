@@ -118,8 +118,6 @@ class TeamRequestsController extends Controller
             'user_id'=>$user->id,
             'position'=>'none',
             'fullName'=>$user->fullName,
-            'imagePath' => $user->image ? asset('/storage/'. $user->image->path) : null,
-
 
         ]);
 

@@ -18,7 +18,6 @@ return new class extends Migration
             $table->integer('user_id');
             $table->string('position');
             $table->string('fullName');
-            $table->string('imagePath')->nullable();
             $table->timestamps();
 
         });
