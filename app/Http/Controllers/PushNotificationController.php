@@ -17,7 +17,7 @@ class PushNotificationController extends Controller
     public function sendNotification($tokens,$body,$title){
 
 
-        $fcmUrl=env('FCM_URL');
+        $fcmUrl="https://fcm.googleapis.com/v1/projects/kora-project-63c71/messages:send";
         $AuthToken=$this->getGoogleAccessToken();
 
 

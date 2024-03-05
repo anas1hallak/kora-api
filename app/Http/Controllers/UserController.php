@@ -138,17 +138,18 @@ class UserController extends Controller
         $imagePath = $user->image ? asset('/storage/' . $user->image->path) : null;
         $user->imagePath = $imagePath;
 
-        $team=$user->team;
-
+          $team=$user->team;
+        
         if($team){
 
-        $imagePath = $team->image ? asset('/storage/'. $team->image->path) : null;
-        $team->imagePath = $imagePath;
-        unset($team['image']);
-
-        }
+            $imagePath = $team->image ? asset('/storage/'. $team->image->path) : null;
+            $team->imagePath = $imagePath;
+            unset($team['image']);
+    
+            }
 
         unset($user['image']);
+
 
         return response()->json([
             'code' => 200,
@@ -171,7 +172,7 @@ class UserController extends Controller
         $imagePath = $user->image ? asset('/storage/' . $user->image->path) : null;
         $user->imagePath = $imagePath;
 
-        $team=$user->team;
+          $team=$user->team;
         
         if($team){
 
@@ -465,11 +466,8 @@ class UserController extends Controller
 
 
     }
-
-
-
-
-    public function leaveTeam(){
+    
+     public function leaveTeam(){
 
         $user = User::find(Auth::id());
         
@@ -501,6 +499,9 @@ class UserController extends Controller
 
 
     }
+    
+    
+
 
 
 }

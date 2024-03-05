@@ -19,6 +19,13 @@ class Round extends Model
     protected $hidden = ['created_at','updated_at'];
 
 
+    protected $casts = [
+        
+    'round' => 'integer',
+    'championship_id' => 'integer',
+    
+    ];
+
     public function matches(){
 
         return $this->hasMany(Maatch::class);

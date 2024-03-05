@@ -10,18 +10,23 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('personal_access_tokens', function (Blueprint $table) {
-            $table->id();
-            $table->morphs('tokenable');
-            $table->string('name');
-            $table->string('token', 64)->unique();
-            $table->text('abilities')->nullable();
-            $table->timestamp('last_used_at')->nullable();
-            $table->timestamp('expires_at')->nullable();
-            $table->timestamps();
-        });
-    }
+{
+    Schema::create('personal_access_tokens', function (Blueprint $table) {
+        $table->id();
+        // Specify a length for 'tokenable_type' and 'tokenable_id'
+        $table->string('tokenable_type', 191);
+        $table->unsignedBigInteger('tokenable_id');
+        $table->string('name');
+        $table->string('token', 64)->unique();
+        $table->text('abilities')->nullable();
+        $table->timestamp('last_used_at')->nullable();
+        $table->timestamp('expires_at')->nullable();
+        $table->timestamps();
+        
+        // Index the 'tokenable_type' and 'tokenable_id' columns
+        $table->index(['tokenable_type', 'tokenable_id']);
+    });
+}
 
     /**
      * Reverse the migrations.

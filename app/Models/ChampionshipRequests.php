@@ -20,6 +20,15 @@ class ChampionshipRequests extends Model
         'teamImage',
         
     ];
+    
+    protected $casts = [
+        
+    'team_id' => 'integer',
+    'championship_id' => 'integer',
+    
+
+
+    ];
 
 
     protected $hidden = ['created_at','updated_at'];

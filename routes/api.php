@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 
 
+
 Route::post('/signup', [UserController::class, 'signup']);//tested
 Route::post('/login', [UserController::class, 'login']);//tested
 Route::get('/getUser/{id}', [UserController::class, 'getUser']);//tested
@@ -50,7 +51,6 @@ Route::get('/getChampionship/{id}', [ChampionshipController::class, 'getChampion
 Route::get('/getAllChampionships', [ChampionshipController::class, 'getAllChampionships']);//tested
 Route::put('/editChampionship/{id}', [ChampionshipController::class, 'editChampionship']);//tested
 Route::delete('/deleteChampionship/{id}', [ChampionshipController::class, 'deleteChampionship']);//tested
-
 
 
 

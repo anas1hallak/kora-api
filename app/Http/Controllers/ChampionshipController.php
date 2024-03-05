@@ -33,7 +33,6 @@ class ChampionshipController extends Controller
             'entryPrice' => 'required',
             'startDate' => 'required',
             'endDate'=>'required',
-            'termsAndConditions'=>'required',
             
               
         ]);
@@ -51,7 +50,7 @@ class ChampionshipController extends Controller
             'entryPrice'=>$request->input('entryPrice'),
             'startDate'=>$request->input('startDate'),
             'endDate'=>$request->input('endDate'),
-            'termsAndConditions'=>$request->input('termsAndConditions'),
+            //'termsAndConditions'=>$request->input('termsAndConditions'),
 
 
 
@@ -94,7 +93,7 @@ class ChampionshipController extends Controller
 
     public function championshipProfile()
     {
-
+        // Get the authenticated user
         $user = User::find(Auth::id());
 
         if (!$user) {
@@ -103,11 +102,11 @@ class ChampionshipController extends Controller
 
         
         $team=$user->team;
-
+        
         if(!$team){
 
             return response()->json([
-                'code' => 401,
+                'code' => 404,
                 'message' => 'No team for this player yet',
             ],200);
 
@@ -185,18 +184,16 @@ class ChampionshipController extends Controller
         if ($request->hasFile('image')) {
             
             $file = $request->file('image');
-            $fileName = $file->getClientOriginalName();
-            $fileName = date('His') . $fileName;
-            $path = $request->file('image')->storeAs('images', $fileName, 'public');
-    
-            $imageModel = new Championshipimage;
-            $imageModel->path = $path;
-    
+            $fileName = date('His') . $file->getClientOriginalName();
+            $path = $file->storeAs('images', $fileName, 'public');
+            
             if ($championship->image) {
                 Storage::disk('public')->delete($championship->image->path);
-                $championship->image()->delete();
+                $championship->image->delete();
             }
-    
+
+            $imageModel = new Championshipimage;
+            $imageModel->path = $path;
             $championship->image()->save($imageModel);
         }
     
@@ -209,6 +206,8 @@ class ChampionshipController extends Controller
         ]);
 
     }
+
+    
 
     
 
@@ -395,7 +394,6 @@ class ChampionshipController extends Controller
     }
 
 
-
     public function deleteChampionship(string $id)
     {
         $championship = Championship::findOrFail($id);
@@ -444,7 +442,6 @@ class ChampionshipController extends Controller
             ], 500);
         }
     }
-
    
 
 }

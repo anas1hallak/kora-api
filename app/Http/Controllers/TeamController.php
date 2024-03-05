@@ -41,7 +41,8 @@ class TeamController extends Controller
         $validator = Validator::make($request->all(), [
 
             'teamName' => 'required|unique:teams',
-            'image'=>'required'
+            'image'=>'required',
+            'termsAndConditions'=>'required'
 
         ]);
 
@@ -55,7 +56,7 @@ class TeamController extends Controller
             'teamName' => $request->input('teamName'),
             'points' =>0,
             'wins' =>0,
-            'rate'=>0.1,
+            'rate'=>0.5,
             'termsAndConditions'=>$request->input('termsAndConditions'),
             'coachName'=>$user->fullName,
             'coachPhoneNumber'=>$user->phoneNumber,
@@ -95,7 +96,7 @@ class TeamController extends Controller
             'user_id'=>$user->id,
             'position'=>'none',
             'fullName'=>$user->fullName,
-            'imagePath' => $user->image ? asset('/storage/'. $user->image->path) : null,
+            
 
 
         ]);
@@ -157,13 +158,13 @@ class TeamController extends Controller
         }
     
         $team = $user->team;
-
+        
         if(!$team){
 
             return response()->json([
-                'code' => 401,
+                'code' => 404,
                 'message' => 'No team for this player yet',
-            ], 401);
+            ],200);
 
 
         }
@@ -172,10 +173,12 @@ class TeamController extends Controller
 
         $teamCount = $team->players()->count();
         $imagePath = $team->image ? asset('/storage/'. $team->image->path) : null;
+
         $team->teamCount = $teamCount;
         $team->imagePath = $imagePath;
-
-        foreach ($team->players as $player) {
+        
+        
+         foreach ($team->players as $player) {
 
             $player->imagePath = $player->image ? asset('/storage/'. $player->image->path) : null;
             unset($player['image']);
@@ -451,8 +454,6 @@ class TeamController extends Controller
 
 
 
-
-
     public function deleteTeam(string $id){
 
 
@@ -469,7 +470,7 @@ class TeamController extends Controller
 
 
         $formations = $team->formation;
-
+        
         foreach ($formations as $formation) {
             $formation->delete();
         }
@@ -484,9 +485,10 @@ class TeamController extends Controller
         ]);
 
 
-
-
     }
+
+
+
 
     public function editTeamPoints(Request $request , string $id){
 
@@ -509,13 +511,13 @@ class TeamController extends Controller
 
 
     }
-
-
+    
+    
     public function kickPlayer(string $id){
 
         $user=User::findOrFail($id);
-
-        if($user->role_id===1){
+       
+       if($user->role_id===1){
 
             return response()->json([
 
@@ -526,6 +528,7 @@ class TeamController extends Controller
 
 
         }
+       
        
         $formation=Formation::where('user_id', $user->id);
         $formation->delete();
@@ -548,7 +551,6 @@ class TeamController extends Controller
 
 
     }
-
 
 
 

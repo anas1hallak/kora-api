@@ -12,7 +12,7 @@ class FormationController extends Controller
 {
 
     
-    public function getFormation(){
+     public function getFormation(){
 
         $user = User::find(Auth::id());
         $team = $user->team;
@@ -35,7 +35,6 @@ class FormationController extends Controller
 
 
     }
-
 
 
     public function editFormation(Request $request){

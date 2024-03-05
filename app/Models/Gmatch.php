@@ -21,6 +21,16 @@ class Gmatch extends Model
         'winner'
     ];
     
+    
+    protected $casts = [
+        
+    'group_id' => 'integer',
+    'team1_id' => 'integer',
+    'team2_id' => 'integer',
+    'winner' => 'integer',
+
+
+    ];
 
     protected $hidden = ['created_at','updated_at'];
 

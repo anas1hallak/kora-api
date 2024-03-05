@@ -1,0 +1,1524 @@
+[22-Jan-2024 20:36:30 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[22-Jan-2024 20:36:30 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[22-Jan-2024 20:36:30 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/sanctum.php on line 18
+[22-Jan-2024 20:36:30 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[22-Jan-2024 20:36:30 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/korarand/public_html/kora-api/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/view.php on line 17
+[22-Jan-2024 20:36:30 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[22-Jan-2024 20:36:30 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/korarand/public_html/kora-api/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/view.php on line 17
+[22-Jan-2024 20:36:30 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[22-Jan-2024 20:36:30 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[22-Jan-2024 20:36:30 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[22-Jan-2024 20:36:30 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[22-Jan-2024 20:36:30 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/sanctum.php on line 18
+[22-Jan-2024 20:36:30 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/korarand/public_html/kora-api/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/view.php on line 17
+[22-Jan-2024 20:36:31 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[22-Jan-2024 20:36:31 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[22-Jan-2024 20:36:31 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[22-Jan-2024 20:36:31 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[22-Jan-2024 20:36:31 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[22-Jan-2024 20:36:31 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[22-Jan-2024 20:36:31 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[22-Jan-2024 20:36:31 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[22-Jan-2024 20:36:31 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/queue.php on line 16
+[22-Jan-2024 20:36:32 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/korarand/public_html/kora-api/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/view.php on line 17
+[22-Jan-2024 20:36:32 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/sanctum.php on line 18
+[22-Jan-2024 20:36:32 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/queue.php on line 16
+[22-Jan-2024 20:36:32 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[22-Jan-2024 20:36:32 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[22-Jan-2024 20:36:32 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[22-Jan-2024 20:36:32 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/queue.php on line 16
+[22-Jan-2024 20:36:33 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[22-Jan-2024 20:36:33 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[22-Jan-2024 20:36:33 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[22-Jan-2024 20:36:33 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[22-Jan-2024 20:36:33 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[22-Jan-2024 20:36:33 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[22-Jan-2024 20:36:34 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[22-Jan-2024 20:36:34 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[22-Jan-2024 20:36:34 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[22-Jan-2024 20:36:34 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[22-Jan-2024 20:36:34 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[22-Jan-2024 20:36:35 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/session.php on line 21
+[22-Jan-2024 20:36:35 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[22-Jan-2024 20:36:35 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/session.php on line 21
+[22-Jan-2024 20:36:35 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/korarand/public_html/kora-api/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/view.php on line 17
+[22-Jan-2024 20:36:35 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/session.php on line 21
+[22-Jan-2024 20:36:36 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[22-Jan-2024 20:36:36 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[22-Jan-2024 20:36:37 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[22-Jan-2024 20:36:37 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[22-Jan-2024 20:36:39 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[22-Jan-2024 20:36:39 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[22-Jan-2024 20:36:39 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[22-Jan-2024 20:36:39 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[22-Jan-2024 20:36:39 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[22-Jan-2024 20:36:41 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/session.php on line 21
+[22-Jan-2024 20:36:41 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[22-Jan-2024 20:36:41 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[22-Jan-2024 20:36:41 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[22-Jan-2024 20:36:42 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[22-Jan-2024 20:36:42 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[22-Jan-2024 20:36:42 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/korarand/public_html/kora-api/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/view.php on line 17
+[22-Jan-2024 20:36:44 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[22-Jan-2024 20:36:46 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/korarand/public_html/kora-api/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/view.php on line 17
+[22-Jan-2024 20:36:51 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/queue.php on line 16
+[22-Jan-2024 20:36:52 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[22-Jan-2024 20:36:53 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[22-Jan-2024 20:36:54 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/session.php on line 21
+[22-Jan-2024 20:36:58 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/session.php on line 21
+[22-Jan-2024 20:36:59 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/sanctum.php on line 18
+[22-Jan-2024 20:37:00 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/sanctum.php on line 18
+[22-Jan-2024 20:37:02 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[22-Jan-2024 20:37:03 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[22-Jan-2024 20:37:05 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[22-Jan-2024 20:37:12 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[22-Jan-2024 20:37:13 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/queue.php on line 16
+[22-Jan-2024 20:37:13 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/queue.php on line 16
+[22-Jan-2024 20:37:15 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[22-Jan-2024 20:37:24 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[22-Jan-2024 20:37:25 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[22-Jan-2024 20:37:26 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[22-Jan-2024 20:37:27 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[23-Jan-2024 00:27:03 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/sanctum.php on line 18
+[23-Jan-2024 00:27:04 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/sanctum.php on line 18
+[23-Jan-2024 00:27:04 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[23-Jan-2024 00:27:04 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[23-Jan-2024 00:27:05 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/sanctum.php on line 18
+[23-Jan-2024 00:27:05 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[23-Jan-2024 00:27:05 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[23-Jan-2024 00:27:05 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/session.php on line 21
+[23-Jan-2024 00:27:05 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[23-Jan-2024 00:27:05 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/session.php on line 21
+[23-Jan-2024 00:27:05 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[23-Jan-2024 00:27:05 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[23-Jan-2024 00:27:05 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[23-Jan-2024 00:27:05 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[23-Jan-2024 00:27:05 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/session.php on line 21
+[23-Jan-2024 00:27:05 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/korarand/public_html/kora-api/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/view.php on line 17
+[23-Jan-2024 00:27:05 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[23-Jan-2024 00:27:05 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[23-Jan-2024 00:27:05 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[23-Jan-2024 00:27:05 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[23-Jan-2024 00:27:06 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/korarand/public_html/kora-api/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/view.php on line 17
+[23-Jan-2024 00:27:06 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[23-Jan-2024 00:27:06 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/queue.php on line 16
+[23-Jan-2024 00:27:06 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/korarand/public_html/kora-api/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/view.php on line 17
+[23-Jan-2024 00:27:06 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/queue.php on line 16
+[23-Jan-2024 00:27:06 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[23-Jan-2024 00:27:06 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[23-Jan-2024 00:27:06 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/queue.php on line 16
+[23-Jan-2024 00:27:06 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[23-Jan-2024 00:27:06 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/session.php on line 21
+[23-Jan-2024 00:27:07 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[23-Jan-2024 00:27:07 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[23-Jan-2024 00:27:07 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[23-Jan-2024 00:27:07 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[23-Jan-2024 00:27:07 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[23-Jan-2024 00:27:07 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/queue.php on line 16
+[23-Jan-2024 00:27:07 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[23-Jan-2024 00:27:07 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[23-Jan-2024 00:27:07 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[23-Jan-2024 00:27:08 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[23-Jan-2024 00:27:08 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[23-Jan-2024 00:27:08 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[23-Jan-2024 00:27:08 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[23-Jan-2024 00:27:08 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[23-Jan-2024 00:27:08 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[23-Jan-2024 00:27:08 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/session.php on line 21
+[23-Jan-2024 00:27:08 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[23-Jan-2024 00:27:08 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[23-Jan-2024 00:27:08 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[23-Jan-2024 00:27:09 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[23-Jan-2024 00:27:09 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/session.php on line 21
+[23-Jan-2024 00:27:09 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[23-Jan-2024 00:27:09 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[23-Jan-2024 00:27:09 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[23-Jan-2024 00:27:10 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[23-Jan-2024 00:27:10 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[23-Jan-2024 00:27:11 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[23-Jan-2024 00:27:11 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[23-Jan-2024 00:27:11 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[23-Jan-2024 00:27:12 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[23-Jan-2024 00:27:13 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[23-Jan-2024 00:27:16 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[23-Jan-2024 00:27:21 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[23-Jan-2024 00:27:21 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/queue.php on line 16
+[23-Jan-2024 00:27:21 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/queue.php on line 16
+[23-Jan-2024 00:27:23 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[23-Jan-2024 00:27:24 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/sanctum.php on line 18
+[23-Jan-2024 00:27:25 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/sanctum.php on line 18
+[23-Jan-2024 00:27:32 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[23-Jan-2024 00:27:36 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[23-Jan-2024 00:27:36 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[23-Jan-2024 00:27:39 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/korarand/public_html/kora-api/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/view.php on line 17
+[23-Jan-2024 00:27:40 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/korarand/public_html/kora-api/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/view.php on line 17
+[23-Jan-2024 00:27:43 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[23-Jan-2024 00:27:55 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[23-Jan-2024 00:27:55 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[23-Jan-2024 00:27:56 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[23-Jan-2024 00:27:56 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[23-Jan-2024 00:27:56 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[23-Jan-2024 00:27:57 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[23-Jan-2024 03:43:46 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[23-Jan-2024 03:43:46 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[23-Jan-2024 03:43:47 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[23-Jan-2024 03:43:47 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[23-Jan-2024 03:43:47 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[23-Jan-2024 03:43:48 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/session.php on line 21
+[23-Jan-2024 03:43:48 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[23-Jan-2024 03:43:49 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[23-Jan-2024 03:43:49 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[23-Jan-2024 03:43:49 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[23-Jan-2024 03:43:49 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[23-Jan-2024 03:43:49 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/session.php on line 21
+[23-Jan-2024 03:43:49 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[23-Jan-2024 03:43:49 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[23-Jan-2024 03:43:49 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[23-Jan-2024 03:43:49 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/queue.php on line 16
+[23-Jan-2024 03:43:49 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/session.php on line 21
+[23-Jan-2024 03:43:49 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/queue.php on line 16
+[23-Jan-2024 03:43:50 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[23-Jan-2024 03:43:50 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[23-Jan-2024 03:43:50 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/queue.php on line 16
+[23-Jan-2024 03:43:52 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[23-Jan-2024 03:43:52 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[23-Jan-2024 03:43:53 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/queue.php on line 16
+[23-Jan-2024 03:44:35 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/queue.php on line 16
+[23-Jan-2024 03:44:40 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/session.php on line 21
+[23-Jan-2024 03:44:40 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/session.php on line 21
+[23-Jan-2024 03:45:39 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[23-Jan-2024 03:45:40 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[23-Jan-2024 03:45:40 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[23-Jan-2024 03:45:40 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[23-Jan-2024 03:45:40 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[23-Jan-2024 03:45:42 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[23-Jan-2024 03:45:42 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[23-Jan-2024 03:45:42 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[23-Jan-2024 03:45:42 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/sanctum.php on line 18
+[23-Jan-2024 03:45:42 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[23-Jan-2024 03:45:42 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/sanctum.php on line 18
+[23-Jan-2024 03:45:43 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/sanctum.php on line 18
+[23-Jan-2024 03:45:43 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[23-Jan-2024 03:45:43 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[23-Jan-2024 03:45:43 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[23-Jan-2024 03:45:44 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[23-Jan-2024 03:45:44 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[23-Jan-2024 03:45:44 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[23-Jan-2024 03:45:44 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/sanctum.php on line 18
+[23-Jan-2024 03:45:44 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/korarand/public_html/kora-api/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/view.php on line 17
+[23-Jan-2024 03:45:45 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/korarand/public_html/kora-api/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/view.php on line 17
+[23-Jan-2024 03:45:45 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[23-Jan-2024 03:45:46 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/korarand/public_html/kora-api/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/view.php on line 17
+[23-Jan-2024 03:45:47 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[23-Jan-2024 03:45:47 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[23-Jan-2024 03:45:47 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[23-Jan-2024 03:45:47 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[23-Jan-2024 03:45:47 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[23-Jan-2024 03:45:47 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[23-Jan-2024 03:45:47 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[23-Jan-2024 03:45:47 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[23-Jan-2024 03:45:48 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[23-Jan-2024 03:45:48 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[23-Jan-2024 03:45:48 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[23-Jan-2024 03:45:48 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[23-Jan-2024 03:45:48 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[23-Jan-2024 03:45:48 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[23-Jan-2024 03:45:48 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[23-Jan-2024 03:45:48 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[23-Jan-2024 03:45:49 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[23-Jan-2024 03:45:49 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[23-Jan-2024 03:45:50 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[23-Jan-2024 03:45:50 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[23-Jan-2024 03:45:50 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[23-Jan-2024 03:45:51 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[23-Jan-2024 03:45:52 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[23-Jan-2024 03:46:02 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/sanctum.php on line 18
+[23-Jan-2024 03:46:03 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/sanctum.php on line 18
+[23-Jan-2024 03:46:03 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/sanctum.php on line 18
+[23-Jan-2024 03:46:06 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/korarand/public_html/kora-api/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/view.php on line 17
+[23-Jan-2024 03:46:08 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/korarand/public_html/kora-api/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/view.php on line 17
+[23-Jan-2024 03:46:09 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/korarand/public_html/kora-api/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/view.php on line 17
+[23-Jan-2024 03:46:16 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[23-Jan-2024 03:46:17 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[24-Jan-2024 08:59:27 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[24-Jan-2024 09:00:25 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[24-Jan-2024 09:01:22 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/queue.php on line 16
+[24-Jan-2024 09:02:16 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/sanctum.php on line 18
+[24-Jan-2024 09:03:11 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[24-Jan-2024 09:04:08 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/session.php on line 21
+[24-Jan-2024 09:05:02 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/korarand/public_html/kora-api/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/view.php on line 17
+[24-Jan-2024 09:26:10 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[24-Jan-2024 10:01:03 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[24-Jan-2024 10:02:42 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/session.php on line 21
+[24-Jan-2024 10:03:41 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[24-Jan-2024 10:04:38 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/sanctum.php on line 18
+[24-Jan-2024 10:05:35 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/queue.php on line 16
+[24-Jan-2024 10:06:30 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[24-Jan-2024 10:08:19 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[24-Jan-2024 10:09:14 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[24-Jan-2024 10:31:45 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[24-Jan-2024 10:33:24 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[24-Jan-2024 10:34:03 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/korarand/public_html/kora-api/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/view.php on line 17
+[24-Jan-2024 10:55:22 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[24-Jan-2024 12:45:35 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[24-Jan-2024 14:24:10 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[24-Jan-2024 14:25:31 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[24-Jan-2024 15:31:29 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[24-Jan-2024 16:05:38 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[24-Jan-2024 16:06:27 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[26-Jan-2024 12:45:21 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[26-Jan-2024 12:45:21 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/korarand/public_html/kora-api/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/view.php on line 17
+[26-Jan-2024 12:45:21 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/sanctum.php on line 18
+[26-Jan-2024 12:45:22 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[26-Jan-2024 12:45:22 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[26-Jan-2024 12:45:22 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[26-Jan-2024 12:45:23 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[26-Jan-2024 12:45:24 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[26-Jan-2024 12:45:24 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/queue.php on line 16
+[26-Jan-2024 12:45:25 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[26-Jan-2024 12:45:25 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[26-Jan-2024 12:45:25 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[26-Jan-2024 12:45:27 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/session.php on line 21
+[26-Jan-2024 14:12:20 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[26-Jan-2024 14:12:20 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[26-Jan-2024 14:12:20 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[26-Jan-2024 14:12:20 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[26-Jan-2024 14:12:20 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[26-Jan-2024 14:12:20 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[26-Jan-2024 14:12:20 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[26-Jan-2024 14:12:20 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[26-Jan-2024 14:12:20 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[26-Jan-2024 14:12:21 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[26-Jan-2024 14:12:21 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[26-Jan-2024 14:12:21 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[26-Jan-2024 14:12:21 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[26-Jan-2024 14:12:21 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[26-Jan-2024 14:12:21 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[26-Jan-2024 14:12:21 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[26-Jan-2024 14:12:21 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[26-Jan-2024 14:12:21 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[26-Jan-2024 14:12:22 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[26-Jan-2024 14:12:22 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[26-Jan-2024 14:12:22 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[26-Jan-2024 14:12:22 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[26-Jan-2024 14:12:22 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[26-Jan-2024 14:12:22 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[26-Jan-2024 14:12:23 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[26-Jan-2024 14:12:23 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[26-Jan-2024 14:12:23 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[26-Jan-2024 14:12:23 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[26-Jan-2024 14:12:24 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[26-Jan-2024 14:12:24 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[26-Jan-2024 14:12:24 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[26-Jan-2024 14:12:25 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[26-Jan-2024 14:12:25 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[26-Jan-2024 14:12:25 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[26-Jan-2024 14:12:27 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[26-Jan-2024 14:12:28 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[26-Jan-2024 14:12:30 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[26-Jan-2024 14:12:30 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[26-Jan-2024 14:12:31 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[26-Jan-2024 14:12:32 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[26-Jan-2024 14:12:44 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[26-Jan-2024 14:12:47 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[26-Jan-2024 14:12:47 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[26-Jan-2024 14:12:51 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[26-Jan-2024 14:12:52 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[30-Jan-2024 13:02:54 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[30-Jan-2024 13:02:58 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/korarand/public_html/kora-api/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/view.php on line 17
+[30-Jan-2024 13:03:04 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[30-Jan-2024 13:03:06 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[30-Jan-2024 13:03:15 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[30-Jan-2024 13:03:18 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/sanctum.php on line 18
+[30-Jan-2024 13:03:27 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[30-Jan-2024 13:03:30 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[30-Jan-2024 13:03:39 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[30-Jan-2024 13:03:42 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[30-Jan-2024 13:03:47 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/session.php on line 21
+[30-Jan-2024 13:03:51 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/queue.php on line 16
+[30-Jan-2024 13:03:55 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[05-Feb-2024 11:42:33 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[05-Feb-2024 11:44:11 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[05-Feb-2024 11:44:43 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[05-Feb-2024 11:45:24 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[05-Feb-2024 11:45:43 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[05-Feb-2024 11:45:55 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[05-Feb-2024 11:46:20 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/sanctum.php on line 18
+[05-Feb-2024 11:47:22 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[05-Feb-2024 11:49:53 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/session.php on line 21
+[05-Feb-2024 11:51:11 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/korarand/public_html/kora-api/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/view.php on line 17
+[05-Feb-2024 12:00:00 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[05-Feb-2024 12:00:41 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[05-Feb-2024 12:00:53 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[05-Feb-2024 12:01:35 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[05-Feb-2024 12:01:43 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/queue.php on line 16
+[05-Feb-2024 12:01:48 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/korarand/public_html/kora-api/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/view.php on line 17
+[05-Feb-2024 16:52:11 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[05-Feb-2024 16:53:03 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[05-Feb-2024 16:53:16 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/queue.php on line 16
+[05-Feb-2024 16:54:07 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[05-Feb-2024 16:54:13 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[05-Feb-2024 16:55:02 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[05-Feb-2024 16:55:21 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[05-Feb-2024 16:56:03 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/sanctum.php on line 18
+[05-Feb-2024 16:56:51 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[05-Feb-2024 16:57:50 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/session.php on line 21
+[16-Feb-2024 22:13:44 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/services.php on line 18
+[17-Feb-2024 06:59:02 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/session.php on line 21
+[17-Feb-2024 10:10:39 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/logging.php on line 21
+[17-Feb-2024 12:54:20 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/korarand/public_html/kora-api/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/view.php on line 17
+[17-Feb-2024 19:24:31 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/app.php on line 19
+[18-Feb-2024 00:37:21 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/filesystems.php on line 16
+[18-Feb-2024 20:17:36 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[18-Feb-2024 22:35:48 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[19-Feb-2024 02:00:52 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/sanctum.php on line 18
+[19-Feb-2024 05:24:59 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/queue.php on line 16
+[19-Feb-2024 13:23:18 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/broadcasting.php on line 18
+[19-Feb-2024 23:09:27 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/hashing.php on line 32
+[20-Feb-2024 03:04:35 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/database.php on line 18
+[22-Feb-2024 09:04:47 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/cache.php on line 18
+[22-Feb-2024 11:30:40 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/mail.php on line 16
+[22-Feb-2024 14:48:11 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/korarand/public_html/kora-api/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/korarand/public_html/kora-api/config/sanctum.php on line 18

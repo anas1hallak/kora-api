@@ -16,10 +16,22 @@ class Gteam extends Model
         'points',
         'goals'
     ];
-
+    
+    
 
 
     protected $hidden = ['created_at','updated_at'];
+    
+    
+    protected $casts = [
+    
+    'group_id' => 'integer',
+    'team_id' => 'integer',
+    'points' => 'integer',
+    'goals' => 'integer',
+   
+
+    ];
 
 
     public function team()

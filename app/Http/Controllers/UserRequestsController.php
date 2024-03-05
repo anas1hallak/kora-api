@@ -19,6 +19,15 @@ class UserRequestsController extends Controller
         $user = User::find(Auth::id());
         
         $userRequests = UserRequests::where('user_id', $user->id)->get();
+        
+        
+        if (!$userRequests) {
+            return response()->json([
+                'code' => 400,
+                'message' => 'No Noifcations',
+            ],400);
+        }
+        
     
         foreach ($userRequests as $request) {
 
@@ -52,9 +61,9 @@ class UserRequestsController extends Controller
         }
 
         $team = $user->team;
-
-
-        $existingRequest = UserRequests::where('team_id', $team->id)
+        
+        
+         $existingRequest = UserRequests::where('team_id', $team->id)
         ->where('user_id', $request->input('user_id'))
         ->first();
 
@@ -62,8 +71,9 @@ class UserRequestsController extends Controller
             return response()->json([
                 'code' => 400,
                 'message' => 'Request already sent to the user',
-            ],200);
+            ],400);
         }
+        
         
         $userRequest = UserRequests::create([
 
@@ -108,6 +118,7 @@ class UserRequestsController extends Controller
             'user_id'=>$user->id,
             'position'=>'none',
             'fullName'=>$user->fullName,
+
 
         ]);
 

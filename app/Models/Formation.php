@@ -24,8 +24,18 @@ class Formation extends Model
         ];
 
     protected $hidden = ['created_at','updated_at'];
+    
+    
+    protected $casts = [
+        
+    'team_id' => 'integer',
+    'user_id' => 'integer',
+    
 
 
+    ];
+    
+    
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');

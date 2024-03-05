@@ -28,6 +28,20 @@ class User extends Authenticatable
         ];
 
     protected $hidden = ['password','created_at','updated_at'];
+    
+    
+     protected $casts = [
+        
+    'age' => 'integer',
+    'playerNumber' => 'integer',
+    'team_id' => 'integer',
+    'role_id' => 'integer',
+    'elo' => 'integer',
+
+
+    ];
+    
+    
 
     public function fcmTokens()
     {

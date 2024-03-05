@@ -24,6 +24,16 @@ class Maatch extends Model
 
     protected $hidden = ['created_at','updated_at'];
     
+     protected $casts = [
+        
+    'position' => 'integer',
+    'round_id' => 'integer',
+    'team1_id' => 'integer',
+    'team2_id' => 'integer',
+    'winner' => 'integer',
+
+
+    ];
 
     public function round(){
 

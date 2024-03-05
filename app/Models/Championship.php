@@ -25,6 +25,19 @@ class Championship extends Model
         ];
 
     protected $hidden = ['created_at','updated_at'];
+    
+    protected $casts = [
+        
+    'numOfParticipants' => 'integer',
+    'prize1' => 'double',
+    'prize2' => 'double',
+    'entryPrice' => 'double',
+
+
+    ];
+    
+    
+    
 
     public function teams(){
 

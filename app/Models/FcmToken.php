@@ -17,6 +17,13 @@ class FcmToken extends Model
     ];
 
     protected $hidden = ['created_at','updated_at'];
+    
+    protected $casts = [
+        
+    'user_id' => 'integer',
+
+
+    ];
 
     public function user()
     {

@@ -23,6 +23,16 @@ class Team extends Model
         'user_id',
         
         ];
+        
+        
+     protected $casts = [
+        
+    'points' => 'integer',
+    'wins' => 'integer',
+    'rate' => 'double',
+    'user_id' => 'integer',
+
+    ];    
 
 
 

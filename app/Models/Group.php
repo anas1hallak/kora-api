@@ -15,7 +15,13 @@ class Group extends Model
     
     ];
 
-
+    protected $casts = [
+            
+       
+        'championship_id' => 'integer',
+    
+    
+    ];
 
     protected $hidden = ['created_at','updated_at'];
 

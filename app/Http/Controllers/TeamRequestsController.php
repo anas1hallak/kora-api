@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Formation;
 use App\Models\Team;
 use Illuminate\Http\Request;
+use App\Models\UserRequests;
 
 use App\Models\TeamRequests;
 use App\Models\User;
@@ -20,6 +21,7 @@ class TeamRequestsController extends Controller
 
         $user = User::find(Auth::id());
         $team = $user->team;
+        
 
         $TeamRequests = TeamRequests::where('team_id', $team->id)->get();
     
@@ -56,7 +58,7 @@ class TeamRequestsController extends Controller
 
 
 
-        $existingRequest = TeamRequests::where('team_id', $request->input('team_id'))
+ $existingRequest = TeamRequests::where('team_id', $request->input('team_id'))
         ->where('user_id', $user->id)
         ->first();
 
@@ -64,9 +66,10 @@ class TeamRequestsController extends Controller
             return response()->json([
                 'code' => 400,
                 'message' => 'Request already sent to the team',
-            ],200);
+            ],400);
         }
-
+        
+        
         
 
         $TeamRequests = TeamRequests::create([
@@ -119,10 +122,8 @@ class TeamRequestsController extends Controller
             'position'=>'none',
             'fullName'=>$user->fullName,
 
+
         ]);
-
-
-        $teamRequest=TeamRequests::findOrFail($id);
 
         $teamRequest->delete();
 

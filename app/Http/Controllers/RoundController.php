@@ -217,6 +217,8 @@ class RoundController extends Controller
                 'secondWinner' =>$losingTeam->teamName,
                 'status' =>'Ended'
 
+
+                
             ]);
             
 
