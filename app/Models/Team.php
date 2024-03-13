@@ -65,4 +65,11 @@ class Team extends Model
        return $this->belongsToMany(Championship::class);
 
     }
+
+    public function H2HMatch()
+    {
+        
+        return $this->hasMany(Head2HeadMatch::class, 'team1_id')->orWhere('team2_id', $this->id);
+
+    }
 }

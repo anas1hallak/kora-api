@@ -78,6 +78,24 @@ Route::get('/deleteIban/{id}', [IbanController::class, 'deleteIban']);
 
 
 
+Route::post('/createH2HMatch', [Head2HeadMatchesController::class, 'createH2HMatch']); //tested
+Route::get('/getTeamH2HMatch/{id}', [Head2HeadMatchesController::class, 'getTeamH2HMatch']); //tested
+Route::get('/getAllH2HMatches', [Head2HeadMatchesController::class, 'getAllH2HMatches']);
+Route::post('/acceptH2HMatch/{id}', [Head2HeadMatchesController::class, 'acceptH2HMatch']); //tested
+Route::post('/rejectH2HMatch/{id}', [Head2HeadMatchesController::class, 'rejectH2HMatch']);
+Route::post('/selectPaymentMethod/{id}', [Head2HeadMatchesController::class, 'selectPaymentMethod']);
+
+
+Route::get('/getALLPrices', [PriceController::class, 'getALLPrices']);
+Route::get('/getPrice', [PriceController::class, 'getPrice']);
+Route::post('/addPrice', [PriceController::class, 'addPrice']); 
+Route::put('/editPrice/{id}', [PriceController::class, 'editPrice']);
+Route::delete('/deletePrice/{id}', [PriceController::class, 'deletePrice']);
+
+
+
+
+
 
 Route::middleware(['auth:sanctum'])->group(function () {
 
