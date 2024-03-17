@@ -72,4 +72,9 @@ class Team extends Model
         return $this->hasMany(Head2HeadMatch::class, 'team1_id')->orWhere('team2_id', $this->id);
 
     }
+
+    public function events()
+    {
+        return $this->hasMany(Head2HeadMatchEvent::class);
+    }
 }

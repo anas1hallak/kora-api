@@ -31,4 +31,23 @@ class Head2HeadMatchEvent extends Model
 
     protected $hidden = ['created_at','updated_at'];
 
+
+
+    public function H2HMatch()
+    {
+        
+       return $this->belongsTo(Head2HeadMatch::class);
+
+    }
+
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

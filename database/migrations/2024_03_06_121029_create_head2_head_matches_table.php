@@ -24,6 +24,9 @@ return new class extends Migration
             $table->integer('team2_id')->nullable();
             $table->integer('winner')->nullable();
 
+            $table->integer('goals1')->default(0);
+            $table->integer('goals2')->default(0);
+
             $table->string('status')->nullable();
 
             $table->string('ibanNumber1')->nullable();

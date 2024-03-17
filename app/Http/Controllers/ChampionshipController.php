@@ -329,6 +329,8 @@ class ChampionshipController extends Controller
         $championship->teams()->attach($championshipRequest->team_id);
 
         (new GroupController)->insertTeamIntoGroup($championship->id,$championshipRequest->team_id);
+        (new RecordController)->createChampionshipRecord($championship->id,$championshipRequest->team_id);
+
 
         $championshipRequest->delete();
 

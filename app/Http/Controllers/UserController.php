@@ -59,6 +59,7 @@ class UserController extends Controller
             'nationality'=>$request->input('nationality'),
             'selected'=>'not selected',
             'role_id'=>0,
+            'isCoach'=>'false',
             'elo'=>"000",
 
 

@@ -21,6 +21,7 @@ class User extends Authenticatable
         'placeOfPlayer',
         'selected',
         'role_id',
+        'isCoach',
         'team_id',
         'elo',
         
@@ -63,6 +64,11 @@ class User extends Authenticatable
     public function formations()
     {
         return $this->hasMany(Formation::class, 'user_id');
+    }
+
+    public function events()
+    {
+        return $this->hasMany(Head2HeadMatchEvent::class);
     }
 }
 

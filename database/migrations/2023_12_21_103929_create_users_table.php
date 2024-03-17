@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
+            
             $table->increments('id'); 
             $table->string('fullName');
             $table->string('phoneNumber')->unique();
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->string('selected')->nullable();
             $table->integer('team_id')->nullable();
             $table->integer('role_id')->default(0);
+            $table->string('isCoach')->default('false');
             $table->integer('elo');
             $table->timestamps();
         });

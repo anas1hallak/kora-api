@@ -79,11 +79,23 @@ Route::get('/deleteIban/{id}', [IbanController::class, 'deleteIban']);
 
 
 Route::post('/createH2HMatch', [Head2HeadMatchesController::class, 'createH2HMatch']); //tested
-Route::get('/getTeamH2HMatch/{id}', [Head2HeadMatchesController::class, 'getTeamH2HMatch']); //tested
 Route::get('/getAllH2HMatches', [Head2HeadMatchesController::class, 'getAllH2HMatches']);
 Route::post('/acceptH2HMatch/{id}', [Head2HeadMatchesController::class, 'acceptH2HMatch']); //tested
 Route::post('/rejectH2HMatch/{id}', [Head2HeadMatchesController::class, 'rejectH2HMatch']);
 Route::post('/selectPaymentMethod/{id}', [Head2HeadMatchesController::class, 'selectPaymentMethod']);
+Route::get('/getH2HMatchEvents/{id}', [Head2HeadMatchesController::class, 'getH2HMatchEvents']);
+
+
+Route::get('/getALLH2HRequests', [Head2HeadRequestsController::class, 'getALLH2HRequests']);
+Route::post('/acceptH2HRequest/{id}', [Head2HeadRequestsController::class, 'acceptH2HRequest']);
+Route::post('/rejectH2HRequest/{id}', [Head2HeadRequestsController::class, 'rejectH2HRequest']);
+
+
+Route::post('/addH2HEvent', [Head2HeadMatchEventController::class, 'addH2HEvent']);
+
+
+
+
 
 
 Route::get('/getALLPrices', [PriceController::class, 'getALLPrices']);
@@ -131,6 +143,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/championshipProfile', [ChampionshipController::class, 'championshipProfile']);
 
     
+    Route::get('/getTeamH2HMatch', [Head2HeadMatchesController::class, 'getTeamH2HMatch']);
+
+
+    Route::get('/getH2HRecords', [RecordController::class, 'getH2HRecords']);
+    Route::get('/getChampionshipRecords', [RecordController::class, 'getChampionshipRecords']);
 
 
 });

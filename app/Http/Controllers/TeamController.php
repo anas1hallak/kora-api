@@ -85,7 +85,7 @@ class TeamController extends Controller
         $user->selected="selected";
         $user->team_id=$team->id;
         $user->role_id=1;
-
+        $user->isCoach='true';
         $user->update();
 
 
@@ -465,6 +465,7 @@ class TeamController extends Controller
             $user->team_id = null;
             $user->selected = "not selected";
             $user->role_id=0;
+            $user->isCoach='false';
             $user->update();
         }
 

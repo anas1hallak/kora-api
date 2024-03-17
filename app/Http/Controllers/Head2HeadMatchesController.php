@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Head2HeadMatch;
+use App\Models\Head2HeadMatchEvent;
 use App\Models\Team;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class Head2HeadMatchesController extends Controller
@@ -56,9 +58,28 @@ class Head2HeadMatchesController extends Controller
 
 
 
-    public function getTeamH2HMatch(string $id)
+    public function getTeamH2HMatch()
     {
-        $team = Team::findOrFail($id);
+        $user = Auth::user();
+    
+        if (!$user) {
+            return response()->json([
+                'code' => 401,
+                'message' => 'Unauthorized',
+            ], 401);
+        }
+    
+        $team = $user->team;
+        
+        if(!$team){
+
+            return response()->json([
+                'code' => 404,
+                'message' => 'No team for this player yet',
+            ],200);
+
+
+        }
 
         $head2HeadMatches = $team->H2HMatch()->get();
     
@@ -78,17 +99,20 @@ class Head2HeadMatchesController extends Controller
                 'time' => $match->time,
                 'location' => $match->location,
                 'stad' => $match->stad,
+                'winner' => $match->winner,
+                'goals1' => $match->goals1,
+                'goals2' => $match->goals2,
                 'status' => $match->status,
                 'ibanNumber1' => $match->ibanNumber1,
                 'ibanNumber2' => $match->ibanNumber2,
                 'team1' => [
                     'id' => $match->team1->id,
-                    'teamName' => $match->team1->name,
+                    'teamName' => $match->team1->teamName,
                     'imagePath' => $match->team1->image ? asset('/storage/' . $match->team1->image->path) : null,
                 ],
                 'team2' => [
                     'id' => $match->team2->id,
-                    'teamName' => $match->team2->name,
+                    'teamName' => $match->team2->teamName,
                     'imagePath' => $match->team2->image ? asset('/storage/' . $match->team2->image->path) : null,
                 ],
             ];
@@ -105,7 +129,13 @@ class Head2HeadMatchesController extends Controller
 
     public function getAllH2HMatches()
     {
-        $head2HeadMatches = Head2HeadMatch::with(['team1', 'team2'])->get();
+        
+    
+        $perPage = 10;
+
+        $head2HeadMatches = Head2HeadMatch::with(['team1', 'team2'])
+            ->where('status', 'approved')
+            ->paginate($perPage);
 
         $formattedMatches = [];
 
@@ -118,24 +148,36 @@ class Head2HeadMatchesController extends Controller
                 'time' => $match->time,
                 'location' => $match->location,
                 'stad' => $match->stad,
+                'winner' => $match->winner,
+                'goals1' => $match->goals1,
+                'goals2' => $match->goals2,
                 'status' => $match->status,
             
                 'team1' => [
                     'id' => $match->team1->id,
-                    'teamName' => $match->team1->name,
+                    'teamName' => $match->team1->teamName,
                     'imagePath' => $match->team1->image ? asset('/storage/' . $match->team1->image->path) : null,
                 ],
                 'team2' => [
                     'id' => $match->team2->id,
-                    'teamName' => $match->team2->name,
+                    'teamName' => $match->team2->teamName,
                     'imagePath' => $match->team2->image ? asset('/storage/' . $match->team2->image->path) : null,
                 ],
             ];
         }
 
+        // Return the paginated matches
         return response()->json([
             'code' => 200,
             'head2HeadMatches' => $formattedMatches,
+            'pagination' => [
+                'total' => $head2HeadMatches->total(),
+                'per_page' => $head2HeadMatches->perPage(),
+                'current_page' => $head2HeadMatches->currentPage(),
+                'last_page' => $head2HeadMatches->lastPage(),
+                'from' => $head2HeadMatches->firstItem(),
+                'to' => $head2HeadMatches->lastItem(),
+            ],
         ]);
     }
 
@@ -230,6 +272,50 @@ class Head2HeadMatchesController extends Controller
 
 
 
+    }
+
+
+
+
+    public function getH2HMatchEvents(string $id)
+    {
+        $head2HeadMatch = Head2HeadMatch::find($id);
+
+        if (!$head2HeadMatch) {
+            return response()->json([
+                'code' => 404,
+                'message' => 'Head-to-head match not found.',
+            ], 404);
+        }
+    
+        $events = Head2HeadMatchEvent::with('team', 'user')
+            ->where('Head2HeadMatch_id', $id)
+            ->get();
+
+
+
+            $formattedEvents = [];
+
+        foreach ($events as $event) {
+            $formattedEvents[] = [
+
+                
+                'id' => $event->id,
+                'playerName' => $event->user->fullName,
+                'teamName' => $event->team->teamName,
+                'time' => $event->time,
+                'type' => $event->type,
+                
+                
+            ];
+        }
+
+
+    
+        return response()->json([
+            'code' => 200,
+            'events' => $formattedEvents,
+        ]);
     }
 
 }

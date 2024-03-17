@@ -19,6 +19,8 @@ class Head2HeadMatch extends Model
         'team1_id',
         'team2_id',
         'winner',
+        'goals1',
+        'goals2',
         'status',
         'ibanNumber1',
         'ibanNumber2'
@@ -31,7 +33,8 @@ class Head2HeadMatch extends Model
         'team1_id' => 'integer',
         'team2_id' => 'integer',
         'winner' => 'integer',
-
+        'goals1' => 'integer',
+        'goals2' => 'integer',
 
     ];
 
@@ -66,7 +69,7 @@ class Head2HeadMatch extends Model
     public function events()
     {
     
-       return $this->hasMany(Head2HeadMatchEvent::class);
+       return $this->hasMany(Head2HeadMatchEvent::class,'Head2HeadMatch_id');
 
     }
 

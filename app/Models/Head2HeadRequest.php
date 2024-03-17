@@ -56,7 +56,7 @@ class Head2HeadRequest extends Model
     public function H2HMatch()
     {
         
-       return $this->belongsTo(Head2HeadMatch::class);
+       return $this->belongsTo(Head2HeadMatch::class, 'Head2HeadMatch_id');
 
     }
 }
