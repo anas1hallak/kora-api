@@ -84,6 +84,8 @@ Route::post('/acceptH2HMatch/{id}', [Head2HeadMatchesController::class, 'acceptH
 Route::post('/rejectH2HMatch/{id}', [Head2HeadMatchesController::class, 'rejectH2HMatch']);
 Route::post('/selectPaymentMethod/{id}', [Head2HeadMatchesController::class, 'selectPaymentMethod']);
 Route::get('/getH2HMatchEvents/{id}', [Head2HeadMatchesController::class, 'getH2HMatchEvents']);
+Route::get('/getH2HMatchDetails/{id}', [Head2HeadMatchesController::class, 'getH2HMatchDetails']);
+
 
 
 Route::get('/getALLH2HRequests', [Head2HeadRequestsController::class, 'getALLH2HRequests']);
@@ -129,6 +131,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/teamProfile', [TeamController::class, 'teamProfile']);
     Route::post('/editTeamProfile', [TeamController::class, 'editTeamProfile']);
     Route::post('/requestToJoinChampionship', [TeamController::class, 'requestToJoinChampionship']);//tested
+    Route::post('/makeCoach/{id}', [TeamController::class, 'makeCoach']);
+
+
 
     Route::get('/getFormation', [FormationController::class, 'getFormation']);//tested
 

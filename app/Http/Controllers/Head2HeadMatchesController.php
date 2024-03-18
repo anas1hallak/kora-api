@@ -287,6 +287,8 @@ class Head2HeadMatchesController extends Controller
                 'message' => 'Head-to-head match not found.',
             ], 404);
         }
+
+        
     
         $events = Head2HeadMatchEvent::with('team', 'user')
             ->where('Head2HeadMatch_id', $id)
@@ -314,6 +316,70 @@ class Head2HeadMatchesController extends Controller
     
         return response()->json([
             'code' => 200,
+            'events' => $formattedEvents,
+        ]);
+    }
+
+
+
+
+
+
+
+    public function getH2HMatchDetails(string $id)
+    {
+        $head2HeadMatch = Head2HeadMatch::with(['team1', 'team2'])
+            ->where('status', 'approved')
+            ->find($id);
+    
+        if (!$head2HeadMatch) {
+            return response()->json([
+                'code' => 404,
+                'message' => 'Head-to-head match not found.',
+            ], 404);
+        }
+    
+        $events = Head2HeadMatchEvent::with('team', 'user')
+            ->where('Head2HeadMatch_id', $id)
+            ->get();
+    
+        $formattedEvents = [];
+    
+        foreach ($events as $event) {
+            $formattedEvents[] = [
+                'id' => $event->id,
+                'playerName' => $event->user->fullName,
+                'teamName' => $event->team->teamName,
+                'time' => $event->time,
+                'type' => $event->type,
+            ];
+        }
+    
+        $formattedMatch = [
+            'id' => $head2HeadMatch->id,
+            'date' => $head2HeadMatch->date,
+            'time' => $head2HeadMatch->time,
+            'location' => $head2HeadMatch->location,
+            'stad' => $head2HeadMatch->stad,
+            'winner' => $head2HeadMatch->winner,
+            'goals1' => $head2HeadMatch->goals1,
+            'goals2' => $head2HeadMatch->goals2,
+            'status' => $head2HeadMatch->status,
+            'team1' => [
+                'id' => $head2HeadMatch->team1->id,
+                'teamName' => $head2HeadMatch->team1->teamName,
+                'imagePath' => $head2HeadMatch->team1->image ? asset('/storage/' . $head2HeadMatch->team1->image->path) : null,
+            ],
+            'team2' => [
+                'id' => $head2HeadMatch->team2->id,
+                'teamName' => $head2HeadMatch->team2->teamName,
+                'imagePath' => $head2HeadMatch->team2->image ? asset('/storage/' . $head2HeadMatch->team2->image->path) : null,
+            ],
+        ];
+    
+        return response()->json([
+            'code' => 200,
+            'head2HeadMatch' => $formattedMatch,
             'events' => $formattedEvents,
         ]);
     }

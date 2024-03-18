@@ -554,5 +554,67 @@ class TeamController extends Controller
     }
 
 
+    public function makeCoach(string $id){
+
+        $newCoach=User::findOrFail($id);
+        $oldCoach = User::find(Auth::id());;
+    
+        if (!$oldCoach) {
+            return response()->json([
+                'code' => 401,
+                'message' => 'Unauthorized',
+            ], 401);
+        }
+    
+        $team = $oldCoach->team;
+        
+        if(!$team){
+
+            return response()->json([
+                'code' => 404,
+                'message' => 'No team for this player yet',
+            ],200);
+
+
+        }
+
+
+
+        $newCoach->update([
+
+            'role_id' => 1,
+            'isCoach'=>'true',
+            
+        ]);
+
+
+        $oldCoach->update([
+
+            'role_id' => 0,
+            'isCoach'=>'false',
+        ]);
+
+
+        $team->update([
+
+            'coachName' => $newCoach->fullName,
+            'coachPhoneNumber'=>$newCoach->phoneNumber,
+            'coachEmail' => $newCoach->email,
+            'user_id'=>$newCoach->id,
+            
+        ]);
+
+
+        return response()->json([
+
+            'code'=>200,
+            'message' => 'Team coach updated successfully'
+
+        ]);
+
+
+
+    }
+
 
 }
