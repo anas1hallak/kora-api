@@ -19,6 +19,9 @@ class ChampionshipRecord extends Model
         'startDate',
         'endDate',
         'termsAndConditions',
+        'status',
+        'imagePath',
+        'teamsCount',
         'firstWinner',
         'secondWinner'
     ];
@@ -31,6 +34,8 @@ protected $casts = [
 'prize1' => 'double',
 'prize2' => 'double',
 'entryPrice' => 'double',
+'teamsCount' => 'integer',
+
 
 
 ];
