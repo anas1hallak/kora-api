@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Championship;
 use App\Models\ChampionshipRecord;
 use App\Models\Head2HeadMatch;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,7 @@ class RecordController extends Controller
 
     public function getH2HRecords()
     {
-        $user = Auth::user();
+        $user = User::find(Auth::id());
     
         if (!$user) {
             return response()->json([
@@ -43,6 +44,15 @@ class RecordController extends Controller
         ->whereIn('team1_id', [$team->id])
         ->orWhereIn('team2_id', [$team->id])
         ->paginate($perPage);
+
+
+        
+        if ($head2HeadMatches->isEmpty()) {
+            return response()->json([
+                'code' => 404,
+                'message' => 'No head 2 head records found for the specified team ID.',
+            ], 404);
+        }
 
         $formattedMatches = [];
 
@@ -89,7 +99,7 @@ class RecordController extends Controller
 
     public function getChampionshipRecords(){
 
-        $user = Auth::user();
+        $user = User::find(Auth::id());
     
         if (!$user) {
             return response()->json([
@@ -110,7 +120,9 @@ class RecordController extends Controller
 
         }
 
-        $championshipRecords = ChampionshipRecord::where('team_id', $team->id)->get();
+        $perPage = 10;
+
+        $championshipRecords = ChampionshipRecord::where('team_id', $team->id)->paginate($perPage);
 
         if ($championshipRecords->isEmpty()) {
             return response()->json([
@@ -122,6 +134,16 @@ class RecordController extends Controller
         return response()->json([
             'code' => 200,
             'championshipRecords' => $championshipRecords,
+            'pagination' => [
+                'total' => $championshipRecords->total(),
+                'per_page' => $championshipRecords->perPage(),
+                'current_page' => $championshipRecords->currentPage(),
+                'last_page' => $championshipRecords->lastPage(),
+                'from' => $championshipRecords->firstItem(),
+                'to' => $championshipRecords->lastItem(),
+            ],
+
+
         ]);
 
 
@@ -145,6 +167,9 @@ class RecordController extends Controller
             'entryPrice' => $championship->entryPrice,
             'startDate' => $championship->startDate,
             'endDate' => $championship->endDate,
+            'status'=>$championship->status,
+            'imagePath' =>$championship->image ? asset('/storage/'. $championship->image->path) : null,
+            'teamsCount' => 16,
             'termsAndConditions' => $championship->termsAndConditions,
             'firstWinner' => $championship->firstWinner,
             'secondWinner' => $championship->secondWinner,

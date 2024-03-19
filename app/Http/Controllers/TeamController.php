@@ -557,7 +557,7 @@ class TeamController extends Controller
     public function makeCoach(string $id){
 
         $newCoach=User::findOrFail($id);
-        $oldCoach = User::find(Auth::id());;
+        $oldCoach = User::find(Auth::id());
     
         if (!$oldCoach) {
             return response()->json([

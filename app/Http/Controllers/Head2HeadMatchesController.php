@@ -29,6 +29,19 @@ class Head2HeadMatchesController extends Controller
         }
 
 
+        $teamId = $request->input('team1_id');
+        $existingMatch = Head2HeadMatch::where(function ($query) use ($teamId) {
+            $query->where('team1_id', $teamId)
+                  ->orWhere('team2_id', $teamId);
+        })->whereNotIn('status', ['ended'])->exists();
+    
+        if ($existingMatch) {
+            return response()->json([
+                'code' => 400,
+                'message' => 'Team already has an ongoing or pending head-to-head match.'
+            ], 200);
+        }
+    
 
         $Head2HeadMatch = Head2HeadMatch::create([
 
