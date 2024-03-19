@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Championship;
 use App\Models\ChampionshipRecord;
 use App\Models\Head2HeadMatch;
+use App\Models\Team;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +26,7 @@ class RecordController extends Controller
             ], 401);
         }
     
-        $team = $user->team;
+        $team = Team::findOrFail($user->team_id);
         
         if(!$team){
 
@@ -41,8 +42,10 @@ class RecordController extends Controller
 
         $head2HeadMatches = Head2HeadMatch::with(['team1', 'team2'])
         ->where('status', 'ended')
-        ->whereIn('team1_id', [$team->id])
-        ->orWhereIn('team2_id', [$team->id])
+        ->where(function ($query) use ($team) {
+            $query->where('team1_id', $team->id)
+                ->orWhere('team2_id', $team->id);
+        })
         ->paginate($perPage);
 
 
@@ -108,7 +111,7 @@ class RecordController extends Controller
             ], 401);
         }
     
-        $team = $user->team;
+        $team = Team::findOrFail($user->team_id);
         
         if(!$team){
 
