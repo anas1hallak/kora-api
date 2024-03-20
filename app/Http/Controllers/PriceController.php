@@ -28,12 +28,6 @@ class PriceController extends Controller
         $code = $request->query('code');
         $price = Price::where('code',$code)->first();
 
-        if (!$price) {
-            return response()->json([
-                'code' => 404,
-                'message' => 'Price not found for the provided country code.',
-            ], 404);
-        }
 
         return response()->json([
             'code' => 200,
