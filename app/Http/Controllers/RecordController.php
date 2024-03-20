@@ -50,16 +50,16 @@ class RecordController extends Controller
 
 
         
-        if ($head2HeadMatches->isEmpty()) {
-            return response()->json([
-                'code' => 404,
-                'message' => 'No head 2 head records found for the specified team ID.',
-            ], 404);
-        }
+       
 
         $formattedMatches = [];
 
         foreach ($head2HeadMatches as $match) {
+
+            if (!$match->team1 || !$match->team2) {
+                continue;
+            }
+
             $formattedMatches[] = [
 
                 
@@ -127,12 +127,6 @@ class RecordController extends Controller
 
         $championshipRecords = ChampionshipRecord::where('team_id', $team->id)->paginate($perPage);
 
-        if ($championshipRecords->isEmpty()) {
-            return response()->json([
-                'code' => 404,
-                'message' => 'No championship records found for the specified team ID.',
-            ], 404);
-        }
 
         return response()->json([
             'code' => 200,

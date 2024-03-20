@@ -106,7 +106,7 @@ class Head2HeadMatchesController extends Controller
         ->get();
     
 
-        
+
         if ($head2HeadMatches->isEmpty()) {
             return response()->json([
                 'code' => 404,
@@ -117,6 +117,11 @@ class Head2HeadMatchesController extends Controller
         $formattedMatches = [];
 
         foreach ($head2HeadMatches as $match) {
+
+            if (!$match->team1 || !$match->team2) {
+                continue;
+            }
+
             $formattedMatches[] = [
                 'id' => $match->id,
                 'date' => $match->date,
@@ -164,6 +169,11 @@ class Head2HeadMatchesController extends Controller
         $formattedMatches = [];
 
         foreach ($head2HeadMatches as $match) {
+
+            if (!$match->team1 || !$match->team2) {
+                continue;
+            }
+
             $formattedMatches[] = [
 
                 
