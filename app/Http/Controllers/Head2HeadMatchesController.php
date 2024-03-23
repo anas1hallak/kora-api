@@ -418,4 +418,47 @@ class Head2HeadMatchesController extends Controller
         ]);
     }
 
+
+
+
+    public function editH2HMatch(Request $request, $id)
+    {
+        // Validate the incoming request data
+        $validator = Validator::make($request->all(), [
+
+            'date' => 'nullable',
+            'time' => 'nullable',
+            'location' => 'nullable|string',
+            'stad' => 'nullable|string',
+            'winner' => 'nullable',
+            'goals1' => 'nullable|integer|min:0',
+            'goals2' => 'nullable|integer|min:0',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 400);
+        }
+
+        // Find the head-to-head match by its ID
+        $head2HeadMatch = Head2HeadMatch::findOrFail($id);
+
+        // Prepare the data to be updated
+        $data = $request->only([
+            'date', 'time', 'location', 'stad', 'goals1', 'goals2','winner'
+        ]);
+
+        // If the winner is chosen, set the status to 'ended'
+        if ($request->filled('winner')) {
+            $data['status'] = 'ended';
+        }
+
+        // Update the head-to-head match
+        $head2HeadMatch->update($data);
+
+        return response()->json([
+            'code' => 200,
+            'message' => 'Head-to-head match updated successfully.',
+        ]);
+    }
+
 }

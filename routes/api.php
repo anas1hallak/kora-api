@@ -85,6 +85,7 @@ Route::post('/rejectH2HMatch/{id}', [Head2HeadMatchesController::class, 'rejectH
 Route::post('/selectPaymentMethod/{id}', [Head2HeadMatchesController::class, 'selectPaymentMethod']);
 Route::get('/getH2HMatchEvents/{id}', [Head2HeadMatchesController::class, 'getH2HMatchEvents']);
 Route::get('/getH2HMatchDetails/{id}', [Head2HeadMatchesController::class, 'getH2HMatchDetails']);
+Route::put('/editH2HMatch/{id}', [Head2HeadMatchesController::class, 'editH2HMatch']);
 
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Price;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PriceController extends Controller
 {
@@ -43,10 +44,15 @@ class PriceController extends Controller
 
     public function addPrice(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'code' => 'required|string|unique:prices',
             'price' => 'required|numeric',
         ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 400);
+        }
+
 
         $price = Price::create($request->all());
 
@@ -63,6 +69,7 @@ class PriceController extends Controller
     public function editPrice(Request $request, string $id)
     {
         $price = Price::find($id);
+
         if (!$price) {
             return response()->json([
                 'code' => 404,
@@ -70,10 +77,14 @@ class PriceController extends Controller
             ], 404);
         }
 
-        $request->validate([
-            'code' => 'required|string|unique:prices,code,' . $price->id,
+       $validator = Validator::make($request->all(), [
+            'code' => 'required|string|',
             'price' => 'required|numeric',
         ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 400);
+        }
 
         $price->update($request->all());
 
