@@ -32,6 +32,8 @@ Route::post('/addUserToTeam/{id}', [TeamRequestsController::class, 'addUserToTea
 Route::post('/rejectUserRequest/{id}', [TeamRequestsController::class, 'rejectUserRequest']);//tested
 Route::delete('/deleteTeam/{id}', [TeamController::class, 'deleteTeam']);//tested
 Route::put('/editTeamPoints/{id}', [TeamController::class, 'editTeamPoints']);//tested
+Route::put('/editTeamRating/{id}', [TeamController::class, 'editTeamRating']);//tested
+
 Route::post('/kickPlayer/{id}', [TeamController::class, 'kickPlayer']);//tested
 
 
@@ -86,6 +88,8 @@ Route::post('/selectPaymentMethod/{id}', [Head2HeadMatchesController::class, 'se
 Route::get('/getH2HMatchEvents/{id}', [Head2HeadMatchesController::class, 'getH2HMatchEvents']);
 Route::get('/getH2HMatchDetails/{id}', [Head2HeadMatchesController::class, 'getH2HMatchDetails']);
 Route::put('/editH2HMatch/{id}', [Head2HeadMatchesController::class, 'editH2HMatch']);
+Route::delete('/deleteH2HMatch/{id}', [Head2HeadMatchesController::class, 'deleteH2HMatch']);
+
 
 
 

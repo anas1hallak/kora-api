@@ -169,6 +169,15 @@ class RoundController extends Controller
             'stad' => $request->input('stad'),
             'winner' => $request->input('winner'),
         ]);
+
+        if($request->input('winner')==null){
+
+            return response()->json([
+                'code' => 200,
+                'message' => 'round match updated successfully',
+            ]);
+
+        }
     
         $winningTeam = Team::findOrFail($request->input('winner'));
 
@@ -225,6 +234,12 @@ class RoundController extends Controller
             $championship->teams()->detach($winningTeam->id);
 
 
+        }
+
+        if ($winningTeam) {
+            $winningTeam->update([
+                'wins' => $winningTeam->wins + 1
+            ]);
         }
         
         return response()->json([

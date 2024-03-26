@@ -57,6 +57,12 @@ class Head2HeadMatchesController extends Controller
 
         ]);
 
+        $team = Team::findOrFail($request->input('team2_id'));
+        $tokens = User::findOrFail($team->user_id)->fcmTokens()->pluck('fcmToken')->toArray();
+        $title='Head-to-Head Match Invitation';
+        $body = 'You received a head-to-head match invitation from ' . $team->teamName;
+        (new PushNotificationController)->sendNotification($tokens,$body,$title);
+
 
         return response()->json([
 
@@ -68,7 +74,6 @@ class Head2HeadMatchesController extends Controller
 
 
     }
-
 
 
 
@@ -230,6 +235,14 @@ class Head2HeadMatchesController extends Controller
         ]);
 
 
+        $team = Team::findOrFail($Head2HeadMatch->team1_id);
+        $tokens = User::findOrFail($team->user_id)->fcmTokens()->pluck('fcmToken')->toArray();
+        $title='Head-to-Head Match Invitation Accepted';
+        $body = 'Your head-to-head match invitation has been accepted by the opposing team, Please submit your payment method.';
+        (new PushNotificationController)->sendNotification($tokens,$body,$title);
+
+
+
         return response()->json([
 
             'code'=>200,
@@ -246,8 +259,13 @@ class Head2HeadMatchesController extends Controller
 
         $Head2HeadMatch=Head2HeadMatch::findOrFail($id);
 
-        $Head2HeadMatch->delete();
+        $team = Team::findOrFail($Head2HeadMatch->team1_id);
+        $tokens = User::findOrFail($team->user_id)->fcmTokens()->pluck('fcmToken')->toArray();
+        $title='Head-to-Head Match Invitation Rejected';
+        $body = 'Your head-to-head match invitation has been rejected by the opposing team.';
+        (new PushNotificationController)->sendNotification($tokens,$body,$title);
 
+        $Head2HeadMatch->delete();
 
         return response()->json([
 
@@ -450,6 +468,12 @@ class Head2HeadMatchesController extends Controller
         // If the winner is chosen, set the status to 'ended'
         if ($request->filled('winner')) {
             $data['status'] = 'ended';
+
+            $team = Team::findOrFail($request->input('winner'));
+
+            $team->update([
+                'wins' => $team->wins + 1
+            ]);
         }
 
         // Update the head-to-head match
@@ -461,4 +485,28 @@ class Head2HeadMatchesController extends Controller
         ]);
     }
 
+
+
+    public function deleteH2HMatch(String $id)
+    {
+        $head2HeadMatch = Head2HeadMatch::find($id);
+
+        if (!$head2HeadMatch) {
+            return response()->json([
+                'code' => 404,
+                'message' => 'Head-to-head match not found.',
+            ], 404);
+        }
+
+        // Delete associated events first
+        $head2HeadMatch->events()->delete();
+
+        // Then delete the head2head match
+        $head2HeadMatch->delete();
+
+        return response()->json([
+            'code' => 200,
+            'message' => 'Head-to-head match and associated events deleted successfully.',
+        ]);
+    }
 }

@@ -219,6 +219,15 @@ class GroupController extends Controller
             
         ]);
 
+        if($request->input('winner')==null){
+
+            return response()->json([
+                'code' => 200,
+                'message' => 'round match updated successfully',
+            ]);
+
+        }
+
         $group = $match->group;
 
         if ($group) {

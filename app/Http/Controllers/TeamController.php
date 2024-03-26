@@ -512,6 +512,30 @@ class TeamController extends Controller
 
 
     }
+
+
+
+    public function editTeamRating(Request $request , string $id){
+
+        $team=Team::findOrFail($id);
+
+        $team->update([
+
+            'rate' => $request->input('rate'),
+        
+            
+        ]);
+
+        return response()->json([
+
+            'code'=>200,
+            'message' => 'Team rating updated successfully'
+
+        ]);
+
+
+
+    }
     
     
     public function kickPlayer(string $id){
