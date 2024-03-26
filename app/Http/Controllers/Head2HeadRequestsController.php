@@ -83,11 +83,19 @@ class Head2HeadRequestsController extends Controller
 
 
 
-
-        $team1Tokens = Team::findOrFail($head2HeadMatch->team1_id)->user->fcmTokens()->pluck('fcmToken')->toArray();
-        $team2Tokens = Team::findOrFail($head2HeadMatch->team2_id)->user->fcmTokens()->pluck('fcmToken')->toArray();
-
-        $tokens = array_merge($team1Tokens, $team2Tokens);
+        $team1 = Team::findOrFail($head2HeadMatch->team1_id);
+        $team2 = Team::findOrFail($head2HeadMatch->team2_id);
+        
+        // Get FCM tokens of coaches for both teams
+        $tokens = [];
+        if ($team1) {
+            $coach1 = User::findOrFail($team1->user_id);
+            $tokens = array_merge($tokens, $coach1->fcmTokens()->pluck('fcmToken')->toArray());
+        }
+        if ($team2) {
+            $coach2 = User::findOrFail($team2->user_id);
+            $tokens = array_merge($tokens, $coach2->fcmTokens()->pluck('fcmToken')->toArray());
+        }
 
         $title = 'Head-to-Head Match Request Accepted';
         $body = 'Your head-to-head match request has been accepted by the organizers. The organizers will contact the team coach to provide more information';
@@ -108,10 +116,20 @@ class Head2HeadRequestsController extends Controller
 
         $head2HeadMatch = Head2HeadMatch::findOrFail($head2HeadRequest->Head2HeadMatch_id);
 
-        $team1Tokens = Team::findOrFail($head2HeadMatch->team1_id)->user->fcmTokens()->pluck('fcmToken')->toArray();
-        $team2Tokens = Team::findOrFail($head2HeadMatch->team2_id)->user->fcmTokens()->pluck('fcmToken')->toArray();
-
-        $tokens = array_merge($team1Tokens, $team2Tokens);
+        
+        $team1 = Team::findOrFail($head2HeadMatch->team1_id);
+        $team2 = Team::findOrFail($head2HeadMatch->team2_id);
+        
+        // Get FCM tokens of coaches for both teams
+        $tokens = [];
+        if ($team1) {
+            $coach1 = User::findOrFail($team1->user_id);
+            $tokens = array_merge($tokens, $coach1->fcmTokens()->pluck('fcmToken')->toArray());
+        }
+        if ($team2) {
+            $coach2 = User::findOrFail($team2->user_id);
+            $tokens = array_merge($tokens, $coach2->fcmTokens()->pluck('fcmToken')->toArray());
+        }
 
         $title = 'Head-to-Head Match Request Rejected';
         $body = 'Your head-to-head match request has been rejected by the organizers. Please contact them for more information.';
