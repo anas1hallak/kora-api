@@ -77,6 +77,77 @@ class Head2HeadMatchesController extends Controller
 
 
 
+
+
+
+
+    public function createH2HMatchDashboard(Request $request){
+
+
+        $validator = Validator::make($request->all(), [
+
+            'team1_id' => 'required',
+            'team2_id'=>'required',
+            'date'=>'required',
+            'time'=>'required',
+            'location' => 'required',
+            'stad' => 'required',
+
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['message'=>$validator->errors()->first()],400);
+        }
+
+
+        $teamId = $request->input('team1_id');
+        $existingMatch = Head2HeadMatch::where(function ($query) use ($teamId) {
+            $query->where('team1_id', $teamId)
+                  ->orWhere('team2_id', $teamId);
+        })->whereNotIn('status', ['ended'])->exists();
+    
+        if ($existingMatch) {
+            return response()->json([
+                'code' => 400,
+                'message' => 'Team already has an ongoing or pending head-to-head match.'
+            ], 200);
+        }
+    
+
+        $Head2HeadMatch = Head2HeadMatch::create([
+
+
+            'team1_id' =>$request->input('team1_id'),
+            'team2_id' =>$request->input('team2_id'),
+            'date' =>$request->input('date'),
+            'time' =>$request->input('time'),
+            'location' =>$request->input('location'),
+            'stad' =>$request->input('stad'),
+            'status' =>"approved", 
+            
+            
+
+        ]);
+
+      
+
+        return response()->json([
+
+            'code'=>200,
+            'message' => 'head-to-head match created successfully',
+        
+        ]);
+
+
+
+    }
+
+
+
+
+
+
+
     public function getTeamH2HMatch()
     {
         $user = User::find(Auth::id());
