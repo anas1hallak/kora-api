@@ -238,7 +238,8 @@ class RoundController extends Controller
 
         if ($winningTeam) {
             $winningTeam->update([
-                'wins' => $winningTeam->wins + 1
+                'wins' => $winningTeam->wins + 1,
+                'points'=>$winningTeam->points+3
             ]);
         }
         

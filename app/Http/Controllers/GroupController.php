@@ -246,7 +246,9 @@ class GroupController extends Controller
 
         if ($team) {
             $team->update([
-                'wins' => $team->wins + 1
+                'wins' => $team->wins + 1,
+                'points'=>$team->points+3
+
             ]);
         }
 

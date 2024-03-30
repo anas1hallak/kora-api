@@ -543,7 +543,10 @@ class Head2HeadMatchesController extends Controller
             $team = Team::findOrFail($request->input('winner'));
 
             $team->update([
-                'wins' => $team->wins + 1
+                
+                'wins' => $team->wins + 1,
+                'points'=>$team->points+3
+
             ]);
         }
 
