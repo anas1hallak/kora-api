@@ -37,7 +37,7 @@ class User extends Authenticatable
     'playerNumber' => 'integer',
     'team_id' => 'integer',
     'role_id' => 'integer',
-    'elo' => 'integer',
+    'elo' => 'float',
 
 
     ];
