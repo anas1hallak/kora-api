@@ -534,8 +534,10 @@ class TeamController extends Controller
         // Cast the input rate to float
         $rate = (float) $request->input('rate');
     
+        $formattedRate = number_format($rate, 1);
+
         $team->update([
-            'rate' => $rate,
+            'rate' => $formattedRate,
         ]);
     
         return response()->json([
