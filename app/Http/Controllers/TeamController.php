@@ -515,26 +515,33 @@ class TeamController extends Controller
 
 
 
-    public function editTeamRating(Request $request , string $id){
+    public function editTeamRating(Request $request, string $id)
+    {
+        $validator = Validator::make($request->all(), [
 
-        $team=Team::findOrFail($id);
+            'rate' => 'numeric|min:0.5',
 
-        $team->update([
-
-            'rate' => $request->input('rate'),
-        
             
         ]);
 
-        return response()->json([
+        if ($validator->fails()) {
+            return response()->json(['message'=>$validator->errors()->first()],400);
+        }
 
-            'code'=>200,
-            'message' => 'Team rating updated successfully'
 
+        $team = Team::findOrFail($id);
+    
+        // Cast the input rate to float
+        $rate = (float) $request->input('rate');
+    
+        $team->update([
+            'rate' => $rate,
         ]);
-
-
-
+    
+        return response()->json([
+            'code' => 200,
+            'message' => 'Team rating updated successfully',
+        ]);
     }
     
     
