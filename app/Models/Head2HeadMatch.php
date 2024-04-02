@@ -73,5 +73,13 @@ class Head2HeadMatch extends Model
 
     }
 
+
+    public function images()
+    {
+    
+       return $this->hasMany(Head2HeadMatchImage::class,'Head2HeadMatch_id');
+
+    }
+
     
 }

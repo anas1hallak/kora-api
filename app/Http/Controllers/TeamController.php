@@ -56,6 +56,7 @@ class TeamController extends Controller
             'teamName' => $request->input('teamName'),
             'points' =>0,
             'wins' =>0,
+            'loses' =>0,
             'rate'=>0.5,
             'termsAndConditions'=>$request->input('termsAndConditions'),
             'coachName'=>$user->fullName,
@@ -307,7 +308,7 @@ class TeamController extends Controller
 
         }
 
-        $teams = $teamsQuery->paginate($perPage);
+        $teams = $teamsQuery->orderBy('rate', 'desc')->paginate($perPage);
 
 
 
@@ -329,6 +330,7 @@ class TeamController extends Controller
                 'points' => $team->points,
                 'rate' => $team->rate,
                 'wins' => $team->wins,
+                'loses' => $team->loses,
                 'coachName' => $team->coachName,
                 'coachPhoneNumber' => $team->coachPhoneNumber,
                 'coachEmail' => $team->coachEmail,
@@ -556,7 +558,7 @@ class TeamController extends Controller
 
         $user=User::findOrFail($id);
        
-       if($user->role_id===1){
+        if($user->role_id===1){
 
             return response()->json([
 

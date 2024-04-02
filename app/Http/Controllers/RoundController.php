@@ -242,6 +242,12 @@ class RoundController extends Controller
                 'points'=>$winningTeam->points+3
             ]);
         }
+
+        if ($losingTeam) {
+            $losingTeam->update([
+                'loses' => $losingTeam->loses + 1
+            ]);
+        }
         
         return response()->json([
             'code' => 200,

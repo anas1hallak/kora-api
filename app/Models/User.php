@@ -24,6 +24,9 @@ class User extends Authenticatable
         'isCoach',
         'team_id',
         'elo',
+        'goals',
+        'yellowCards',
+        'redCards',
         
         
         ];
@@ -33,11 +36,15 @@ class User extends Authenticatable
     
      protected $casts = [
         
-    'age' => 'integer',
-    'playerNumber' => 'integer',
-    'team_id' => 'integer',
-    'role_id' => 'integer',
-    'elo' => 'integer',
+        'age' => 'integer',
+        'playerNumber' => 'integer',
+        'team_id' => 'integer',
+        'role_id' => 'integer',
+        'elo' => 'double',
+        'goals' => 'integer',
+        'yellowCards' => 'integer',
+        'redCards' => 'integer',
+
 
 
     ];

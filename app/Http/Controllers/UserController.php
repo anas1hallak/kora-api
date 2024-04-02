@@ -60,8 +60,10 @@ class UserController extends Controller
             'selected'=>'not selected',
             'role_id'=>0,
             'isCoach'=>'false',
-            'elo'=>"000",
-
+            'elo'=>0.0,
+            'goals'=>0,
+            'yellowCards'=>0,
+            'redCards'=>0,
 
         ]);
 
@@ -303,8 +305,8 @@ class UserController extends Controller
 
         
 
-            $users = $usersQuery->paginate($perPage);
-        
+            $users = $usersQuery->orderBy('elo', 'desc')->paginate($perPage);
+
 
 
             foreach($users as $user) {

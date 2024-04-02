@@ -242,13 +242,20 @@ class GroupController extends Controller
             }
         }
 
-        $team = Team::findOrFail($request->input('winner'));
+        $winningTeam = Team::findOrFail($request->input('winner'));
+        $losingTeamId = ($match->team1_id === $winningTeam->id) ? $match->team2_id : $match->team1_id;
+        $losingTeam = Team::findOrFail($losingTeamId);
 
-        if ($team) {
-            $team->update([
-                'wins' => $team->wins + 1,
-                'points'=>$team->points+3
+        if ($winningTeam) {
+            $winningTeam->update([
+                'wins' => $winningTeam->wins + 1,
+                'points'=>$winningTeam->points+3
+            ]);
+        }
 
+        if ($losingTeam) {
+            $losingTeam->update([
+                'loses' => $losingTeam->loses + 1
             ]);
         }
 

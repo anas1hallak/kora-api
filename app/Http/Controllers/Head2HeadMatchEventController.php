@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Head2HeadMatchEvent;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -42,6 +43,23 @@ class Head2HeadMatchEventController extends Controller
 
         ]);
 
+
+        $user = User::findOrFail($request->input('user_id'));
+
+        $eventType=$request->input('type');
+
+        switch ($eventType) {
+            case 'Goal':
+                $user->goals += 1;
+                break;
+            case 'Yellow Card':
+                $user->yellowCards += 1;
+                break;
+            case 'Red Card':
+                $user->redCards += 1;
+                break;
+        }
+        $user->save();
 
         return response()->json([
             'code' => 200,

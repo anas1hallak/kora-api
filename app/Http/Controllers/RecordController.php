@@ -15,24 +15,16 @@ class RecordController extends Controller
 
 
 
-    public function getH2HRecords()
+    public function getH2HRecords(String $id)
     {
-        $user = User::find(Auth::id());
     
-        if (!$user) {
-            return response()->json([
-                'code' => 401,
-                'message' => 'Unauthorized',
-            ], 401);
-        }
-    
-        $team = Team::findOrFail($user->team_id);
+        $team = Team::find($id);
         
         if(!$team){
 
             return response()->json([
                 'code' => 404,
-                'message' => 'No team for this player yet',
+                'message' => 'No team found',
             ],200);
 
 
@@ -100,24 +92,16 @@ class RecordController extends Controller
 
 
 
-    public function getChampionshipRecords(){
+    public function getChampionshipRecords(String $id){
 
-        $user = User::find(Auth::id());
-    
-        if (!$user) {
-            return response()->json([
-                'code' => 401,
-                'message' => 'Unauthorized',
-            ], 401);
-        }
-    
-        $team = Team::findOrFail($user->team_id);
+        
+        $team = Team::find($id);
         
         if(!$team){
 
             return response()->json([
                 'code' => 404,
-                'message' => 'No team for this player yet',
+                'message' => 'No team found',
             ],200);
 
 
@@ -127,6 +111,7 @@ class RecordController extends Controller
 
         $championshipRecords = ChampionshipRecord::where('team_id', $team->id)->paginate($perPage);
 
+      
 
         return response()->json([
             'code' => 200,

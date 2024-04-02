@@ -39,7 +39,7 @@ Route::post('/kickPlayer/{id}', [TeamController::class, 'kickPlayer']);//tested
 
 
 
-
+Route::get('/getFormation/{id}', [FormationController::class, 'getFormation']);//tested
 Route::post('/editFormation', [FormationController::class, 'editFormation']);//tested
 
 
@@ -103,7 +103,8 @@ Route::post('/addH2HEvent', [Head2HeadMatchEventController::class, 'addH2HEvent'
 
 
 
-
+Route::get('/getH2HRecords/{id}', [RecordController::class, 'getH2HRecords']);
+Route::get('/getChampionshipRecords/{id}', [RecordController::class, 'getChampionshipRecords']);
 
 
 Route::get('/getALLPrices', [PriceController::class, 'getALLPrices']);
@@ -114,7 +115,12 @@ Route::delete('/deletePrice/{id}', [PriceController::class, 'deletePrice']);
 
 
 
+Route::post('/admin/login', [AdminController::class, 'login']);
 
+Route::post('/admin/create', [AdminController::class, 'create']); 
+Route::get('/admin/getAll', [AdminController::class, 'getAll']);
+Route::put('/admin/update/{id}', [AdminController::class, 'update']);
+Route::delete('/admin/delete/{id}', [AdminController::class, 'delete']);
 
 
 Route::middleware(['auth:sanctum'])->group(function () {
@@ -141,14 +147,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 
 
-    Route::get('/getFormation', [FormationController::class, 'getFormation']);//tested
-
-
     Route::get('/getAllTeamRequests', [TeamRequestsController::class, 'getAllTeamRequests']);//tested
-
-
-
-
 
 
     Route::get('/championshipProfile', [ChampionshipController::class, 'championshipProfile']);
@@ -157,8 +156,14 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/getTeamH2HMatch', [Head2HeadMatchesController::class, 'getTeamH2HMatch']);
 
 
-    Route::get('/getH2HRecords', [RecordController::class, 'getH2HRecords']);
-    Route::get('/getChampionshipRecords', [RecordController::class, 'getChampionshipRecords']);
 
+
+
+});
+
+Route::middleware(['auth:admin'])->group(function () {
+
+
+    Route::post('/admin/logout', [AdminController::class, 'logout']);
 
 });

@@ -15,6 +15,7 @@ class Team extends Model
         'teamName',
         'points',
         'wins',
+        'loses',
         'rate',
         'termsAndConditions',
         'coachName',
@@ -29,6 +30,7 @@ class Team extends Model
         
     'points' => 'integer',
     'wins' => 'integer',
+    'loses' => 'integer',
     'rate' => 'double',
     'user_id' => 'integer',
 

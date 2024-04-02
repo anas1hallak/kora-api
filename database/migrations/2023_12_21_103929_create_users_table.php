@@ -26,7 +26,11 @@ return new class extends Migration
             $table->integer('team_id')->nullable();
             $table->integer('role_id')->default(0);
             $table->string('isCoach')->default('false');
-            $table->integer('elo');
+            $table->double('elo');
+            $table->integer('goals')->default(0);
+            $table->integer('yellowCards')->default(0);
+            $table->integer('redCards')->default(0);
+
             $table->timestamps();
         });
     }
