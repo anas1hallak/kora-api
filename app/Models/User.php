@@ -77,5 +77,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Head2HeadMatchEvent::class);
     }
+
+   
 }
 

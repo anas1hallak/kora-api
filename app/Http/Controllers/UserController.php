@@ -60,7 +60,7 @@ class UserController extends Controller
             'selected'=>'not selected',
             'role_id'=>0,
             'isCoach'=>'false',
-            'elo'=>0.0,
+            'elo'=>0.1,
             'goals'=>0,
             'yellowCards'=>0,
             'redCards'=>0,
@@ -452,10 +452,33 @@ class UserController extends Controller
 
     public function editUserSkills(Request $request,string $id){
 
+
+        $validator = Validator::make($request->all(), [
+
+            'skills' => 'numeric|min:0.1',
+
+            
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['message'=>$validator->errors()->first()],400);
+        }
+
+
         $user=User::findOrFail($id);
+
+        $skills = (float) $request->input('skills');
+    
+        if (fmod($skills, 1) == 0) {
+        
+            $skills=$skills+0.1;
+
+        } 
+
+
         $user->update([
 
-            'elo' => $request->input('skills'),
+            'elo' => $skills,
         
             
         ]);

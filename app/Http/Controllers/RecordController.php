@@ -60,6 +60,9 @@ class RecordController extends Controller
                 'time' => $match->time,
                 'location' => $match->location,
                 'stad' => $match->stad,
+                'winner' => $match->winner,
+                'goals1' => $match->goals1,
+                'goals2' => $match->goals2,
                 'status' => $match->status,
             
                 'team1' => [
