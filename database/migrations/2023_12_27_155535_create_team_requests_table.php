@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('fullName');
             $table->string('nationality');
             $table->string('placeOfPlayer')->nullable();
+            $table->boolean('isSeen')->default(false);
             $table->timestamps();
 
         });

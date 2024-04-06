@@ -13,7 +13,8 @@ class UserRequests extends Model
 
         'team_id',
         'message',
-        'user_id'
+        'user_id',
+        'isSeen'
         
     ];
 

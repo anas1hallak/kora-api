@@ -166,5 +166,15 @@ class TeamRequestsController extends Controller
     }
 
 
-    
+    public function markAsSeen(Request $request)
+    {   
+        $ids = $request->input('ids', []);
+
+        TeamRequests::whereIn('id', $ids)->update(['isSeen' => true]);
+
+        return response()->json([
+            'code' => 200,
+            'message' => 'Team requests updated successfully.',
+        ]);
+    }
 }

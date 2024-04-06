@@ -16,7 +16,8 @@ class TeamRequests extends Model
         'fullName',
         'nationality',
         'placeOfPlayer',
-        'user_id'
+        'user_id',
+        'isSeen'
         
     ];
 

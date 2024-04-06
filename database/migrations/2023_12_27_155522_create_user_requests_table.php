@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('user_id'); 
             $table-> string('message');
             $table->integer('team_id');
+            $table->boolean('isSeen')->default(false);
             $table->timestamps();
         });
     }

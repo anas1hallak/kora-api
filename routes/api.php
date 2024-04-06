@@ -12,6 +12,8 @@ Route::get('/getUser/{id}', [UserController::class, 'getUser']);//tested
 Route::get('/getAllUsers', [UserController::class, 'getAllUsers']);//tested
 Route::post('/acceptTeamRequest/{id}', [UserRequestsController::class, 'acceptTeamRequest']);//tested
 Route::post('/rejectTeamRequest/{id}', [UserRequestsController::class, 'rejectTeamRequest']);//tested
+Route::post('UserRequests/markAsSeen', [UserRequestsController::class, 'markAsSeen']);//tested
+
 Route::delete('/deleteUser/{id}', [UserController::class, 'deleteUser']);
 Route::put('/editUserSkills/{id}', [UserController::class, 'editUserSkills']);//testeda
 
@@ -30,6 +32,7 @@ Route::get('/getTeamPlayers/{id}', [TeamController::class, 'getTeamPlayers']);//
 Route::get('/getAllTeams', [TeamController::class, 'getAllTeams']);//tested
 Route::post('/addUserToTeam/{id}', [TeamRequestsController::class, 'addUserToTeam']);//tested
 Route::post('/rejectUserRequest/{id}', [TeamRequestsController::class, 'rejectUserRequest']);//tested
+Route::post('TeamRequests/markAsSeen', [TeamRequestsController::class, 'markAsSeen']);//tested
 Route::delete('/deleteTeam/{id}', [TeamController::class, 'deleteTeam']);//tested
 Route::put('/editTeamPoints/{id}', [TeamController::class, 'editTeamPoints']);//tested
 Route::put('/editTeamRating/{id}', [TeamController::class, 'editTeamRating']);//tested

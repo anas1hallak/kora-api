@@ -162,4 +162,16 @@ class UserRequestsController extends Controller
 
     }
 
+    public function markAsSeen(Request $request)
+    {   
+        $ids = $request->input('ids', []);
+
+        UserRequests::whereIn('id', $ids)->update(['isSeen' => true]);
+
+        return response()->json([
+            'code' => 200,
+            'message' => 'User requests updated successfully.',
+        ]);
+    }
+
 }
