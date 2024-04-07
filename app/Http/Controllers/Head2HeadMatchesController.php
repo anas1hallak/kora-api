@@ -506,6 +506,7 @@ class Head2HeadMatchesController extends Controller
 
     public function editH2HMatch(Request $request,String $id)
     {
+
         // Validate the incoming request data
         $validator = Validator::make($request->all(), [
 
@@ -525,9 +526,18 @@ class Head2HeadMatchesController extends Controller
         // Find the head-to-head match by its ID
         $head2HeadMatch = Head2HeadMatch::findOrFail($id);
 
-        // Prepare the data to be updated
-        $data = $request->only([
-            'date', 'time', 'location', 'stad', 'goals1', 'goals2', 'winner'
+        $head2HeadMatch->update([
+
+
+            'date' => $request->input('date'),
+            'time' => $request->input('time'),
+            'location' => $request->input('location'),
+            'stad' => $request->input('stad'),
+            'goals1' => $request->input('goals1'),
+            'goals2' => $request->input('goals2'),
+            'winner' => $request->input('winner'),
+
+
         ]);
 
         $imagePaths = [];
@@ -544,17 +554,19 @@ class Head2HeadMatchesController extends Controller
             foreach ($imagePaths as $path) {
                 $imageModel = new Head2HeadMatchImage();
                 $imageModel->path = $path;
-                 /** @var \App\Models\Head2HeadMatch $head2HeadMatch **/
-
                 $head2HeadMatch->images()->save($imageModel);
                 $head2HeadMatch->load('images');
             }
         }
 
-
         // If the winner is chosen, set the status to 'ended'
         if ($request->filled('winner')) {
-            $data['status'] = 'ended';
+
+            $head2HeadMatch->update([
+
+                'status' => "pending_payment",
+    
+            ]);
 
             $winningTeam = Team::findOrFail($request->input('winner'));
             $losingTeamId = ($head2HeadMatch->team1_id === $winningTeam->id) ? $head2HeadMatch->team2_id : $head2HeadMatch->team1_id;
@@ -589,8 +601,6 @@ class Head2HeadMatchesController extends Controller
             
         }
 
-        // Update the head-to-head match
-        $head2HeadMatch->update($data);
 
         return response()->json([
             'code' => 200,
