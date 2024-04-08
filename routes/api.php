@@ -54,7 +54,7 @@ Route::post('/addTeamsToChampionship/{id}', [ChampionshipController::class, 'add
 Route::post('/rejectChampionshipRequest/{id}', [ChampionshipController::class, 'rejectChampionshipRequest']);//tested
 Route::get('/getChampionship/{id}', [ChampionshipController::class, 'getChampionship']);//tested
 Route::get('/getAllChampionships', [ChampionshipController::class, 'getAllChampionships']);//tested
-Route::put('/editChampionship/{id}', [ChampionshipController::class, 'editChampionship']);//tested
+Route::post('/editChampionship/{id}', [ChampionshipController::class, 'editChampionship']);//tested
 Route::delete('/deleteChampionship/{id}', [ChampionshipController::class, 'deleteChampionship']);//tested
 
 
