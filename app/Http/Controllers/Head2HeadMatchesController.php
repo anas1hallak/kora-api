@@ -439,7 +439,6 @@ class Head2HeadMatchesController extends Controller
     public function getH2HMatchDetails(string $id)
     {
         $head2HeadMatch = Head2HeadMatch::with(['team1', 'team2','images'])
-            ->where('status', 'approved')
             ->find($id);
 
         if (!$head2HeadMatch) {
