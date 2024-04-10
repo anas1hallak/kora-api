@@ -534,23 +534,17 @@ class Head2HeadMatchesController extends Controller
 
         ]);
 
-        $imagePaths = [];
-
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $file) {
-                
                 $fileName = date('His') . $file->getClientOriginalName();
                 $path = $file->storeAs('images', $fileName, 'public');
-                $imagePaths[] = $path;
+                
+                // Create and save the image model using the create() method
+                $head2HeadMatch->images()->create(['path' => $path]);
             }
-
-            // Save the image paths to the Image model
-            foreach ($imagePaths as $path) {
-                $imageModel = new Head2HeadMatchImage();
-                $imageModel->path = $path;
-                $head2HeadMatch->images()->save($imageModel);
-                $head2HeadMatch->load('images');
-            }
+        
+            // Load the images relationship after saving all images
+            $head2HeadMatch->load('images');
         }
 
         // If the winner is chosen, set the status to 'ended'
