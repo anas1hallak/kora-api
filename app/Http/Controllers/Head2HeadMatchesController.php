@@ -514,9 +514,6 @@ class Head2HeadMatchesController extends Controller
             'location' => 'nullable|string',
             'stad' => 'nullable|string',
             'winner' => 'nullable',
-            'goals1' => 'nullable|integer|min:0',
-            'goals2' => 'nullable|integer|min:0',
-
         ]);
 
         if ($validator->fails()) {
@@ -532,8 +529,6 @@ class Head2HeadMatchesController extends Controller
             'time' => $request->input('time'),
             'location' => $request->input('location'),
             'stad' => $request->input('stad'),
-            'goals1' => $request->input('goals1'),
-            'goals2' => $request->input('goals2'),
             'winner' => $request->input('winner'),
 
 
