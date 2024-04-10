@@ -554,7 +554,7 @@ class Head2HeadMatchesController extends Controller
         }
 
         // If the winner is chosen, set the status to 'ended'
-        if ($request->filled('winner')) {
+        if ($request->input('winner')!=null) {
 
             $head2HeadMatch->update([
 
