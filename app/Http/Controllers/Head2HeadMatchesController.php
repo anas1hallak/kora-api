@@ -563,7 +563,7 @@ class Head2HeadMatchesController extends Controller
 
             $head2HeadMatch->update([
 
-                'status' => "pending_payment",
+                'status' => "ended",
     
             ]);
 
